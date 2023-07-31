@@ -9,9 +9,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     protected static GameManager Instance;
+    public bool HasStarted { get; private set; }
+    public bool IsPlaying  { get; private set; }
 
     protected GameManager()
     { }
+
+    public void SetHasStarted(bool hasStarted)
+    {
+        this.HasStarted = hasStarted;
+    }
 
     private void Awake()
     {
