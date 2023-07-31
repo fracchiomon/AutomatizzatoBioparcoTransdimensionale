@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 /// <summary>
 /// Creazione del Singleton del GameManager che si occupa della gestione delle transizione tra scene e meccaniche piu` importanti
@@ -10,24 +11,24 @@ public class GameManager : MonoBehaviour
 {
     protected static GameManager Instance;
     public bool HasStarted { get; private set; }
-    public bool IsPlaying  { get; private set; }
+    public bool IsPlaying { get; private set; }
 
     protected GameManager()
     { }
 
-    public void SetHasStarted(bool hasStarted)
+    public void SetHasStarted( bool hasStarted )
     {
         this.HasStarted = hasStarted;
     }
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
-            Instance = this;  
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else if(Instance != null && Instance != this)
+        else if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
         return Instance;
     }
 
+ 
+
     public static void ToMainMenu()
     {
         SceneManager.LoadScene(sceneName: "MainMenu");
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
     public static void ToLevel1()
     {
         SceneManager.LoadScene(sceneName: "Level1");
+        
     }
     public static void ToLevel2()
     {

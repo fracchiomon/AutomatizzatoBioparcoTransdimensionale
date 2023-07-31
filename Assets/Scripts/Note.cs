@@ -2,58 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NotaPrefab : MonoBehaviour
+public class Note : MonoBehaviour
 {
-    private Level1_Control lvl1;
-
-    public enum NOTE_TYPE { KICK, SNARE };
+    public enum NOTE_TYPE { KICK, SNARE};
     public NOTE_TYPE type;
     private SpriteRenderer sprite;
     private Color color;
 
     public bool CanBePressed { get; private set; }
-
     public KeyCode keyCode;
-    //private GameManager gameManager;
+    public KeyCode defaultKey;
 
     private void Start()
     {
-        lvl1 = Level1_Control.GetInstance();
         this.sprite = GetComponent<SpriteRenderer>();
-        //this.gameManager = GameManager.GetInstance();
-
-        switch (type)
+        
+        
+        switch(type)
         {
             case NOTE_TYPE.KICK:
-                color = Color.red;
+                color = new Color(224, 0, 208, 255);
                 sprite.color = color;
-                keyCode = KeyCode.F;
+                defaultKey = KeyCode.F;
                 break;
-
+            
             case NOTE_TYPE.SNARE:
-                color = Color.green;
+                color = new Color(50, 255, 0, 255);
                 sprite.color = color;
-                keyCode = KeyCode.J;
+                defaultKey = KeyCode.J;
                 break;
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(keyCode))
+        if(Input.GetKeyDown(keyCode) || Input.GetKeyDown(defaultKey))
         {
-            if (CanBePressed)
+            if(CanBePressed)
             {
                 gameObject.SetActive(false);
-                lvl1.NoteHit();
-                
             }
         }
     }
 
     private void OnTriggerEnter2D( Collider2D collision )
     {
-        if (collision.tag == "Activator")
+        if(collision.tag == "Activator")
         {
             CanBePressed = true;
         }
