@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using TMPro;
 
 /// <summary>
 /// Classe che controlla le azioni relative al trigger Drum del livello 1: a seconda che sia un Kick o uno Snare associa relativo file audio e colore da mettere quando viene colpito

@@ -7,7 +7,7 @@ public class NoteController : MonoBehaviour
     private GameManager gameManager;
 
     [SerializeField] private int[] NumeroDiNote;
-    [SerializeField] private NotaPrefab nota;
+    [SerializeField] private Note nota;
     [SerializeField] private float beatTempo;
     private float delta_Tempo;
     private const float MAX_TEMPO = 400, MIN_TEMPO = 20;
