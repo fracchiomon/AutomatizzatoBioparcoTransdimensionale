@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
-    
+    [SerializeField] private Color noteColor;
+
     [SerializeField] Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction; //Gestisce la nota al quale e' assegnata la lane
     public KeyCode input; //tasto assegnato
     [SerializeField] private GameObject notePrefab;
@@ -33,10 +34,15 @@ public class Lane : MonoBehaviour
         {
             if (SongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime) //se il tempo ottenuto dalla canzone in corso e' maggioreuguale della differenza tra il timestamp della nota precedene e quella da spawnare(?) spawna la nuova nota
             {
-                var note = Instantiate(notePrefab, transform); 
+                Transform NoteSpawnTransform = transform;
+                var note = Instantiate(notePrefab, NoteSpawnTransform);
+                note.transform.position.Set(note.transform.position.x, note.transform.position.y + SongManager.Instance.noteSpawnY, 0f);
                 notes.Add(note.GetComponent<Note>());
+                note.GetComponent<Note>().SetColor(noteColor);
                 note.GetComponent<Note>().assignedTime = (float)timeStamps[spawnIndex];
+                note.name = "Note(Clone) #" + spawnIndex.ToString();
                 spawnIndex++; //incrementa l'indice
+                Debug.Log($"Spawn Y: {SongManager.Instance.noteSpawnY}; Spawn Y attuale: {note.transform.position.y}");
             }
         }
 
@@ -50,14 +56,14 @@ public class Lane : MonoBehaviour
             {
                 if (Math.Abs(audioTime - timeStamp) < marginOfError)
                 {
-                    PerfectHit(); //Nota colpita
+                    Hit(); //Nota colpita
                     print($"Hit on {inputIndex} note");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
                 }
                 else //Nota non colpita perfettamente
                 {
-                    GoodHit(); //per ora è colpita ugualmente
+                    SpegniNota();
                     print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
                 }
             }
@@ -65,20 +71,22 @@ public class Lane : MonoBehaviour
             {
                 Miss();
                 print($"Missed {inputIndex} note");
+                Invoke(nameof(SpegniNota), 3f);
                 inputIndex++;
             }
         }
 
     }
-    private void PerfectHit()
+    private void SpegniNota()
+    {
+        notes[inputIndex].gameObject.SetActive(false);
+    }
+    private void Hit()
     {
         ScoreManager.PerfectHit(); //suona l'efx e incrementa punteggio e indicatore combo
     }
 
-    private void GoodHit()
-    {
-        ScoreManager.GoodHit(); //suona l'efx e incrementa punteggio e indicatore combo
-    }
+    
     private void Miss()
     {
         ScoreManager.Miss(); //suona l'efx e resetta combo

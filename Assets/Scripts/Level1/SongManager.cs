@@ -19,6 +19,7 @@ public class SongManager : MonoBehaviour
 
     //TODO: implementare piu songs in classe Song
     public string fileLocation; //dove si trova la canzone
+    public int BPM;
     public static int numOfNotes;
     public float noteTime;  //timestamp per la nota
     public float noteSpawnY;//coordinata di spawn verticale nota
@@ -30,13 +31,17 @@ public class SongManager : MonoBehaviour
             return noteTapY - (noteSpawnY - noteTapY); //getter method che ritorna la distanza tra il punto di interazione e il punto di spawn
         }
     }
-    public static float GetNoteValueFromSong()
+    public static MidiFile midiFile; //posizione del file MIDI in formato .mid
+    public static float GetNoteScoreValueFromSong()
     {
         Debug.Log($"Valore nota: {ScoreManager._MAX_SCORE / numOfNotes}");
         float noteValue = (ScoreManager._MAX_SCORE / numOfNotes > 0) ? ScoreManager._MAX_SCORE / numOfNotes : 100f;
         return noteValue;
     }
-    public static MidiFile midiFile; //posizione del file MIDI in formato .mid
+    public void SetNoteTime()
+    {
+        noteTime = BPM / 60f;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -89,7 +94,7 @@ public class SongManager : MonoBehaviour
         scoreManager.Invoke(nameof(scoreManager.CalcolaValoreNota), 0.2f);
 
         foreach (var lane in lanes) lane.SetTimeStamps(array); //inizializzo le Lanes con i vari timestamps delle note
-
+        SetNoteTime();
         Invoke(nameof(StartSong), songDelayInSeconds); //richiamo il metodo per avviare la canzone
     }
     public void StartSong() //riproduce il file audio

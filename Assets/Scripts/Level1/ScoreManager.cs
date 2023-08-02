@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void CalcolaValoreNota()
     {
-        _NoteValue = (SongManager.GetNoteValueFromSong() > 0) ? SongManager.GetNoteValueFromSong() : 100; //in maniera simile a GuitarHero o altri rhythm game, il punteggio di una nota e' dato dal MAX SCORE diviso il numero di queste all'interno di una canzone
+        _NoteValue = (SongManager.GetNoteScoreValueFromSong() > 0) ? SongManager.GetNoteScoreValueFromSong() : 100; //in maniera simile a GuitarHero o altri rhythm game, il punteggio di una nota e' dato dal MAX SCORE diviso il numero di queste all'interno di una canzone
     }
     public static ScoreManager GetScoreManager() { return Instance; }
     public static void PerfectHit()
@@ -48,12 +48,7 @@ public class ScoreManager : MonoBehaviour
         _score += (uint)(_NoteValue);
         Instance.hitSFX.Play();
     }
-    public static void GoodHit()
-    {
-        //comboScore += 1; una good hit per ora non incrementa il combo meter
-        _score += (uint)(_NoteValue * 0.75f);
-        Instance.hitSFX.Play();
-    }
+    
     public static void Miss()
     {
         comboScore = 0;

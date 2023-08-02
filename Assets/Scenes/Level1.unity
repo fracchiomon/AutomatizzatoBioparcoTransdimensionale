@@ -251,6 +251,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &301682932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 301682933}
+  - component: {fileID: 301682934}
+  m_Layer: 0
+  m_Name: noteSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &301682933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301682932}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 10.755001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8775733656082567843}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &301682934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301682932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287f9193c2fa8454d8eab0788cb189af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteColor: {r: 0, g: 0.8584906, b: 0.03629756, a: 1}
+  noteRestriction: 2
+  input: 106
+  notePrefab: {fileID: 7088922699975419055, guid: a79609fdc5aa1664a984638038e8dd22, type: 3}
 --- !u!114 &372584152 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2920878117126853527, guid: d5467a28e7c8dce419fdf641cae0a487, type: 3}
@@ -262,6 +310,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6e25042c9e6bc4f9da931d18d6941a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &500639418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 500639419}
+  - component: {fileID: 500639420}
+  m_Layer: 0
+  m_Name: noteSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &500639419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500639418}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 10.755001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6929071222888957874}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &500639420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500639418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287f9193c2fa8454d8eab0788cb189af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteColor: {r: 0.7830189, g: 0, b: 0.02447942, a: 1}
+  noteRestriction: 0
+  input: 102
+  notePrefab: {fileID: 7088922699975419055, guid: a79609fdc5aa1664a984638038e8dd22, type: 3}
 --- !u!1 &542745025
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,14 +605,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b2233774caf6b5b4eb68fa3a462fbc74, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -788,15 +884,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 1091280289}
-  audioSource: {fileID: 1028293002}
+  audioSource: {fileID: 1796405185}
   lanes:
-  - {fileID: 6929071222888957873}
-  - {fileID: 8775733656082567842}
+  - {fileID: 500639420}
+  - {fileID: 301682934}
   songDelayInSeconds: 0
-  marginOfError: 0.3
-  inputDelayInMilliseconds: 50
-  fileLocation: MIDI/Level1/Easy/anotherOneBitesTheDust.mid
-  noteTime: 3
+  marginOfError: 0.1
+  inputDelayInMilliseconds: 75
+  fileLocation: MIDI/Level1/Hard/Mille.mid
+  BPM: 186
+  noteTime: 1
   noteSpawnY: 14
   noteTapY: -3
 --- !u!114 &1091280289
@@ -1057,7 +1154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1796405184
 Transform:
   m_ObjectHideFlags: 0
@@ -1084,14 +1181,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: de12856c7e71a5947ad50d5663fb53d4, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1733,6 +1830,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1551271952919370276, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: noteColor.a
+      value: 0.80784315
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551271952919370276, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: noteColor.b
+      value: 0.02447942
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551271952919370276, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: noteColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551271952919370276, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: noteColor.r
+      value: 0.7830189
+      objectReference: {fileID: 0}
     - target: {fileID: 2065142272811536263, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.55
@@ -1777,22 +1890,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drum_v2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1551271952919370276, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2065142272811536263, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 500639419}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
---- !u!114 &6929071222888957873 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1551271952919370276, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+--- !u!4 &6929071222888957874 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2065142272811536263, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
   m_PrefabInstance: {fileID: 6929071222888957872}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 287f9193c2fa8454d8eab0788cb189af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7789229893507960243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1863,6 +1978,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      propertyPath: noteColor.a
+      value: 0.94509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      propertyPath: noteColor.b
+      value: 0.03629756
+      objectReference: {fileID: 0}
+    - target: {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      propertyPath: noteColor.g
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      propertyPath: noteColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
       propertyPath: noteRestriction
       value: 2
       objectReference: {fileID: 0}
@@ -1910,22 +2041,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drum2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5410906792690679592, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 301682933}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
---- !u!114 &8775733656082567842 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+--- !u!4 &8775733656082567843 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5410906792690679592, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
   m_PrefabInstance: {fileID: 8775733656082567841}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 287f9193c2fa8454d8eab0788cb189af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8969823491045893464
 PrefabInstance:
   m_ObjectHideFlags: 0
