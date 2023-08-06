@@ -296,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteColor: {r: 0, g: 0.8584906, b: 0.03629756, a: 1}
-  noteRestriction: 2
+  noteRestriction: 9
   input: 106
   notePrefab: {fileID: 7088922699975419055, guid: a79609fdc5aa1664a984638038e8dd22, type: 3}
 --- !u!114 &372584152 stripped
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteColor: {r: 0.7830189, g: 0, b: 0.02447942, a: 1}
-  noteRestriction: 0
+  noteRestriction: 5
   input: 102
   notePrefab: {fileID: 7088922699975419055, guid: a79609fdc5aa1664a984638038e8dd22, type: 3}
 --- !u!1 &542745025
@@ -604,7 +604,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b2233774caf6b5b4eb68fa3a462fbc74, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f20c8960b32ca4aedab898696d04538c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -612,7 +612,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 0
+  Priority: 12
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -824,6 +824,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050568939}
   m_CullTransparentMesh: 1
+--- !u!1 &1089298891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4073685778450091843, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+  m_PrefabInstance: {fileID: 6929071222888957872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1091280285
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,17 +889,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreManager: {fileID: 1091280289}
-  audioSource: {fileID: 1796405185}
+  audioSource: {fileID: 1028293002}
   lanes:
   - {fileID: 500639420}
   - {fileID: 301682934}
   songDelayInSeconds: 0
   marginOfError: 0.1
-  inputDelayInMilliseconds: 75
-  fileLocation: MIDI/Level1/Hard/Mille.mid
-  BPM: 186
+  inputDelayInMilliseconds: 0
+  fileLocation: MIDI/Level1/Easy/NEWanotherOneBitesTheDust.mid
+  BPM: 109
   noteTime: 1
-  noteSpawnY: 14
+  noteSpawnY: 10.755
   noteTapY: -3
 --- !u!114 &1091280289
 MonoBehaviour:
@@ -1180,7 +1185,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: de12856c7e71a5947ad50d5663fb53d4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 29c20074d147f4bb39492f0725ec20ef, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1710,7 +1715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2052483841
 Transform:
   m_ObjectHideFlags: 0
@@ -1736,8 +1741,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f1edcea5637754949864aac6cafa33cb, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 1ce2d79f426fd4e3c9e1458584f26002, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1901,13 +1906,32 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2065142272811536263, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 500639419}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4073685778450091843, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6929071222888957875}
   m_SourcePrefab: {fileID: 100100000, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
 --- !u!4 &6929071222888957874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2065142272811536263, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
   m_PrefabInstance: {fileID: 6929071222888957872}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6929071222888957875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089298891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287f9193c2fa8454d8eab0788cb189af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteColor: {r: 0, g: 0, b: 0, a: 0}
+  noteRestriction: 0
+  input: 0
+  notePrefab: {fileID: 0}
 --- !u!1001 &7789229893507960243
 PrefabInstance:
   m_ObjectHideFlags: 0

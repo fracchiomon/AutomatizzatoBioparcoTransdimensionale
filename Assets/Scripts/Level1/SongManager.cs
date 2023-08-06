@@ -50,7 +50,7 @@ public class SongManager : MonoBehaviour
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
             StartCoroutine(ReadFromWebsite()); //nel caso sia build Web leggeremo da un indirizzo http(s), altrimenti da un file
-            
+
         }
         else
         {
@@ -83,6 +83,8 @@ public class SongManager : MonoBehaviour
         midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
         GetDataFromMidi();
     }
+
+
     public void GetDataFromMidi() //metodo per il parsing dei dati da un file .mid
     {
         var notes = midiFile.GetNotes(); //ricava i messaggi MIDI
@@ -97,6 +99,9 @@ public class SongManager : MonoBehaviour
         SetNoteTime();
         Invoke(nameof(StartSong), songDelayInSeconds); //richiamo il metodo per avviare la canzone
     }
+
+
+
     public void StartSong() //riproduce il file audio
     {
         audioSource.Play();

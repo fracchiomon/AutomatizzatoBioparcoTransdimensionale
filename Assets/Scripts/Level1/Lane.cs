@@ -24,6 +24,12 @@ public class Lane : MonoBehaviour
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap()); //conversione della metrica di tempo dal formato MIDI a quello "classico"
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f); //aggiunge il valore ottenuto alla lista
+                Debug.Log((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
+                Debug.Log("controllo MetricTimeSpan.Minutes " + metricTimeSpan.Minutes);
+                Debug.Log("controllo MetricTimeSpan.Minutes * 60f -  " + metricTimeSpan.Minutes * 60f);
+                Debug.Log("controllo MetricTimeSpan.Seconds " + metricTimeSpan.Seconds);
+                Debug.Log("controllo MetricTimeSpan.Milli " + metricTimeSpan.Milliseconds);
+                Debug.Log("controllo MetricTimeSpan.Micro " + metricTimeSpan.Milliseconds / 1000f);
             }
         }
     }
@@ -86,7 +92,7 @@ public class Lane : MonoBehaviour
         ScoreManager.PerfectHit(); //suona l'efx e incrementa punteggio e indicatore combo
     }
 
-    
+
     private void Miss()
     {
         ScoreManager.Miss(); //suona l'efx e resetta combo
