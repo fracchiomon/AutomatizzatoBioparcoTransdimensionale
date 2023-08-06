@@ -24,6 +24,8 @@ public class Lane : MonoBehaviour
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap()); //conversione della metrica di tempo dal formato MIDI a quello "classico"
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f); //aggiunge il valore ottenuto alla lista
+
+                //---------DEBUG--------//
                 Debug.Log((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
                 Debug.Log("controllo MetricTimeSpan.Minutes " + metricTimeSpan.Minutes);
                 Debug.Log("controllo MetricTimeSpan.Minutes * 60f -  " + metricTimeSpan.Minutes * 60f);
@@ -32,6 +34,9 @@ public class Lane : MonoBehaviour
                 Debug.Log("controllo MetricTimeSpan.Micro " + metricTimeSpan.Milliseconds / 1000f);
             }
         }
+        Debug.Log($"numero di timestamps = {timeStamps.Count}");
+        Debug.Log($"timestamps: {timeStamps}");
+        Debug.Log("AudioSourceTime = " + SongManager.GetAudioSourceTime().ToString());
     }
     // Update is called once per frame
     void Update()
@@ -48,7 +53,8 @@ public class Lane : MonoBehaviour
                 note.GetComponent<Note>().assignedTime = (float)timeStamps[spawnIndex];
                 note.name = "Note(Clone) #" + spawnIndex.ToString();
                 spawnIndex++; //incrementa l'indice
-                Debug.Log($"Spawn Y: {SongManager.Instance.noteSpawnY}; Spawn Y attuale: {note.transform.position.y}");
+                Debug.Log("nota: " +note.name+ "spawnIndex = " + spawnIndex);
+                //Debug.Log($"Spawn Y: {SongManager.Instance.noteSpawnY}; Spawn Y attuale: {note.transform.position.y}");
             }
         }
 
@@ -66,6 +72,7 @@ public class Lane : MonoBehaviour
                     print($"Hit on {inputIndex} note");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
+                    print($"nuovo inputIndex: {inputIndex}");
                 }
                 else //Nota non colpita perfettamente
                 {

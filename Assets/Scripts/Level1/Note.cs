@@ -22,6 +22,7 @@ public class Note : MonoBehaviour
     {
         this.sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
+        Debug.Log(this.name + "Tempo assegnato: " +this.assignedTime);
         
         /*switch (type)
         {
@@ -57,7 +58,7 @@ public class Note : MonoBehaviour
         {
             //come renderla con il Time.deltaTime?
             //transform.localPosition = Vector3.Lerp(Vector3.up * SongManager.Instance.noteSpawnY, Vector3.up * SongManager.Instance.noteDespawnY, t) ;
-            Debug.Log(Vector3.Lerp(Vector3.up * SongManager.Instance.noteSpawnY, Vector3.up * SongManager.Instance.noteDespawnY, t)) ;
+            //Debug.Log(Vector3.Lerp(Vector3.up * SongManager.Instance.noteSpawnY, Vector3.up * SongManager.Instance.noteDespawnY, t)) ;
             // Aggiungi il movimento fluido basato sul tempo trascorso da un frame all'altro.
             transform.position -= Vector3.up * movementAmountThisFrame;
             sprite.enabled = true;

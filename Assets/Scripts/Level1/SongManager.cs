@@ -8,6 +8,29 @@ using System;
 
 public class SongManager : MonoBehaviour
 {
+    public float DEBUG_TIMESCALE;
+    private void OnValidate()
+    {
+        Time.timeScale = DEBUG_TIMESCALE;
+    }
+
+    public static void DEBUG_TIMESCALE_EDIT(float newTSvalue)
+    {
+        Time.timeScale = newTSvalue;
+    }
+    public static bool DEBUG_IS_PAUSED;
+    public static void DEBUG_PAUSE()
+    {
+        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            if (DEBUG_IS_PAUSED)
+                DEBUG_TIMESCALE_EDIT(1);
+            else
+                DEBUG_TIMESCALE_EDIT(0);
+        }
+        
+    }
+
     public static SongManager Instance { get; private set; } //per richiamare istanza di questo oggetto
     public ScoreManager scoreManager;
     public AudioSource audioSource; //contiene la canzone
