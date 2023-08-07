@@ -10,15 +10,36 @@ public class SongManager : MonoBehaviour
 {
     public static bool IsDebugEnabled;
     public bool nonStaticIsDebugEnabled;
-
     public float DEBUG_TIMESCALE;
-    private void OnValidate()
-    {
-        IsDebugEnabled = nonStaticIsDebugEnabled;
-        if (IsDebugEnabled)
-            Time.timeScale = DEBUG_TIMESCALE;
-    }
 
+    public static SongManager Instance { get; private set; } //per richiamare istanza di questo oggetto
+    public ScoreManager scoreManager;
+    public SongSelect SongSelection;
+
+    public float songDelayInSeconds; //tempo tra una nota e l'altra
+    public float marginOfError; // in seconds
+    public int inputDelayInMilliseconds; //per controllare eventuale lag dell'input dell'utente (calibrazione)
+
+    public AudioSource audioSource; //contiene la canzone
+    public Lane[] lanes; //gestiscono le "corsie" sulle quali viaggeranno le note
+    //TODO: implementare piu songs in classe Song
+    public string fileLocation; //dove si trova la canzone
+    public int BPM;
+    public static int numOfNotes;
+
+    public float noteTime;  //timestamp per la nota
+    public float noteSpawnY;//coordinata di spawn verticale nota
+    public float noteTapY;  //coordinata in cui e' interagibile la nota
+    public float noteDespawnY //coordinata in cui viene rimossa la nota se non e' stata colpita
+    {
+        get
+        {
+            return noteTapY - (noteSpawnY - noteTapY); //getter method che ritorna la distanza tra il punto di interazione e il punto di spawn
+        }
+    }
+    public static MidiFile midiFile; //posizione del file MIDI in formato .mid
+
+    //------------DEBUG_SECTION-------------//
     public static void DEBUG_TIMESCALE_EDIT(float newTSvalue)
     {
         if (IsDebugEnabled)
@@ -40,45 +61,18 @@ public class SongManager : MonoBehaviour
         }
 
     }
-
-    public static SongManager Instance { get; private set; } //per richiamare istanza di questo oggetto
-    public ScoreManager scoreManager;
-    public AudioSource audioSource; //contiene la canzone
-    public Lane[] lanes; //gestiscono le "corsie" sulle quali viaggeranno le note
-    public float songDelayInSeconds; //tempo tra una nota e l'altra
-    public float marginOfError; // in seconds
-
-    public int inputDelayInMilliseconds; //per controllare eventuale lag dell'input dell'utente (calibrazione)
-
-    //TODO: implementare piu songs in classe Song
-    public string fileLocation; //dove si trova la canzone
-    public int BPM;
-    public static int numOfNotes;
-    public float noteTime;  //timestamp per la nota
-    public float noteSpawnY;//coordinata di spawn verticale nota
-    public float noteTapY;  //coordinata in cui e' interagibile la nota
-    public float noteDespawnY //coordinata in cui viene rimossa la nota se non e' stata colpita
+    private void OnValidate()
     {
-        get
-        {
-            return noteTapY - (noteSpawnY - noteTapY); //getter method che ritorna la distanza tra il punto di interazione e il punto di spawn
-        }
-    }
-    public static MidiFile midiFile; //posizione del file MIDI in formato .mid
-    public static float GetNoteScoreValueFromSong()
-    {
+        IsDebugEnabled = nonStaticIsDebugEnabled;
         if (IsDebugEnabled)
-            Debug.Log($"Valore nota: {ScoreManager._MAX_SCORE / numOfNotes}");
-        float noteValue = (ScoreManager._MAX_SCORE / numOfNotes > 0) ? ScoreManager._MAX_SCORE / numOfNotes : 100f;
-        return noteValue;
+            Time.timeScale = DEBUG_TIMESCALE;
     }
-    public void SetNoteTime()
-    {
-        noteTime = BPM / 60f;
-    }
+    //------------END_DEBUG_SECTION--------//
 
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Nell'awake istanzio il singleton del SongManager e invoco la funzione opportuna per fare il parsing del MIDI file
+    /// </summary>
+    void Awake()
     {
         Instance = this; // istanzio il singleton
         IsDebugEnabled = nonStaticIsDebugEnabled;
@@ -93,6 +87,32 @@ public class SongManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Aggiorna il valore del punteggio di una nota singola dividendo il massimale MAX_SCORE sul numero di note presenti nella map. Nel caso MAX_SCORE fosse non inizializzato o negativo, assegna un valore default di 100.
+    /// </summary>
+    /// <returns></returns>
+    public static float GetNoteScoreValueFromSong()
+    {
+        if (IsDebugEnabled)
+            Debug.Log($"Valore nota: {ScoreManager._MAX_SCORE / numOfNotes}");
+        float noteValue = (ScoreManager._MAX_SCORE / numOfNotes > 0) ? ScoreManager._MAX_SCORE / numOfNotes : 100f;
+        return noteValue;
+    }
+
+    /// <summary>
+    /// La funzione aggiorna il valore di noteTime dividendo i Battiti per minuto su 60 secondi, ottiene così un valore in secondi
+    /// </summary>
+    public void SetNoteTime()
+    {
+        noteTime = BPM / 60f;
+    }
+
+
+    /// <summary>
+    /// Coroutine per lettura asincrona del MIDI file da un indirizzo http, memorizzato in uno stream di dati mandato alla funzione GetDataFromMidi()
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     private IEnumerator ReadFromWebsite()
     {
         using UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + fileLocation);
@@ -113,6 +133,9 @@ public class SongManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Legge un file MIDI a partire dalla location StreamingAssets
+    /// </summary>
     private void ReadFromFile()
     {
         midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
@@ -120,6 +143,9 @@ public class SongManager : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Effettua il parsing del file MIDI, usando la libreria DryWetMidi, memorizza le note ottenute da GetNotes() in un array, inizializza il punteggio singolo di una nota nello ScoreManager. Inoltre, assegna i timestamps relativi alle note a ciascuna Lane, le quali filtreranno quelle a loro assegnate; infine, avvia la canzone
+    /// </summary>
     public void GetDataFromMidi() //metodo per il parsing dei dati da un file .mid
     {
         var notes = midiFile.GetNotes(); //ricava i messaggi MIDI
@@ -142,7 +168,12 @@ public class SongManager : MonoBehaviour
     {
         audioSource.Play();
     }
-    public static double GetAudioSourceTime() //ottiene il tempo della canzone dividendo Samples / Freq (Hz -> 1/s)
+
+    /// <summary>
+    /// ottiene il tempo della canzone dividendo Samples / Freq (Hz -> 1/s)
+    /// </summary>
+    /// <returns></returns>
+    public static double GetAudioSourceTime()
     {
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
     }

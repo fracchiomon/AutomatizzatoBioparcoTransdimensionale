@@ -10,17 +10,6 @@ public class Lane : MonoBehaviour
 
     public TextMeshProUGUI DEBUG_TEXT;
 
-    private void Start()
-    {
-        IsDebugEnabled = SongManager.IsDebugEnabled;
-        if (IsDebugEnabled)
-        {
-            DEBUG_TEXT.gameObject.SetActive(true);
-
-            DEBUG_TEXT.SetText("START");
-        }
-    }
-
     [SerializeField] private Color noteColor;
 
     [SerializeField] Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction; //Gestisce la nota al quale e' assegnata la lane
@@ -32,46 +21,19 @@ public class Lane : MonoBehaviour
     private int spawnIndex = 0; //indice della nota spawnata
     private int inputIndex = 0; //indice della nota colpita
 
-    public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array) //Prende l'array di note e lo riempie con le note corrispondenti al suo canale (la sua "nota")
+
+    private void Start()
     {
-        foreach (var note in array)
-        {
-            if (note.NoteName == noteRestriction)
-            {
-                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap()); //conversione della metrica di tempo dal formato MIDI a quello "classico"
-
-                //timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f); //aggiunge il valore ottenuto alla lista
-                timeStamps.Add(metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f);
-
-                //---------DEBUG--------//
-                if (IsDebugEnabled)
-                {
-                    //Debug.Log((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
-                    //Debug.Log("controllo MetricTimeSpan.Minutes " + metricTimeSpan.Minutes);
-                    //Debug.Log("controllo MetricTimeSpan.Minutes * 60f -  " + metricTimeSpan.Minutes * 60f);
-                    //Debug.Log("controllo MetricTimeSpan.Seconds " + metricTimeSpan.Seconds);
-                    //Debug.Log("controllo MetricTimeSpan.Milli " + metricTimeSpan.Milliseconds);
-                    //Debug.Log("controllo MetricTimeSpan.Micro " + metricTimeSpan.Milliseconds / 1000f);
-
-                }
-
-            }
-        }
+        IsDebugEnabled = SongManager.IsDebugEnabled;
+        //------------DEBUG_SECTION-------------//
         if (IsDebugEnabled)
         {
-            Debug.Log($"numero di timestamps = {timeStamps.Count}");
-            Debug.Log("Lane: " + this.name + "\ttimestamps: ");
-            StampaLista(timeStamps);
-        }
+            DEBUG_TEXT.gameObject.SetActive(true);
 
-    }
-
-    public void StampaLista(List<float> ts)
-    {
-        foreach (float t in ts)
-        {
-            print($"timestamp n.{ts.IndexOf(t)} = {t}");
+            DEBUG_TEXT.SetText("START");
         }
+        //------------END_DEBUG_SECTION--------//
+
     }
 
     // Update is called once per frame
@@ -109,11 +71,14 @@ public class Lane : MonoBehaviour
 
             if (Input.GetKeyDown(input))
             {
+                //------------DEBUG_SECTION-------------//
                 if (IsDebugEnabled)
                 {
                     DEBUG_TEXT.SetText("AudioSourceTime = " + SongManager.GetAudioSourceTime().ToString());
                     DEBUG_TEXT.SetText(DEBUG_TEXT.text + $"\nMathf.Abs((float)(audioTime - timeStamp)) = {Mathf.Abs((float)(audioTime - timeStamp))}");
                 }
+                //------------END_DEBUG_SECTION--------//
+
                 if (notes[inputIndex].CanBePressed)
                 {
 
@@ -137,6 +102,7 @@ public class Lane : MonoBehaviour
                     {
                         //SpegniNota();
                         notes[inputIndex].GetComponent<SpriteRenderer>().color = Color.black;
+                        notes[inputIndex].GetComponent<Note>().CanBePressed = false;
 
                         if (IsDebugEnabled)
                             print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
@@ -145,12 +111,14 @@ public class Lane : MonoBehaviour
             }
             if (timeStamp + marginOfError <= audioTime) //nota non colpita
             {
+
                 if (IsDebugEnabled)
                 {
                     DEBUG_TEXT.SetText($"Miss. timeStamp + marginOfError = {timeStamp + marginOfError} - audioTime = {audioTime}");
                     print($"Missed {inputIndex} note");
 
                 }
+
                 Miss();
 
 
@@ -160,6 +128,59 @@ public class Lane : MonoBehaviour
         }
 
     }
+
+    public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array) //Prende l'array di note e lo riempie con le note corrispondenti al suo canale (la sua "nota")
+    {
+        foreach (var note in array)
+        {
+            if (note.NoteName == noteRestriction)
+            {
+                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap()); //conversione della metrica di tempo dal formato MIDI a quello "classico"
+
+                //timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f); //aggiunge il valore ottenuto alla lista
+                timeStamps.Add(metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f);
+
+                //------------DEBUG_SECTION-------------//
+                if (IsDebugEnabled)
+                {
+                    //Debug.Log((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
+                    //Debug.Log("controllo MetricTimeSpan.Minutes " + metricTimeSpan.Minutes);
+                    //Debug.Log("controllo MetricTimeSpan.Minutes * 60f -  " + metricTimeSpan.Minutes * 60f);
+                    //Debug.Log("controllo MetricTimeSpan.Seconds " + metricTimeSpan.Seconds);
+                    //Debug.Log("controllo MetricTimeSpan.Milli " + metricTimeSpan.Milliseconds);
+                    //Debug.Log("controllo MetricTimeSpan.Micro " + metricTimeSpan.Milliseconds / 1000f);
+
+                }
+                //------------END_DEBUG_SECTION--------//
+
+
+            }
+        }
+        //------------DEBUG_SECTION-------------//
+        if (IsDebugEnabled)
+        {
+            Debug.Log($"numero di timestamps = {timeStamps.Count}");
+            Debug.Log("Lane: " + this.name + "\ttimestamps: ");
+            DEBUG_STAMPA_LISTA(timeStamps);
+        }
+        //------------END_DEBUG_SECTION--------//
+
+
+    }
+
+
+    //------------DEBUG_SECTION-------------//
+    public void DEBUG_STAMPA_LISTA(List<float> ts)
+    {
+        foreach (float t in ts)
+        {
+            print($"timestamp n.{ts.IndexOf(t)} = {t}");
+        }
+    }
+    //------------END_DEBUG_SECTION--------//
+
+
+
     private void SpegniNota()
     {
         notes[inputIndex].gameObject.SetActive(false);
@@ -175,7 +196,12 @@ public class Lane : MonoBehaviour
     private void Miss()
     {
         notes[inputIndex].GetComponent<SpriteRenderer>().color = Color.white;
+        notes[inputIndex].GetComponent<Note>().CanBePressed = false;
 
         ScoreManager.Miss(); //suona l'efx e resetta combo
     }
 }
+
+
+//------------DEBUG_SECTION-------------//
+//------------END_DEBUG_SECTION--------//

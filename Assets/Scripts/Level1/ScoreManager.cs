@@ -6,13 +6,12 @@ public class ScoreManager : MonoBehaviour
     public bool IsDebugEnabled;
 
     protected static ScoreManager Instance;
-    private GameManager gameManager;
     [SerializeField] private SongManager songManager;
 
     public AudioSource hitSFX;
     //public AudioSource missSFX;
     [SerializeField] private TextMeshProUGUI ScoreText, ComboText;
-    public static int comboScore { get; private set; }
+    public static int ComboScore { get; private set; }
     private static uint _score;
 
     private static float _NoteValue;
@@ -33,12 +32,17 @@ public class ScoreManager : MonoBehaviour
         IsDebugEnabled = songManager.nonStaticIsDebugEnabled;
         ScoreText.text += " 0";
         ComboText.text = "Moltiplicatore: 0";
-        comboScore = 0;
+        ComboScore = 0;
         _score = 0;
 
 
         if (IsDebugEnabled)
             Debug.Log($"Valore nota in ScoreManager: {_NoteValue}");
+    }
+    void Update()
+    {
+        ScoreText.text = "Punteggio: " + _score.ToString();
+        ComboText.text = "Moltiplicatore: " + ComboScore.ToString();
     }
     public void CalcolaValoreNota()
     {
@@ -47,19 +51,15 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager GetScoreManager() { return Instance; }
     public static void PerfectHit()
     {
-        comboScore += 1;
+        ComboScore += 1;
         _score += (uint)(_NoteValue);
         Instance.hitSFX.Play();
     }
 
     public static void Miss()
     {
-        comboScore = 0;
+        ComboScore = 0;
         //Instance.missSFX.Play();
     }
-    private void Update()
-    {
-        ScoreText.text = "Punteggio: " + _score.ToString();
-        ComboText.text = "Moltiplicatore: " + comboScore.ToString();
-    }
+
 }

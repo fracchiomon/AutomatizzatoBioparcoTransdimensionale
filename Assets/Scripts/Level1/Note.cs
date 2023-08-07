@@ -19,7 +19,7 @@ public class Note : MonoBehaviour
         sprite.color = color;
     }
 
-    public bool CanBePressed { get; private set; }
+    public bool CanBePressed;
     /*public KeyCode keyCode;
     public KeyCode defaultKey;*/
 
@@ -90,10 +90,12 @@ public class Note : MonoBehaviour
                 DEBUG_TEXT.SetText($"t = {t}; t > 1 ? {checkTmoreThanOne}");
             }
 
-            //come renderla con il Time.deltaTime?
-            //transform.localPosition = Vector3.Lerp(Vector3.up * SongManager.Instance.noteSpawnY, Vector3.up * SongManager.Instance.noteDespawnY, t) ;
-            //Debug.Log(Vector3.Lerp(Vector3.up * SongManager.Instance.noteSpawnY, Vector3.up * SongManager.Instance.noteDespawnY, t)) ;
-            // Aggiungi il movimento fluido basato sul tempo trascorso da un frame all'altro.
+            /* OLD
+                //come renderla con il Time.deltaTime?
+                //transform.localPosition = Vector3.Lerp(Vector3.up * SongManager.Instance.noteSpawnY, Vector3.up * SongManager.Instance.noteDespawnY, t) ;
+                //Debug.Log(Vector3.Lerp(Vector3.up * SongManager.Instance.noteSpawnY, Vector3.up * SongManager.Instance.noteDespawnY, t)) ;
+                // Aggiungi il movimento fluido basato sul tempo trascorso da un frame all'altro.
+             */
             transform.position -= Vector3.up * movementAmountThisFrame;
             DEBUG_TEXT.transform.position = transform.position;
             DEBUG_TEXT.rectTransform.position = transform.position;

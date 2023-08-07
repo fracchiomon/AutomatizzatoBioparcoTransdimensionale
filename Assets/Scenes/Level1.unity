@@ -1364,18 +1364,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f288a12ae10a254e9f1e09ca450f742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonStaticIsDebugEnabled: 1
+  nonStaticIsDebugEnabled: 0
   DEBUG_TIMESCALE: 1
   scoreManager: {fileID: 1091280289}
-  audioSource: {fileID: 1028293002}
+  audioSource: {fileID: 2052483842}
   lanes:
   - {fileID: 500639420}
   - {fileID: 301682934}
   songDelayInSeconds: 0
   marginOfError: 0.7
   inputDelayInMilliseconds: 0
-  fileLocation: MIDI/Level1/Easy/NEWanotherOneBitesTheDust.mid
-  BPM: 109
+  fileLocation: MIDI/Level1/Medium/BLITZ_170.mid
+  BPM: 170
   noteTime: 1
   noteSpawnY: 10.755
   noteTapY: -3
@@ -2382,6 +2382,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drum_v2
       objectReference: {fileID: 0}
+    - target: {fileID: 5604077067857626573, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.6846
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604077067857626573, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2491,6 +2499,10 @@ PrefabInstance:
     - target: {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
       propertyPath: noteRestriction
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907857858151675234, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5410906792690679592, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
       propertyPath: m_LocalPosition.x
