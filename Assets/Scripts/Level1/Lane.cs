@@ -33,7 +33,6 @@ public class Lane : MonoBehaviour
             DEBUG_TEXT.SetText("START");
         }
         //------------END_DEBUG_SECTION--------//
-
     }
 
     // Update is called once per frame
@@ -188,6 +187,8 @@ public class Lane : MonoBehaviour
     private void Hit()
     {
         notes[inputIndex].GetComponent<SpriteRenderer>().color = Color.yellow;
+        notes[inputIndex].GetComponent<Note>().CanBePressed = false;
+
 
         ScoreManager.PerfectHit(); //suona l'efx e incrementa punteggio e indicatore combo
     }

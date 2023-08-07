@@ -14,7 +14,7 @@ public class SongManager : MonoBehaviour
 
     public static SongManager Instance { get; private set; } //per richiamare istanza di questo oggetto
     public ScoreManager scoreManager;
-    public SongSelect SongSelection;
+    //public SongSelect SongSelection;
 
     public float songDelayInSeconds; //tempo tra una nota e l'altra
     public float marginOfError; // in seconds
@@ -146,7 +146,7 @@ public class SongManager : MonoBehaviour
     /// <summary>
     /// Effettua il parsing del file MIDI, usando la libreria DryWetMidi, memorizza le note ottenute da GetNotes() in un array, inizializza il punteggio singolo di una nota nello ScoreManager. Inoltre, assegna i timestamps relativi alle note a ciascuna Lane, le quali filtreranno quelle a loro assegnate; infine, avvia la canzone
     /// </summary>
-    public void GetDataFromMidi() //metodo per il parsing dei dati da un file .mid
+    public void GetDataFromMidi() //methodo per il parsing dei dati da un file .mid
     {
         var notes = midiFile.GetNotes(); //ricava i messaggi MIDI
         var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
@@ -154,8 +154,7 @@ public class SongManager : MonoBehaviour
         numOfNotes = notes.Count;
         if (IsDebugEnabled)
             Debug.Log($"GetDataFromMidi()\nNumOfNotes: {numOfNotes}");
-        scoreManager = ScoreManager.GetScoreManager();
-        scoreManager.Invoke(nameof(scoreManager.CalcolaValoreNota), 0.2f);
+        StartCoroutine(ScoreManager.CalcolaValoreNota());
 
         foreach (var lane in lanes) lane.SetTimeStamps(array); //inizializzo le Lanes con i vari timestamps delle note
         SetNoteTime();

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -44,9 +45,10 @@ public class ScoreManager : MonoBehaviour
         ScoreText.text = "Punteggio: " + _score.ToString();
         ComboText.text = "Moltiplicatore: " + ComboScore.ToString();
     }
-    public void CalcolaValoreNota()
+    public static IEnumerator CalcolaValoreNota()
     {
         _NoteValue = (SongManager.GetNoteScoreValueFromSong() > 0) ? SongManager.GetNoteScoreValueFromSong() : 100; //in maniera simile a GuitarHero o altri rhythm game, il punteggio di una nota e' dato dal MAX SCORE diviso il numero di queste all'interno di una canzone
+        yield return _NoteValue;
     }
     public static ScoreManager GetScoreManager() { return Instance; }
     public static void PerfectHit()

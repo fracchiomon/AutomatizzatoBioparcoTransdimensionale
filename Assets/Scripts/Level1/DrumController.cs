@@ -6,21 +6,21 @@ using UnityEngine;
 /// </summary>
 public class DrumController : MonoBehaviour
 {
-    public      SpriteRenderer sprite { get; private set; }
-    
-    public      Color baseColor;         //colore base
-    private     Color triggeredColor;   //colore quando colpito
+    public SpriteRenderer sprite { get; private set; }
+
+    public Color baseColor;         //colore base
+    private Color triggeredColor;   //colore quando colpito
     public enum DRUM_TYPE //enumerazione che controlla il tipo di drum scelto
     {
         KICK_DRUM, SNARE_DRUM
     }
-    [SerializeField] 
-        private DRUM_TYPE drumType;
+    [SerializeField]
+    private DRUM_TYPE drumType;
 
-    [SerializeField] 
-        private KeyCode KickTriggerKey, SnareTriggerKey;
-    private KeyCode InputToCheck; //se è kick è uguale a KickTriggerKey, else SnareTriggerKey
-   
+    [SerializeField]
+    private KeyCode KickTriggerKey, SnareTriggerKey;
+    private KeyCode InputToCheck; //se ï¿½ kick ï¿½ uguale a KickTriggerKey, else SnareTriggerKey
+
 
 
     private void Awake()
@@ -33,7 +33,7 @@ public class DrumController : MonoBehaviour
         switch (drumType)
         {
             case DRUM_TYPE.KICK_DRUM:
-                this.triggeredColor = Color.blue;
+                this.triggeredColor = Color.red;
                 InputToCheck = KickTriggerKey;
                 break;
             case DRUM_TYPE.SNARE_DRUM:
@@ -48,15 +48,15 @@ public class DrumController : MonoBehaviour
     {
         Drum_InputCheck(InputToCheck);
     }
-    
+
 
     public void Drum_InputCheck(KeyCode keyCode)
     {
-        if(Input.GetKeyDown(keyCode))
+        if (Input.GetKeyDown(keyCode))
         {
             ChangeColor(triggeredColor);
         }
-        else if(Input.GetKeyUp(keyCode))
+        else if (Input.GetKeyUp(keyCode))
         {
             ChangeColor();
         }

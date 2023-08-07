@@ -152,7 +152,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 68139ccca2697b948ba446afba86eaf5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -369,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &227247547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,19 +1414,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f288a12ae10a254e9f1e09ca450f742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonStaticIsDebugEnabled: 0
+  nonStaticIsDebugEnabled: 1
   DEBUG_TIMESCALE: 1
   scoreManager: {fileID: 1091280289}
-  SongSelection: {fileID: 0}
   songDelayInSeconds: 0
   marginOfError: 0.7
   inputDelayInMilliseconds: 0
-  audioSource: {fileID: 2052483842}
+  audioSource: {fileID: 1028293002}
   lanes:
   - {fileID: 500639420}
   - {fileID: 301682934}
-  fileLocation: MIDI/Level1/Medium/BLITZ_170.mid
-  BPM: 170
+  fileLocation: MIDI/Level1/Easy/NEWanotherOneBitesTheDust.mid
+  BPM: 109
   noteTime: 1
   noteSpawnY: 10.755
   noteTapY: -3
@@ -1442,7 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c513269811756478ddfb4967de1560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDebugEnabled: 0
+  IsDebugEnabled: 1
   songManager: {fileID: 1091280288}
   hitSFX: {fileID: 96176479}
   ScoreText: {fileID: 1050568941}
@@ -2445,6 +2444,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: baseColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: baseColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: baseColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: baseColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1551271952919370276, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
     m_RemovedGameObjects: []
@@ -2553,6 +2568,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1907857858151675234, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4268647216094173267, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5410906792690679592, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
