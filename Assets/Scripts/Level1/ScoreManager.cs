@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    public bool IsDebugEnabled;
+
     protected static ScoreManager Instance;
     private GameManager gameManager;
     [SerializeField] private SongManager songManager;
@@ -10,8 +12,8 @@ public class ScoreManager : MonoBehaviour
     public AudioSource hitSFX;
     //public AudioSource missSFX;
     [SerializeField] private TextMeshProUGUI ScoreText, ComboText;
-    public  static int comboScore { get; private set; }
-    private static uint      _score;
+    public static int comboScore { get; private set; }
+    private static uint _score;
 
     private static float _NoteValue;
     public static readonly uint _MAX_SCORE = 1000000;
@@ -28,14 +30,15 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         songManager = SongManager.Instance;
+        IsDebugEnabled = songManager.nonStaticIsDebugEnabled;
         ScoreText.text += " 0";
         ComboText.text = "Moltiplicatore: 0";
         comboScore = 0;
         _score = 0;
-        
-        
 
-        Debug.Log($"Valore nota in ScoreManager: {_NoteValue}");
+
+        if (IsDebugEnabled)
+            Debug.Log($"Valore nota in ScoreManager: {_NoteValue}");
     }
     public void CalcolaValoreNota()
     {
@@ -48,7 +51,7 @@ public class ScoreManager : MonoBehaviour
         _score += (uint)(_NoteValue);
         Instance.hitSFX.Play();
     }
-    
+
     public static void Miss()
     {
         comboScore = 0;

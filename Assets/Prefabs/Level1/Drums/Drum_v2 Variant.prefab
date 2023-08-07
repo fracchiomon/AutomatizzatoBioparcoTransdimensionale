@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2764105316302911262, guid: 3b8903e9588156c42914aaa1dd9f47d8, type: 3}
+      propertyPath: m_Radius
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2764105316302911262, guid: 3b8903e9588156c42914aaa1dd9f47d8, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 8880945560113782582, guid: 3b8903e9588156c42914aaa1dd9f47d8, type: 3}
       propertyPath: m_Interpolate
       value: 1
@@ -85,6 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287f9193c2fa8454d8eab0788cb189af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDebugEnabled: 0
+  DEBUG_TEXT: {fileID: 0}
+  noteColor: {r: 0, g: 0, b: 0, a: 0}
   noteRestriction: 0
   input: 102
   notePrefab: {fileID: 7088922699975419055, guid: a79609fdc5aa1664a984638038e8dd22, type: 3}

@@ -8,27 +8,37 @@ using System;
 
 public class SongManager : MonoBehaviour
 {
+    public static bool IsDebugEnabled;
+    public bool nonStaticIsDebugEnabled;
+
     public float DEBUG_TIMESCALE;
     private void OnValidate()
     {
-        Time.timeScale = DEBUG_TIMESCALE;
+        IsDebugEnabled = nonStaticIsDebugEnabled;
+        if (IsDebugEnabled)
+            Time.timeScale = DEBUG_TIMESCALE;
     }
 
     public static void DEBUG_TIMESCALE_EDIT(float newTSvalue)
     {
-        Time.timeScale = newTSvalue;
+        if (IsDebugEnabled)
+            Time.timeScale = newTSvalue;
     }
     public static bool DEBUG_IS_PAUSED;
     public static void DEBUG_PAUSE()
     {
-        if(Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) 
+        if (IsDebugEnabled)
         {
-            if (DEBUG_IS_PAUSED)
-                DEBUG_TIMESCALE_EDIT(1);
-            else
-                DEBUG_TIMESCALE_EDIT(0);
+            if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (DEBUG_IS_PAUSED)
+                    DEBUG_TIMESCALE_EDIT(1);
+                else
+                    DEBUG_TIMESCALE_EDIT(0);
+            }
+
         }
-        
+
     }
 
     public static SongManager Instance { get; private set; } //per richiamare istanza di questo oggetto
@@ -36,7 +46,7 @@ public class SongManager : MonoBehaviour
     public AudioSource audioSource; //contiene la canzone
     public Lane[] lanes; //gestiscono le "corsie" sulle quali viaggeranno le note
     public float songDelayInSeconds; //tempo tra una nota e l'altra
-    public double marginOfError; // in seconds
+    public float marginOfError; // in seconds
 
     public int inputDelayInMilliseconds; //per controllare eventuale lag dell'input dell'utente (calibrazione)
 
@@ -57,7 +67,8 @@ public class SongManager : MonoBehaviour
     public static MidiFile midiFile; //posizione del file MIDI in formato .mid
     public static float GetNoteScoreValueFromSong()
     {
-        Debug.Log($"Valore nota: {ScoreManager._MAX_SCORE / numOfNotes}");
+        if (IsDebugEnabled)
+            Debug.Log($"Valore nota: {ScoreManager._MAX_SCORE / numOfNotes}");
         float noteValue = (ScoreManager._MAX_SCORE / numOfNotes > 0) ? ScoreManager._MAX_SCORE / numOfNotes : 100f;
         return noteValue;
     }
@@ -70,6 +81,7 @@ public class SongManager : MonoBehaviour
     void Start()
     {
         Instance = this; // istanzio il singleton
+        IsDebugEnabled = nonStaticIsDebugEnabled;
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
             StartCoroutine(ReadFromWebsite()); //nel caso sia build Web leggeremo da un indirizzo http(s), altrimenti da un file
@@ -114,7 +126,8 @@ public class SongManager : MonoBehaviour
         var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
         notes.CopyTo(array, 0); //le note vengono messe in un array
         numOfNotes = notes.Count;
-        Debug.Log($"GetDataFromMidi()\nNumOfNotes: {numOfNotes}");
+        if (IsDebugEnabled)
+            Debug.Log($"GetDataFromMidi()\nNumOfNotes: {numOfNotes}");
         scoreManager = ScoreManager.GetScoreManager();
         scoreManager.Invoke(nameof(scoreManager.CalcolaValoreNota), 0.2f);
 
