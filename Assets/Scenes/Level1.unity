@@ -353,6 +353,56 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 7
   m_TargetDisplay: 0
+--- !u!1 &227247546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 227247548}
+  - component: {fileID: 227247547}
+  m_Layer: 0
+  m_Name: SongSelect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &227247547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227247546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b827f692030d4a748ff9a5c36601a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MIDI_Map_FilePaths: []
+  songToLoad: {fileID: 0}
+  Songs:
+  - {fileID: 8300000, guid: f20c8960b32ca4aedab898696d04538c, type: 3}
+  - {fileID: 8300000, guid: 1ce2d79f426fd4e3c9e1458584f26002, type: 3}
+  - {fileID: 8300000, guid: 29c20074d147f4bb39492f0725ec20ef, type: 3}
+--- !u!4 &227247548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227247546}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301682932
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,13 +1417,14 @@ MonoBehaviour:
   nonStaticIsDebugEnabled: 0
   DEBUG_TIMESCALE: 1
   scoreManager: {fileID: 1091280289}
+  SongSelection: {fileID: 0}
+  songDelayInSeconds: 0
+  marginOfError: 0.7
+  inputDelayInMilliseconds: 0
   audioSource: {fileID: 2052483842}
   lanes:
   - {fileID: 500639420}
   - {fileID: 301682934}
-  songDelayInSeconds: 0
-  marginOfError: 0.7
-  inputDelayInMilliseconds: 0
   fileLocation: MIDI/Level1/Medium/BLITZ_170.mid
   BPM: 170
   noteTime: 1
@@ -2676,6 +2727,7 @@ SceneRoots:
   - {fileID: 1479134202}
   - {fileID: 96176480}
   - {fileID: 1102247736}
+  - {fileID: 227247548}
   - {fileID: 1028293001}
   - {fileID: 1796405184}
   - {fileID: 2052483841}
