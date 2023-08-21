@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private MoleController[] moles;
+    [SerializeField] private GameObject[] moles;
     public float gameTime;
     public Text gameText;
     public int index = 0;
@@ -14,8 +14,13 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        index = 0;
-        this.moles[index].transform.position = this.moles[index].Points[moles[index]._indexPoint].transform.position;
+        if(moles != null)
+        {
+            Debug.Log("ciao");
+            index = 0;
+            this.moles[index].transform.position = this.moles[index].GetComponent<MoleController>().Points[moles[index].GetComponent<MoleController>()._indexPoint].transform.position;
+        }
+
     }
 
     // Update is called once per frame
@@ -27,7 +32,7 @@ public class Movement : MonoBehaviour
             gameTime = 0;
         }
         gameText.text = gameTime.ToString();
-        this.moles[index].Move();
+        this.moles[index].GetComponent<MoleController>().Move();
     }
 
 

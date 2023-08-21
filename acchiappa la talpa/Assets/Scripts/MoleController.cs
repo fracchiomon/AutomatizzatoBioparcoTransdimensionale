@@ -22,11 +22,6 @@ public class MoleController : MonoBehaviour
         anim.SetTrigger("idle");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void Move()
     {
         if (_indexPoint < this.Points.Length)

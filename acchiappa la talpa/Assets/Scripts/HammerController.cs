@@ -19,8 +19,6 @@ public class HammerController : MonoBehaviour
     }
 
     private float moveSpeed = 4.0f; // Velocità di movimento dell'oggetto
-    private bool isMoving = false; // Flag per il movimento continuo
-
     private void Update()
     {
         // Verifica se il tasto D è premuto
