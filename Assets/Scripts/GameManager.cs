@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     protected GameManager()
     { }
 
-    public void SetHasStarted( bool hasStarted )
+    public void SetHasStarted(bool hasStarted)
     {
         this.HasStarted = hasStarted;
     }
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         return Instance;
     }
 
- 
+
 
     public static void ToMainMenu()
     {
@@ -48,24 +48,24 @@ public class GameManager : MonoBehaviour
     }
     public static void ToLevel1()
     {
-        SceneManager.LoadScene(sceneName: "Level1");
-        
+        SceneManager.LoadScene(sceneName: "Poerio");
+
     }
     public static void ToLevel2()
     {
-        SceneManager.LoadScene(sceneName: "Level2");
+        SceneManager.LoadScene(sceneName: "Arianna");
     }
     public static void ToLevel3()
     {
-        SceneManager.LoadScene(sceneName: "Level3");
+        SceneManager.LoadScene(sceneName: "Martina");
     }
     public static void ToLevel4()
     {
-        SceneManager.LoadScene(sceneName: "Level4");
+        SceneManager.LoadScene(sceneName: "Nicholas");
     }
     public static void ToLevel5()
     {
-        SceneManager.LoadScene(sceneName: "Level5");
+        SceneManager.LoadScene(sceneName: "Lucrezia");
     }
 
     public static void ExitGame()
