@@ -14,7 +14,7 @@ public class SongManager : MonoBehaviour
 
     public static SongManager Instance { get; private set; } //per richiamare istanza di questo oggetto
     public ScoreManager scoreManager;
-    //public SongSelect SongSelection;
+    public SongSelect SongSelection;
 
     public float songDelayInSeconds; //tempo tra una nota e l'altra
     public float marginOfError; // in seconds
@@ -38,6 +38,12 @@ public class SongManager : MonoBehaviour
         }
     }
     public static MidiFile midiFile; //posizione del file MIDI in formato .mid
+
+    public void GetSongFromSelection()
+    {
+        //fileLocation;
+    }
+
 
     //------------DEBUG_SECTION-------------//
     public static void DEBUG_TIMESCALE_EDIT(float newTSvalue)
