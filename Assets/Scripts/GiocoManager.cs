@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,16 +9,9 @@ using UnityEngine.SceneManagement;
 public class GiocoManager : MonoBehaviour
 {
     protected static GiocoManager Instance;
-    public bool HasStarted { get; private set; }
-    public bool IsPlaying { get; private set; }
 
     protected GiocoManager()
     { }
-
-    public void SetHasStarted(bool hasStarted)
-    {
-        this.HasStarted = hasStarted;
-    }
 
     private void Awake()
     {
@@ -37,32 +32,29 @@ public class GiocoManager : MonoBehaviour
         return Instance;
     }
 
-
-
     public static void ToMainMenu()
     {
         SceneManager.LoadScene(sceneName: "MainMenu");
     }
     public static void ToLevel1()
     {
-        SceneManager.LoadScene(sceneName: "Poerio");
-
+        SceneManager.LoadScene(sceneName: "Level1");
     }
     public static void ToLevel2()
     {
-        SceneManager.LoadScene(sceneName: "Arianna");
+        SceneManager.LoadScene(sceneName: "Level2");
     }
     public static void ToLevel3()
     {
-        SceneManager.LoadScene(sceneName: "Martina");
+        SceneManager.LoadScene(sceneName: "Level3");
     }
     public static void ToLevel4()
     {
-        SceneManager.LoadScene(sceneName: "Nicholas");
+        SceneManager.LoadScene(sceneName: "Level4");
     }
     public static void ToLevel5()
     {
-        SceneManager.LoadScene(sceneName: "Lucrezia");
+        SceneManager.LoadScene(sceneName: "Level5");
     }
 
     public static void ExitGame()
