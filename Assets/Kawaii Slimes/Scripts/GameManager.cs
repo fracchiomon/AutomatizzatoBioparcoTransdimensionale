@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject mainSlime;
-    public Button idleBut, walkBut, jumpBut, attackBut, damageBut0, damageBut1, damageBut2;
+    public Button idleBut, walkBut,jumpBut,attackBut,damageBut0,damageBut1,damageBut2;
     public Camera cam;
     private void Start()
     {
-
-        idleBut.onClick.AddListener(delegate { Idle(); });
-        walkBut.onClick.AddListener(delegate { ChangeStateTo(SlimeAnimationState.Walk); });
+        
+        idleBut.onClick.AddListener( delegate { Idle(); } );
+        walkBut.onClick.AddListener(delegate {  ChangeStateTo(SlimeAnimationState.Walk); });
         jumpBut.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Jump); });
         attackBut.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Attack); });
         damageBut0.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Damage); mainSlime.GetComponent<EnemyAi>().damType = 0; });
@@ -27,13 +27,13 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeStateTo(SlimeAnimationState state)
     {
-        if (mainSlime == null) return;
-        if (state == mainSlime.GetComponent<EnemyAi>().currentState) return;
+       if (mainSlime == null) return;    
+       if (state == mainSlime.GetComponent<EnemyAi>().currentState) return;
 
-        mainSlime.GetComponent<EnemyAi>().currentState = state;
+       mainSlime.GetComponent<EnemyAi>().currentState = state ;
     }
     void LookAtCamera()
     {
-        mainSlime.transform.rotation = Quaternion.Euler(new Vector3(mainSlime.transform.rotation.x, cam.transform.rotation.y, mainSlime.transform.rotation.z));
+       mainSlime.transform.rotation = Quaternion.Euler(new Vector3(mainSlime.transform.rotation.x, cam.transform.rotation.y, mainSlime.transform.rotation.z));   
     }
 }
