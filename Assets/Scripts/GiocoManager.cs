@@ -45,27 +45,28 @@ public class GiocoManager : MonoBehaviour
 
     public static void ToMainMenu()
     {
+        Debug.Log("ok");
         SceneManager.LoadScene(sceneName: "MainMenu");
     }
     public static void ToLevel1()
     {
-        SceneManager.LoadScene(sceneName: "Level1");
+        SceneManager.LoadScene(sceneName: "Rhythmicon");
     }
     public static void ToLevel2()
     {
-        SceneManager.LoadScene(sceneName: "Level2");
+        SceneManager.LoadScene(sceneName: "NoteHunt");
     }
     public static void ToLevel3()
     {
-        SceneManager.LoadScene(sceneName: "Level3");
+        SceneManager.LoadScene(sceneName: "FindTheTime");
     }
     public static void ToLevel4()
     {
-        SceneManager.LoadScene(sceneName: "Level4");
+        SceneManager.LoadScene(sceneName: "CookingNotes");
     }
     public static void ToLevel5()
     {
-        SceneManager.LoadScene(sceneName: "Level5");
+        SceneManager.LoadScene(sceneName: "WhackANote");
     }
 
     public static void ExitGame()
