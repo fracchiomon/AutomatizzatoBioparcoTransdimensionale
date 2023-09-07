@@ -33,7 +33,7 @@ public class NoteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameManager.HasStarted)
+        if (gameManager.GetHasStarted())
         {
             transform.position -= new Vector3(delta_Tempo * Time.deltaTime, 0f, 0f);
         }

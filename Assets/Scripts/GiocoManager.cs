@@ -10,6 +10,17 @@ public class GiocoManager : MonoBehaviour
 {
     protected static GiocoManager Instance;
 
+    private bool HasStarted;
+    public bool GetHasStarted()
+    {
+        return HasStarted;
+    }
+    public void SetHasStarted(bool start)
+    {
+        HasStarted = start;
+    }
+
+
     protected GiocoManager()
     { }
 
