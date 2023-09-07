@@ -6,28 +6,28 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Creazione del Singleton del GameManager che si occupa della gestione delle transizione tra scene e meccaniche piu` importanti
 /// </summary>
-public class GameManager : MonoBehaviour
+public class GiocoManager : MonoBehaviour
 {
-    protected static GameManager Instance;
+    protected static GiocoManager Instance;
 
-    protected GameManager()
+    protected GiocoManager()
     { }
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
-            Instance = this;  
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else if(Instance != null && Instance != this)
+        else if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
         }
     }
 
 
-    public static GameManager GetInstance()
+    public static GiocoManager GetInstance()
     {
         return Instance;
     }
