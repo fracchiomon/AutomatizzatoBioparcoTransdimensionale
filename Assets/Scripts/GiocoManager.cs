@@ -1,19 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 /// <summary>
 /// Creazione del Singleton del GameManager che si occupa della gestione delle transizione tra scene e meccaniche piu` importanti
 /// </summary>
-public class GameManager : MonoBehaviour
+public class GiocoManager : MonoBehaviour
 {
-    protected static GameManager Instance;
+    protected static GiocoManager Instance;
     public bool HasStarted { get; private set; }
     public bool IsPlaying { get; private set; }
 
-    protected GameManager()
+    protected GiocoManager()
     { }
 
     public void SetHasStarted(bool hasStarted)
@@ -35,7 +32,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public static GameManager GetInstance()
+    public static GiocoManager GetInstance()
     {
         return Instance;
     }

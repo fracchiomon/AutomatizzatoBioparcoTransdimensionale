@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Level1_Control : MonoBehaviour
 {
-    private GameManager gameManager;
+    private GiocoManager gameManager;
 
     protected static Level1_Control Instance;
 

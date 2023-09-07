@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NoteController : MonoBehaviour
 {
-    private GameManager gameManager;
+    private GiocoManager gameManager;
 
     [SerializeField] private int[] NumeroDiNote;
     [SerializeField] private Note nota;
@@ -15,7 +15,7 @@ public class NoteController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager.GetInstance();
+        gameManager = GiocoManager.GetInstance();
         CheckAndCalculateTempo();
     }
     private void OnValidate()
