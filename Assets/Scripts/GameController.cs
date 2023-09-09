@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -207,6 +208,7 @@ public class GameController : MonoBehaviour
 
         if(countCorrectGuesses == gameGuesses)
         {
+            SceneManager.LoadScene(sceneName: "Victory");
             Debug.Log("Game finished");
             Debug.Log("It took you" + countGuesses + " many guesses to finish the game");
         }

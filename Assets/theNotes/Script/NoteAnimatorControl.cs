@@ -139,7 +139,7 @@ public class NoteAnimatorControl : MonoBehaviour {
 		}
 		
 		// character is move by moveDirection.
-		chrController.Move(moveDirection * Time.deltaTime);
+		//chrController.Move(moveDirection * Time.deltaTime);
 	}
 
 	// change Animator Controller.

@@ -9,21 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Rhythmicon.unity
-    guid: f7fc83048e429d14b800045d1548d301
-  - enabled: 1
     path: Assets/Scenes/NoteHunt.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/CookingNotes.unity
-    guid: 233e438c8b551ba41b31a2869c35527d
+    path: Assets/Scenes/Rhythmicon.unity
+    guid: f7fc83048e429d14b800045d1548d301
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: dbbe1ecb1bd404544bceb9160b154345
   - enabled: 1
     path: Assets/Scenes/WhackANote.unity
     guid: 300e80c91d7f29d4e835e830abc66127
   - enabled: 1
+    path: Assets/Scenes/CookingNotes.unity
+    guid: 233e438c8b551ba41b31a2869c35527d
+  - enabled: 1
     path: Assets/Scenes/FindTheTime.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/Victory.unity
-    guid: dbbe1ecb1bd404544bceb9160b154345
   m_configObjects: {}
