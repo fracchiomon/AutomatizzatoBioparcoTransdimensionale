@@ -3690,6 +3690,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3063969110799240382, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: m_Color.b
+      value: 0.00427413
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063969110799240382, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063969110799240382, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4073685778450091843, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       propertyPath: m_Name
       value: Drum_v2
@@ -3704,7 +3716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6172576267010032180, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       propertyPath: m_Color.b
-      value: 0.20794582
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6172576267010032180, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       propertyPath: m_Color.g
@@ -3712,30 +3724,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6172576267010032180, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
-      propertyPath: baseColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
-      propertyPath: baseColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
-      propertyPath: baseColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
-      propertyPath: baseColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1551271952919370276, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2065142272811536263, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
@@ -3820,6 +3815,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 150546861179253403, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150546861179253403, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150546861179253403, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
       propertyPath: noteColor.a
       value: 0.94509804
@@ -3892,8 +3899,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drum2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 155464702016711155, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5410906792690679592, guid: 8332f165006d3a44cbadd6ecf839c71e, type: 3}
