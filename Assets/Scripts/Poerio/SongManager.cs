@@ -14,7 +14,8 @@ public class SongManager : MonoBehaviour
 
     public static SongManager Instance { get; private set; } //per richiamare istanza di questo oggetto
     public ScoreManager scoreManager;
-    public SongSelect SongSelection;
+    public SongSelect SongSelection { get; private set; }
+    private Song songSelected;
 
     public float songDelayInSeconds; //tempo tra una nota e l'altra
     public float marginOfError; // in seconds
@@ -24,7 +25,7 @@ public class SongManager : MonoBehaviour
     public Lane[] lanes; //gestiscono le "corsie" sulle quali viaggeranno le note
     //TODO: implementare piu songs in classe Song
     public string fileLocation; //dove si trova la canzone
-    public int BPM;
+    public uint BPM;
     public static int numOfNotes;
 
     public float noteTime;  //timestamp per la nota
@@ -39,9 +40,46 @@ public class SongManager : MonoBehaviour
     }
     public static MidiFile midiFile; //posizione del file MIDI in formato .mid
 
+    /// <summary>
+    /// Nell'awake istanzio il singleton del SongManager e invoco la funzione opportuna per fare il parsing del MIDI file
+    /// </summary>
+    void Awake()
+    {
+        Instance = this; // istanzio il singleton
+        IsDebugEnabled = nonStaticIsDebugEnabled;
+
+
+    }
+    private void Start()
+    {
+        Time.timeScale = 0; //start da tempo fermo, avvia quando selezionata canzone
+
+        SongSelection = SongSelect.GetInstance();
+
+        //GetSongFromSelection();
+    }
+
+
     public void GetSongFromSelection()
     {
-        //fileLocation;
+        try
+        {
+            songSelected = SongSelection.GetSongToLoad();
+            fileLocation = songSelected.MIDI_SONG_PATH;
+            print(fileLocation);
+
+            this.audioSource = songSelected.songSource;
+            print(audioSource.name);
+
+            BPM = songSelected.SONG_TEMPO;
+        }
+        catch
+        {
+            print(new Exception());
+        }
+
+
+        TentaLetturaFile();
     }
 
 
@@ -75,13 +113,10 @@ public class SongManager : MonoBehaviour
     }
     //------------END_DEBUG_SECTION--------//
 
-    /// <summary>
-    /// Nell'awake istanzio il singleton del SongManager e invoco la funzione opportuna per fare il parsing del MIDI file
-    /// </summary>
-    void Awake()
+
+
+    private void TentaLetturaFile()
     {
-        Instance = this; // istanzio il singleton
-        IsDebugEnabled = nonStaticIsDebugEnabled;
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
             StartCoroutine(ReadFromWebsite()); //nel caso sia build Web leggeremo da un indirizzo http(s), altrimenti da un file
@@ -121,7 +156,7 @@ public class SongManager : MonoBehaviour
     /// <exception cref="Exception"></exception>
     private IEnumerator ReadFromWebsite()
     {
-        using UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + fileLocation);
+        using UnityWebRequest www = UnityWebRequest.Get(fileLocation);
         yield return www.SendWebRequest();
 
         if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError) //catch di errori di connessione o protocollo
@@ -140,11 +175,11 @@ public class SongManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Legge un file MIDI a partire dalla location StreamingAssets
+    /// Legge un file MIDI a partire dalla location /Assets/StreamingAssets
     /// </summary>
     private void ReadFromFile()
     {
-        midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
+        midiFile = MidiFile.Read(fileLocation);
         GetDataFromMidi();
     }
 
@@ -168,7 +203,12 @@ public class SongManager : MonoBehaviour
     }
 
 
+    public void StartGame()
+    {
+        if (Time.timeScale != 1)
+            Time.timeScale = 1;
 
+    }
     public void StartSong() //riproduce il file audio
     {
         audioSource.Play();

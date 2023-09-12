@@ -205,7 +205,55 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 31665305}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 227247547}
+        m_TargetAssemblyTypeName: SongSelect, Assembly-CSharp
+        m_MethodName: SetSongToLoad
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1796405186}
+          m_ObjectArgumentAssemblyTypeName: Song, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1091280288}
+        m_TargetAssemblyTypeName: SongManager, Assembly-CSharp
+        m_MethodName: GetSongFromSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1091280288}
+        m_TargetAssemblyTypeName: SongManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 924217271}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &31665305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,7 +674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &227247547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,14 +687,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b827f692030d4a748ff9a5c36601a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MIDI_Map_FilePaths:
-  - MIDI/Level1/Easy/anotherOneBitesTheDust_109bpm.mid
-  - MIDI/Level1/Medium/BLITZ_170.mid
-  - MIDI/Level1/Hard/MILLE_NEW.mid
+  songToLoad: {fileID: 0}
   Songs:
-  - {fileID: 8300000, guid: f20c8960b32ca4aedab898696d04538c, type: 3}
-  - {fileID: 8300000, guid: 1ce2d79f426fd4e3c9e1458584f26002, type: 3}
-  - {fileID: 8300000, guid: 29c20074d147f4bb39492f0725ec20ef, type: 3}
+  - {fileID: 1028293003}
+  - {fileID: 2052483843}
+  - {fileID: 1796405186}
 --- !u!4 &227247548
 Transform:
   m_ObjectHideFlags: 0
@@ -659,7 +704,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 924217275}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301682932
@@ -1494,7 +1540,7 @@ GameObject:
   - component: {fileID: 924217273}
   - component: {fileID: 924217272}
   m_Layer: 5
-  m_Name: SongSelect
+  m_Name: SongSelect_CANVAS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1550,9 +1596,9 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1987300642}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -1576,7 +1622,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1510036381}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 227247548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1665,7 +1711,55 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 993741698}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 227247547}
+        m_TargetAssemblyTypeName: SongSelect, Assembly-CSharp
+        m_MethodName: SetSongToLoad
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1028293003}
+          m_ObjectArgumentAssemblyTypeName: Song, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1091280288}
+        m_TargetAssemblyTypeName: SongManager, Assembly-CSharp
+        m_MethodName: GetSongFromSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1091280288}
+        m_TargetAssemblyTypeName: SongManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 924217271}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &993741698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1714,6 +1808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1028293001}
   - component: {fileID: 1028293002}
+  - component: {fileID: 1028293003}
   m_Layer: 0
   m_Name: AnotherOneBitesTheDust
   m_TagString: Untagged
@@ -1832,6 +1927,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1028293003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028293000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc90bc112f64453699cbb4d8afb3fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SONG_NAME: Another One Bites The Dust
+  SONG_ARTIST: Queen
+  SONG_TEMPO: 109
+  difficulty: 0
+  MIDI_SONG_NAME: NEWanotherOneBitesTheDust.mid
+  MIDI_SONG_LEVEL: Level1
 --- !u!1 &1050568939
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,7 +2088,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091280287}
-  - component: {fileID: 1091280286}
   - component: {fileID: 1091280288}
   - component: {fileID: 1091280289}
   - component: {fileID: 1091280291}
@@ -1986,19 +2098,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1091280286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091280285}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0c1738bf3bea543a35fde234cd2c55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ScoreText: {fileID: 1050568941}
 --- !u!224 &1091280287
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2033,15 +2132,14 @@ MonoBehaviour:
   nonStaticIsDebugEnabled: 1
   DEBUG_TIMESCALE: 1
   scoreManager: {fileID: 1091280289}
-  SongSelection: {fileID: 0}
   songDelayInSeconds: 0
   marginOfError: 0.7
   inputDelayInMilliseconds: 0
-  audioSource: {fileID: 1796405185}
+  audioSource: {fileID: 0}
   lanes:
   - {fileID: 500639420}
   - {fileID: 301682934}
-  fileLocation: MIDI/Level1/Hard/MILLE_NEW.mid
+  fileLocation: 
   BPM: 186
   noteTime: 1
   noteSpawnY: 10.755
@@ -2282,7 +2380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 62.000015, y: -125}
+  m_AnchoredPosition: {x: 62, y: -125}
   m_SizeDelta: {x: -1014, y: -249.99998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515226628
@@ -2393,7 +2491,55 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1584121678}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 227247547}
+        m_TargetAssemblyTypeName: SongSelect, Assembly-CSharp
+        m_MethodName: SetSongToLoad
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2052483843}
+          m_ObjectArgumentAssemblyTypeName: Song, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1091280288}
+        m_TargetAssemblyTypeName: SongManager, Assembly-CSharp
+        m_MethodName: GetSongFromSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1091280288}
+        m_TargetAssemblyTypeName: SongManager, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 924217271}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1584121678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2704,6 +2850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1796405184}
   - component: {fileID: 1796405185}
+  - component: {fileID: 1796405186}
   m_Layer: 0
   m_Name: Mille
   m_TagString: Untagged
@@ -2822,6 +2969,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1796405186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796405183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc90bc112f64453699cbb4d8afb3fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SONG_NAME: Mille
+  SONG_ARTIST: Fedez, A. Lauro, O. Berti
+  SONG_TEMPO: 186
+  difficulty: 2
+  MIDI_SONG_NAME: MILLE_NEW.mid
+  MIDI_SONG_LEVEL: Level1
 --- !u!1 &1848025947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2856,7 +3021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46.35001, y: 0}
+  m_AnchoredPosition: {x: 46.350037, y: 0}
   m_SizeDelta: {x: -92.699974, y: 220}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1848025949
@@ -3060,44 +3225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_LightType: 4
-  m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_LightVolumeIntensity: 1
-  m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000ebcbe53ba56e04843fe6fc00
-  m_LightCookieSprite: {fileID: 0}
-  m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
-  m_NormalMapDistance: 3
-  m_NormalMapQuality: 2
-  m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0.75
-  m_ShadowVolumeIntensityEnabled: 0
-  m_ShadowVolumeIntensity: 0.75
-  m_LocalBounds:
-    m_Center: {x: 0, y: -0.00000011920929, z: 0}
-    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
-  m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
-  m_ShapeLightParametricSides: 5
-  m_ShapeLightParametricAngleOffset: 0
-  m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
-  m_ShapeLightFalloffOffset: {x: 0, y: 0}
-  m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
 --- !u!4 &1920115047
 Transform:
   m_ObjectHideFlags: 0
@@ -3352,38 +3479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
 --- !u!1 &2052483840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3394,6 +3489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2052483841}
   - component: {fileID: 2052483842}
+  - component: {fileID: 2052483843}
   m_Layer: 0
   m_Name: BlitzkriegBop
   m_TagString: Untagged
@@ -3512,6 +3608,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2052483843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052483840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc90bc112f64453699cbb4d8afb3fc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SONG_NAME: Blitzkrieg Bop
+  SONG_ARTIST: The Ramones
+  SONG_TEMPO: 170
+  difficulty: 1
+  MIDI_SONG_NAME: BLITZ_170.mid
+  MIDI_SONG_LEVEL: Level1
 --- !u!1001 &6929071222888957872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3587,6 +3701,18 @@ PrefabInstance:
     - target: {fileID: 5604077067857626573, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172576267010032180, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: m_Color.b
+      value: 0.20794582
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172576267010032180, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6172576267010032180, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7819081270738069756, guid: 6fb89176431cf5646a943f2a396698dc, type: 3}
       propertyPath: m_Enabled
@@ -3902,7 +4028,6 @@ SceneRoots:
   - {fileID: 1987300643}
   - {fileID: 1920115047}
   - {fileID: 1456896115}
-  - {fileID: 924217275}
   - {fileID: 923725408}
   - {fileID: 562268731}
   - {fileID: 6929071222888957872}
