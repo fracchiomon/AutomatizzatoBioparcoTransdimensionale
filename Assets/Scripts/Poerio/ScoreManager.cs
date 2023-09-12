@@ -44,7 +44,23 @@ public class ScoreManager : MonoBehaviour
     {
         ScoreText.text = "Punteggio: " + _score.ToString();
         ComboText.text = "Moltiplicatore: " + ComboScore.ToString();
+        ControllaInput();
+
     }
+
+    /// <summary>
+    /// Sfrutto l'Update di ScoreManager per controllare se Utente digita alcuni comandi chiave come ESC per tornare al menu
+    /// </summary>
+    /// <returns></returns>
+    public void ControllaInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GiocoManager.RHYTHMICON_ConfermaTornaAlMenu();
+        }
+
+    }
+
     public static IEnumerator CalcolaValoreNota()
     {
         _NoteValue = (SongManager.GetNoteScoreValueFromSong() > 0) ? SongManager.GetNoteScoreValueFromSong() : 100; //in maniera simile a GuitarHero o altri rhythm game, il punteggio di una nota e' dato dal MAX SCORE diviso il numero di queste all'interno di una canzone

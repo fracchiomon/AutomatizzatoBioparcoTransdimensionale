@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 /// <summary>
 /// Creazione del Singleton del GameManager che si occupa della gestione delle transizione tra scene e meccaniche piu` importanti
@@ -9,6 +10,9 @@ using UnityEngine.SceneManagement;
 public class GiocoManager : MonoBehaviour
 {
     protected static GiocoManager Instance;
+
+    [SerializeField] private AudioMixerGroup MusicMixer, EFXMixer, MasterMixer;
+
 
     private bool HasStarted;
     public bool GetHasStarted()
@@ -38,6 +42,7 @@ public class GiocoManager : MonoBehaviour
     }
 
 
+
     public static GiocoManager GetInstance()
     {
         return Instance;
@@ -46,6 +51,10 @@ public class GiocoManager : MonoBehaviour
     public static void ToMainMenu()
     {
         SceneManager.LoadScene(sceneName: "MainMenu");
+    }
+    public static void OpenSettingsPanel()
+    {
+
     }
     public static void ToLevel1()
     {
@@ -76,6 +85,28 @@ public class GiocoManager : MonoBehaviour
         }
     }
 
+    public static void RHYTHMICON_ConfermaTornaAlMenu()
+    {
+        ToMainMenu();
+
+    }
+
+    public void SETTINGS_MusicVolumeSlider(float volume)
+    {
+        MusicMixer.audioMixer.SetFloat("MUSIC_VOLUME", Mathf.Log10(volume) * 20);
+    }
+
+    public void SETTINGS_EFXVolumeSlider(float volume)
+    {
+        EFXMixer.audioMixer.SetFloat("EFX_VOLUME", Mathf.Log10(volume) * 20);
+    }
+
+    public void SETTINGS_MasterVolumeSlider(float volume)
+    {
+        MasterMixer.audioMixer.SetFloat("MASTER_VOLUME", Mathf.Log10(volume) * 20);
+        MusicMixer.audioMixer.SetFloat("MUSIC_VOLUME", Mathf.Log10(volume) * 20);
+        EFXMixer.audioMixer.SetFloat("EFX_VOLUME", Mathf.Log10(volume) * 20);
+    }
 
 
 }
