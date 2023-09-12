@@ -643,7 +643,6 @@ MonoBehaviour:
   - MIDI/Level1/Easy/anotherOneBitesTheDust_109bpm.mid
   - MIDI/Level1/Medium/BLITZ_170.mid
   - MIDI/Level1/Hard/MILLE_NEW.mid
-  songToLoad: {fileID: 0}
   Songs:
   - {fileID: 8300000, guid: f20c8960b32ca4aedab898696d04538c, type: 3}
   - {fileID: 8300000, guid: 1ce2d79f426fd4e3c9e1458584f26002, type: 3}
@@ -2034,6 +2033,7 @@ MonoBehaviour:
   nonStaticIsDebugEnabled: 1
   DEBUG_TIMESCALE: 1
   scoreManager: {fileID: 1091280289}
+  SongSelection: {fileID: 0}
   songDelayInSeconds: 0
   marginOfError: 0.7
   inputDelayInMilliseconds: 0
