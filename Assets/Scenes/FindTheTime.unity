@@ -402,6 +402,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 912083064}
     m_Modifications:
+    - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
+      propertyPath: m_fontSize
+      value: 12.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 10.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
+      propertyPath: m_lineSpacing
+      value: -30.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
+      propertyPath: m_lineSpacingMax
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
+      propertyPath: m_charWidthMaxAdj
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5848847929354157661, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_Name
       value: ToMainMenu_Btn
@@ -432,11 +456,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7815225914669727546, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7815225914669727546, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7815225914669727546, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_LocalScale.x
@@ -502,6 +526,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 247910527}
+    - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GiocoManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
