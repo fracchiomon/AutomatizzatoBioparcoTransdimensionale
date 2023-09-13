@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0040697176, g: 0.00022253084, b: 0.000000056252265, a: 1}
+  m_IndirectSpecularColor: {r: 0.0003149936, g: 0.000017223749, b: 0.0000000043538906, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2118,6 +2118,7 @@ GameObject:
   - component: {fileID: 599133524}
   - component: {fileID: 599133523}
   - component: {fileID: 599133522}
+  - component: {fileID: 599133525}
   m_Layer: 5
   m_Name: AddButton
   m_TagString: Untagged
@@ -2239,6 +2240,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599133520}
   m_CullTransparentMesh: 1
+--- !u!114 &599133525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599133520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
+  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
 --- !u!1 &600334302
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,6 +3132,7 @@ GameObject:
   - component: {fileID: 975637027}
   - component: {fileID: 975637025}
   - component: {fileID: 975637028}
+  - component: {fileID: 975637029}
   m_Layer: 5
   m_Name: ButtonMix!
   m_TagString: Untagged
@@ -3296,6 +3312,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &975637029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975637023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
+  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
 --- !u!1 &1025018087
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,7 +3487,7 @@ GameObject:
   - component: {fileID: 1248943178}
   - component: {fileID: 1248943179}
   m_Layer: 0
-  m_Name: AudioSource
+  m_Name: BackgroundMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3490,7 +3520,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 230b25d23ada74dc0972f3ee0f550955, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4922,6 +4952,7 @@ GameObject:
   - component: {fileID: 1593116291}
   - component: {fileID: 1593116294}
   - component: {fileID: 1593116295}
+  - component: {fileID: 1593116296}
   m_Layer: 5
   m_Name: ButtonUndo
   m_TagString: Untagged
@@ -5122,6 +5153,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1593116296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593116289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
+  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
 --- !u!1 &1647497395
 GameObject:
   m_ObjectHideFlags: 0
@@ -5332,6 +5377,7 @@ GameObject:
   - component: {fileID: 1698478148}
   - component: {fileID: 1698478147}
   - component: {fileID: 1698478146}
+  - component: {fileID: 1698478150}
   m_Layer: 5
   m_Name: ButtonLeggenda
   m_TagString: Untagged
@@ -5467,6 +5513,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698478144}
   m_CullTransparentMesh: 1
+--- !u!114 &1698478150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698478144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
+  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
 --- !u!1 &1762780911
 GameObject:
   m_ObjectHideFlags: 0
