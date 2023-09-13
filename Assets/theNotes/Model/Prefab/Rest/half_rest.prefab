@@ -229,9 +229,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 489062}
-  - component: {fileID: 9585560}
-  - component: {fileID: 14303090}
-  - component: {fileID: 11461868}
+  - component: {fileID: 2272304385180235796}
+  - component: {fileID: 2341663509138034755}
+  - component: {fileID: 5064040747556075974}
   m_Layer: 0
   m_Name: half_rest
   m_TagString: Untagged
@@ -256,35 +256,57 @@ Transform:
   - {fileID: 497580}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &9585560
-Animator:
-  serializedVersion: 5
+--- !u!114 &2272304385180235796
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155388}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 472187036888a4b47a1df18b3b0d4d8a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 311a56a8e6d8fe743800b6c04aa12505, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!143 &14303090
-CharacterController:
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d508feb2b233d43e8afc1a024d32b853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _durata: 0.5
+  _nome: Pausa Minima
+  _prefab: {fileID: 155388}
+  _notaSO: {fileID: 11400000, guid: cf157d49e0ae94b72bb93e1ddf7243d4, type: 2}
+--- !u!54 &2341663509138034755
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155388}
-  m_Material: {fileID: 0}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &5064040747556075974
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155388}
+  m_Material: {fileID: 13400000, guid: 0f851f63166b64d89bea2c5120e6c186, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -296,33 +318,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 0.9
-  m_Radius: 0.2
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.01
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.45, z: 0}
---- !u!114 &11461868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fbe9780de27c74439857201a87b4c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chrAnimator: {fileID: 9585560}
-  chrAnimatorController:
-  - {fileID: 9100000, guid: 311a56a8e6d8fe743800b6c04aa12505, type: 2}
-  - {fileID: 9100000, guid: 9fc3ee5e0244e864189fca42183aa00f, type: 2}
-  chrController: {fileID: 14303090}
-  meshData:
-  - {fileID: 167590}
-  jumpSpeed: 6
+  m_Size: {x: 0.5212289, y: 0.13226628, z: 0.52774286}
+  m_Center: {x: -0.0016284436, y: 0.55603266, z: -0.0016284585}
 --- !u!1 &161296
 GameObject:
   m_ObjectHideFlags: 0

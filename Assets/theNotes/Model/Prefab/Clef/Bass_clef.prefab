@@ -329,9 +329,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495782}
-  - component: {fileID: 9556090}
-  - component: {fileID: 14382826}
-  - component: {fileID: 11471294}
   m_Layer: 0
   m_Name: Bass_clef
   m_TagString: Untagged
@@ -356,73 +353,6 @@ Transform:
   - {fileID: 471532}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &9556090
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163154}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 044973dc9e542cc498d6bfbcc856d667, type: 3}
-  m_Controller: {fileID: 9100000, guid: 7db09f482ec0e424d97402f66e1c2057, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!143 &14382826
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163154}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 0.8
-  m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.01
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.4, z: 0}
---- !u!114 &11471294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fbe9780de27c74439857201a87b4c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chrAnimator: {fileID: 9556090}
-  chrAnimatorController:
-  - {fileID: 9100000, guid: 7db09f482ec0e424d97402f66e1c2057, type: 2}
-  - {fileID: 9100000, guid: 1ca2e67ea21dcfd4d8a110ade6ff5e29, type: 2}
-  chrController: {fileID: 14382826}
-  meshData:
-  - {fileID: 193944}
-  jumpSpeed: 6
 --- !u!1 &170272
 GameObject:
   m_ObjectHideFlags: 0

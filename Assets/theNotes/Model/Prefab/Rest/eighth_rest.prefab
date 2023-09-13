@@ -196,9 +196,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 407514}
-  - component: {fileID: 9500458}
-  - component: {fileID: 14353912}
-  - component: {fileID: 11439486}
+  - component: {fileID: 190288339427837423}
+  - component: {fileID: 3052475074879391054}
+  - component: {fileID: 6024778125325000801}
+  - component: {fileID: 8302182322719698376}
   m_Layer: 0
   m_Name: eighth_rest
   m_TagString: Untagged
@@ -223,29 +224,24 @@ Transform:
   - {fileID: 490406}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &9500458
-Animator:
-  serializedVersion: 5
+--- !u!114 &190288339427837423
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145906}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 70c65f8a909317e4d8c8d97cdf8ab24f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 8843d483f040bc94f8991adf0572a8fd, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!143 &14353912
-CharacterController:
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d508feb2b233d43e8afc1a024d32b853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _durata: 0.125
+  _nome: Pausa Croma
+  _prefab: {fileID: 145906}
+  _notaSO: {fileID: 11400000, guid: db92ff1bb60d6419f88a27ba8ae37789, type: 2}
+--- !u!65 &3052475074879391054
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -263,33 +259,56 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 0.7
-  m_Radius: 0.2
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.01
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.35, z: 0}
---- !u!114 &11439486
-MonoBehaviour:
+  m_Size: {x: 0.25905183, y: 0.49900138, z: 0}
+  m_Center: {x: -0.0740948, y: 0.54969674, z: 0.077132165}
+--- !u!54 &6024778125325000801
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145906}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &8302182322719698376
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145906}
+  m_Material: {fileID: 13400000, guid: 0f851f63166b64d89bea2c5120e6c186, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fbe9780de27c74439857201a87b4c88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chrAnimator: {fileID: 9500458}
-  chrAnimatorController:
-  - {fileID: 9100000, guid: 8843d483f040bc94f8991adf0572a8fd, type: 2}
-  - {fileID: 9100000, guid: 295e9e6cab5f4764c8d7eb57afd32ac7, type: 2}
-  chrController: {fileID: 14353912}
-  meshData:
-  - {fileID: 135984}
-  jumpSpeed: 6
+  serializedVersion: 3
+  m_Radius: 0.07105458
+  m_Center: {x: 0.095906496, y: 0.7365222, z: 0}
 --- !u!1 &147748
 GameObject:
   m_ObjectHideFlags: 0

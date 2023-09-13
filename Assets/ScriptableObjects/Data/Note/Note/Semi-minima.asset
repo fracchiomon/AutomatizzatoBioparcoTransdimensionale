@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838978697d17645ff9b034001961eb84, type: 3}
+  m_Name: Semi-minima
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 5c78649bb16994531a6cd98de787ddbd, type: 3}
+  _type: Semiminima
+  _durata: 0.25
+  _stringDurata: 1/4
+  _isBreak: 0
+  _prefab: {fileID: 6190029369843225547, guid: 954cbd4487e85bb4c854ba418259f12e, type: 3}
