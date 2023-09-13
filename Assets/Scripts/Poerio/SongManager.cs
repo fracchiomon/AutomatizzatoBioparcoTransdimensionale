@@ -6,6 +6,9 @@ using System.IO;
 using UnityEngine.Networking;
 using System;
 
+/// <summary>
+/// Singleton responsabile del parsing del file MIDI tramite Melanchall, associato alla canzone scelta; il file viene filtrato dalle Lanes (vedi Lane.cs) che si prendono la nota MIDI corrispondente, e si occupano di gestire le note e l'input da tastiera e Mouse. 
+/// </summary>
 public class SongManager : MonoBehaviour
 {
     public static bool IsDebugEnabled;
@@ -218,9 +221,9 @@ public class SongManager : MonoBehaviour
     /// ottiene il tempo della canzone dividendo Samples / Freq (Hz -> 1/s)
     /// </summary>
     /// <returns></returns>
-    public static double GetAudioSourceTime()
+    public static float GetAudioSourceTime()
     {
-        return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+        return (float)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
     }
 
 }

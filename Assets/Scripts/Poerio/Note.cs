@@ -32,7 +32,7 @@ public class Note : MonoBehaviour
         if (IsDebugEnabled)
         {
             Debug.Log(this.name + "Tempo assegnato: " + this.assignedTime);
-            DEBUG_TEXT.gameObject.SetActive(true);
+            //DEBUG_TEXT.gameObject.SetActive(true);
 
         }
 
@@ -76,7 +76,7 @@ public class Note : MonoBehaviour
             if (IsDebugEnabled)
             {
                 checkTmoreThanOne = true;
-                DEBUG_TEXT.SetText($"t = {t}; t > 1 ? {checkTmoreThanOne}");
+                //DEBUG_TEXT.SetText($"t = {t}; t > 1 ? {checkTmoreThanOne}");
 
             }
             Destroy(gameObject, 1f);
@@ -87,7 +87,7 @@ public class Note : MonoBehaviour
             {
 
                 checkTmoreThanOne = false;
-                DEBUG_TEXT.SetText($"t = {t}; t > 1 ? {checkTmoreThanOne}");
+                //DEBUG_TEXT.SetText($"t = {t}; t > 1 ? {checkTmoreThanOne}");
             }
 
             /* OLD
@@ -96,18 +96,24 @@ public class Note : MonoBehaviour
                 //Debug.Log(Vector3.Lerp(Vector3.up * SongManager.Instance.noteSpawnY, Vector3.up * SongManager.Instance.noteDespawnY, t)) ;
                 // Aggiungi il movimento fluido basato sul tempo trascorso da un frame all'altro.
              */
+
+
             transform.position -= Vector3.up * movementAmountThisFrame;
-            DEBUG_TEXT.transform.position = transform.position;
-            DEBUG_TEXT.rectTransform.position = transform.position;
+            //DEBUG_TEXT.transform.position = transform.position;
+            //DEBUG_TEXT.rectTransform.position = transform.position;
             sprite.enabled = true;
         }
-        /*if (Input.GetKeyDown(keyCode) || Input.GetKeyDown(defaultKey))
+
+
+        /*OLD
+         * if (Input.GetKeyDown(keyCode) || Input.GetKeyDown(defaultKey))
         {
             if (CanBePressed)
             {
                 gameObject.SetActive(false);
             }
-        }*/
+        }
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
