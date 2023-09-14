@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private GameObject[] moles;
     [SerializeField] private GameObject cron;
     [SerializeField] private String[] Notes;
+    private AudioSource noteSound;
     public Text gameText;
     public Text pointText;
     private float punteggioPartita;
@@ -27,6 +28,7 @@ public class Movement : MonoBehaviour
         this.cron.GetComponent<Cronometro>().setGameTime(20.0f);
         int sharedRandIndex = UnityEngine.Random.Range(0, Notes.Length - 1);
         RandomNote.SetRandomIndex(sharedRandIndex);
+        noteSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,6 +61,11 @@ public class Movement : MonoBehaviour
         gameText.text = this.cron.GetComponent<Cronometro>().getGameTime().ToString();
         pointText.text = punteggioPartita.ToString();
         this.moles[index].GetComponent<MoleController>().Move();
+        if (this.moles[index].GetComponent<MoleController>()._indexPoint == 1)
+        {
+            noteSound.clip = suoniNote[this.moles[index].GetComponent<MoleController>().GetIndexNote()];
+            noteSound.Play();
+        }
     }
 
 
