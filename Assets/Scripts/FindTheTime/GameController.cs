@@ -24,8 +24,12 @@ public class GameController : MonoBehaviour
 
     private string firstGuessPuzzle, secondGuessPuzzle;
 
+    private bool firstAnim1, firstAnim2;
+
     [SerializeField] private GameObject[] monsters;
     [SerializeField] private Animator[] movements;
+    [SerializeField] private Animator[] cardRotation; 
+
 
     private void Awake() // caricamento sprite note e durate 
     {
@@ -66,7 +70,8 @@ public class GameController : MonoBehaviour
         for( int i = 0; i < objects.Length; i++ )
         {
             btns.Add(objects[i].GetComponent<Button>());
-            btns[i].image.sprite = bgImage; 
+            btns[i].image.sprite = bgImage;
+            cardRotation[i] = btns[i].GetComponent<Animator>();
         }
     }
 
@@ -99,6 +104,8 @@ public class GameController : MonoBehaviour
     }
 
 
+
+
     public void PickAPuzzle()
     {
         string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
@@ -107,10 +114,16 @@ public class GameController : MonoBehaviour
         {
             firstGuess = true;
             firstGuessIndex = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
-
             firstGuessPuzzle = gamePuzzles[firstGuessIndex].name;
+            if (!firstAnim1)
+            {
+                cardRotation[firstGuessIndex].SetTrigger("MostraCarta");
+                //cardRotation[secondGuessIndex].SetTrigger("ToIdle");
+                firstAnim1 = true;
+            }
 
             btns[firstGuessIndex].image.sprite = gamePuzzles[firstGuessIndex];
+
         }
 
         else if(!secondGuess)
@@ -119,6 +132,12 @@ public class GameController : MonoBehaviour
             secondGuessIndex = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
 
             secondGuessPuzzle = gamePuzzles[secondGuessIndex].name;
+            if (!firstAnim2)
+            {
+                cardRotation[secondGuessIndex].SetTrigger("MostraCarta");
+                //cardRotation[secondGuessIndex].SetTrigger("ToIdle");
+                firstAnim2 = true;
+            }
             btns[secondGuessIndex].image.sprite = gamePuzzles[secondGuessIndex];
 
             //if(firstGuessPuzzle == secondGuessPuzzle)
@@ -140,10 +159,15 @@ public class GameController : MonoBehaviour
     IEnumerator CheckIfThePuzzlesMatch()
     {
         bool correct = true;
+        firstAnim1 = false;
+        firstAnim2 = false;
 
         yield return new WaitForSeconds(1f);
 
-        if( firstGuessPuzzle == secondGuessPuzzle)
+        cardRotation[firstGuessIndex].SetTrigger("ToIdle");
+        cardRotation[firstGuessIndex].SetTrigger("ToIdle");
+
+        if ( firstGuessPuzzle == secondGuessPuzzle)
         {
             yield return new WaitForSeconds(.5f);
 
@@ -165,7 +189,12 @@ public class GameController : MonoBehaviour
         else
         {
             correct = false; 
-            yield return new WaitForSeconds(.5f); // aspetto .5f secondi che l'immagine sia visibile(?)
+            yield return new WaitForSeconds(.5f); // aspetto .5f secondi che l'immagine sia visibile
+
+            //cardRotation[firstGuessIndex].SetTrigger("NascondiCarta");
+            //cardRotation[secondGuessIndex].SetTrigger("NascondiCarta");
+            //cardRotation[firstGuessIndex].SetTrigger("ToIdle");
+            //cardRotation[secondGuessIndex].SetTrigger("ToIdle");
 
             btns[firstGuessIndex].image.sprite = bgImage; // ritorna immagine del dietro
             btns[secondGuessIndex].image.sprite = bgImage;

@@ -262,9 +262,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 447328}
-  - component: {fileID: 2698389970912796357}
-  - component: {fileID: 41748178037590835}
-  - component: {fileID: 9119460184349568996}
+  - component: {fileID: 9579786}
+  - component: {fileID: 14348662}
+  - component: {fileID: 11462092}
   m_Layer: 0
   m_Name: quater_rest
   m_TagString: Untagged
@@ -289,30 +289,35 @@ Transform:
   - {fileID: 492482}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2698389970912796357
-MonoBehaviour:
+--- !u!95 &9579786
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142894}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d508feb2b233d43e8afc1a024d32b853, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _durata: 0.25
-  _nome: Pausa Semiminima
-  _prefab: {fileID: 142894}
-  _notaSO: {fileID: 11400000, guid: 2c68da69bf58949bfbd89172de7ae63e, type: 2}
---- !u!65 &41748178037590835
-BoxCollider:
+  m_Avatar: {fileID: 9000000, guid: dbeca6c5954bad14ca8f28f74140a98e, type: 3}
+  m_Controller: {fileID: 9100000, guid: f52af0f40373ccd4381dbf594a99f74d, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!143 &14348662
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142894}
-  m_Material: {fileID: 13400000, guid: 0f851f63166b64d89bea2c5120e6c186, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -324,35 +329,33 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.27120322, y: 0.79668367, z: 0.24221694}
-  m_Center: {x: 0.0041409433, y: 0.49374932, z: 0.002070427}
---- !u!54 &9119460184349568996
-Rigidbody:
+  m_Height: 0.8
+  m_Radius: 0.15
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.01
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!114 &11462092
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142894}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbe9780de27c74439857201a87b4c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrAnimator: {fileID: 9579786}
+  chrAnimatorController:
+  - {fileID: 9100000, guid: f52af0f40373ccd4381dbf594a99f74d, type: 2}
+  - {fileID: 9100000, guid: 38b9e766a700c854bbd260e4a39cf5aa, type: 2}
+  chrController: {fileID: 14348662}
+  meshData:
+  - {fileID: 119434}
+  jumpSpeed: 6
 --- !u!1 &161292
 GameObject:
   m_ObjectHideFlags: 0

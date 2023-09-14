@@ -390,10 +390,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400020}
-  - component: {fileID: 1238603815977068877}
-  - component: {fileID: 7551328669793521588}
-  - component: {fileID: 7785247638034922510}
-  - component: {fileID: 8602312674205170394}
+  - component: {fileID: 9500000}
+  - component: {fileID: 14300000}
+  - component: {fileID: 11418234}
   m_Layer: 0
   m_Name: eighth_note
   m_TagString: Untagged
@@ -418,51 +417,29 @@ Transform:
   - {fileID: 400016}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1238603815977068877
-MonoBehaviour:
+--- !u!95 &9500000
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100020}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d508feb2b233d43e8afc1a024d32b853, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _durata: 0.125
-  _nome: Croma
-  _prefab: {fileID: 100020}
-  _notaSO: {fileID: 11400000, guid: 414316085f0f74ae6bf5cbbb1d2d1ed7, type: 2}
---- !u!54 &7551328669793521588
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100020}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &7785247638034922510
-BoxCollider:
+  m_Avatar: {fileID: 9000000, guid: e1bd38362f71e7f4b9c907f7310c29ac, type: 3}
+  m_Controller: {fileID: 9100000, guid: 9b5c7cf1106a6be4db0d1d193470e4a4, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!143 &14300000
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -480,26 +457,30 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.34952104, y: 0.86728954, z: 0.050157174}
-  m_Center: {x: -0.31062207, y: 0.655259, z: 0.00438229}
---- !u!135 &8602312674205170394
-SphereCollider:
+  m_Height: 1
+  m_Radius: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.01
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &11418234
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100020}
-  m_Material: {fileID: 13400000, guid: 0f851f63166b64d89bea2c5120e6c186, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.18279967
-  m_Center: {x: -0.000000059604645, y: 0.15235606, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbe9780de27c74439857201a87b4c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chrAnimator: {fileID: 9500000}
+  chrAnimatorController:
+  - {fileID: 9100000, guid: 9b5c7cf1106a6be4db0d1d193470e4a4, type: 2}
+  - {fileID: 9100000, guid: 445a86573e22fc348bea4d0b710a8f74, type: 2}
+  chrController: {fileID: 14300000}
+  meshData:
+  - {fileID: 100018}
+  jumpSpeed: 6
