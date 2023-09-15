@@ -40,6 +40,15 @@ public class UI_windowDispensa : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+         if(Input.GetKeyDown(KeyCode.Space) && this.addButton.interactable)
+        {
+            this.addButton.onClick.Invoke();
+            Debug.Log("cristo");
+        }
+    }
+
     //funzione che instanzia il btn in base allo SO passato e aggiunge il btn all'array di bottoni
     public UI_NotaButton AddBtn(SO_NotaItem itemData)
     {
