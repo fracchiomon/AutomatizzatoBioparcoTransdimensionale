@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5496376211857036106}
   - component: {fileID: 5343168303530497580}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: BarraTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
