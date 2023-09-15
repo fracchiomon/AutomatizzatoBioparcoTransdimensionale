@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private GameObject cron;
     [SerializeField] private String[] Notes;
     private AudioSource noteSound;
+    private bool notaSuonata;
     public Text gameText;
     public Text pointText;
     private float punteggioPartita;
@@ -16,6 +17,14 @@ public class Movement : MonoBehaviour
     int index1 = 0;
     [SerializeField] private float MoveSpeed;
     [SerializeField] private AudioClip[] suoniNote;
+
+
+    private void Awake()
+    {
+        int sharedRandIndex = UnityEngine.Random.Range(0, Notes.Length - 1);
+        RandomNote.SetRandomIndex(sharedRandIndex);
+        Debug.Log(sharedRandIndex);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +35,6 @@ public class Movement : MonoBehaviour
             this.moles[index].transform.position = this.moles[index].GetComponent<MoleController>().Points[moles[index].GetComponent<MoleController>()._indexPoint].transform.position;
         }
         this.cron.GetComponent<Cronometro>().setGameTime(20.0f);
-        int sharedRandIndex = UnityEngine.Random.Range(0, Notes.Length - 1);
-        RandomNote.SetRandomIndex(sharedRandIndex);
         noteSound = GetComponent<AudioSource>();
     }
 
@@ -61,10 +68,16 @@ public class Movement : MonoBehaviour
         gameText.text = this.cron.GetComponent<Cronometro>().getGameTime().ToString();
         pointText.text = punteggioPartita.ToString();
         this.moles[index].GetComponent<MoleController>().Move();
-        if (this.moles[index].GetComponent<MoleController>()._indexPoint == 1)
+        if (this.moles[index].GetComponent<MoleController>()._indexPoint == 1 && !notaSuonata)
         {
+            notaSuonata = true;
             noteSound.clip = suoniNote[this.moles[index].GetComponent<MoleController>().GetIndexNote()];
             noteSound.Play();
+        }
+        if (this.moles[index].GetComponent<MoleController>()._indexPoint == 2)
+        {
+            notaSuonata = false;
+            noteSound.Stop();
         }
     }
 
