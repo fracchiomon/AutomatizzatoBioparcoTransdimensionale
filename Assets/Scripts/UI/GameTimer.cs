@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
@@ -32,6 +33,8 @@ public class GameTimer : MonoBehaviour
             Debug.Log("tempo finito");
 
             Time.timeScale = 0;                     //quando la barra finisce termina il gioco
+
+            SceneManager.LoadScene(sceneName: "Lose");
         }
     }
 }

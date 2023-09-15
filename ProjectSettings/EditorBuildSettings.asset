@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WhackANote.unity
     guid: e08e83107368a4d93a83058a22ac8f54
+  - enabled: 1
+    path: Assets/Scenes/Lose.unity
+    guid: 6a2c320da698b4e3ebb87aae3d35b987
   m_configObjects: {}

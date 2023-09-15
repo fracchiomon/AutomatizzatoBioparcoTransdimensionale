@@ -513,11 +513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_fontSize
-      value: 15.7
+      value: 11.1
       objectReference: {fileID: 0}
     - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_fontStyle
-      value: 9
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_fontSizeMax
@@ -545,7 +545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_enableAutoSizing
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1129441963809086209, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_TextStyleHashCode
@@ -1278,7 +1278,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -12.53}
+  m_LocalPosition: {x: 0, y: 0, z: -14.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
