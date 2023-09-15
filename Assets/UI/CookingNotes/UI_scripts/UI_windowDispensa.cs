@@ -22,7 +22,7 @@ public class UI_windowDispensa : MonoBehaviour
 
     private void Start()
     {
-        this.recipe = LevelManager.Instance.ricette[0];
+        this.recipe = FindObjectOfType<LevelManager>().ricette[0];
 
         if (this.frullatore == null)
         {

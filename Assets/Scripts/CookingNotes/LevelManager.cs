@@ -2,98 +2,131 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    #region PARTE DEL SINGLETON
-    private static LevelManager _instance;
+    [SerializeField] private SO_Recipe[] _ricette;
+    [SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private TextMeshProUGUI timeTxt;
+    private Action<SO_Recipe> updateFrullatore;
+    private Action<SO_NotaItem[]> updateDispensa;
+    private int _score;
+    private int recipeIndex;
+    private Cronometro gameTimer;
+    private bool isOnPlay;
 
-    private LevelManager()
-    {
-        //fa creare oggetti solo all'interno della classe stessa
-    }
-
-    public static LevelManager Instance
+    public int score
     {
         get
         {
-            //controllo se è registrato, perché poteri richiamare il get prima dell'awake
-            if (_instance == null)
-            {
-                //lo cerco nella scena
-                _instance = FindObjectOfType<LevelManager>(true);
-
-                //controllo se l'ho trovato
-                if (_instance == null)
-                {
-                    //non è stato trovato e quindi lo creo
-                    //Resources.Load("Screen Fader Canvas"); //--> gli passo il nome di un file "" che si trova nella cartella Resource
-                    GameObject go = Instantiate<GameObject>(Resources.Load("LevelManager") as GameObject);
-                    _instance = go.GetComponent<LevelManager>();
-                    DontDestroyOnLoad(go);
-                }
-            }
-            return _instance;
+            return this._score;
+        }
+        set
+        {
+            this._score = value;
+            UpdateScore();
         }
     }
-
-    //l'awake controlla che non ci sono altre istanze "di questo singleton" in scena
-    private void Awake()
-    {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-
-        else if (_instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-
-    }
-
-    private void OnDestroy()
-    {
-        if (_instance == this)
-        {
-            _instance = null;
-        }
-    }
-    #endregion
-
-    [SerializeField] private SO_Recipe[] _ricette;
-    private Action<SO_Recipe> updateFrullatore;
-    private Action<SO_NotaItem[]> updateDispensa;
-    private int score;
-    private int recipeIndex;
-    private float _time;
-
     public SO_Recipe[] ricette => this._ricette;
-    public int time => (int) this._time;
 
     private void Start()
     {
+        this.gameTimer = FindObjectOfType<Cronometro>();
         this.updateFrullatore = FindObjectOfType<FrullatoreController>().UpdateRicetta;
         this.updateDispensa = FindObjectOfType<UI_windowDispensa>().UpdateIngredienti;
         this.recipeIndex = 1;
+
+        this.isOnPlay = true;
+        this.score = 500;
+        this.gameTimer.setGameTime(300);
     }
 
     private void Update()
     {
-        //il punteggio verrà assegnato in base al tempo (fasce orarie) impiegato e agli sbagli commessi
-        _time += Time.deltaTime;
+        if(this.isOnPlay)
+        {
+            this.gameTimer.timeRunsOut();
+            this.timeTxt.text = ((int) this.gameTimer.getGameTime()).ToString();
+            /* //ad ogni minuto che passa, tolgo 100 punti
+            if (((int) this.gameTimer.getGameTime()) % 60 == 0)
+            {
+                this.score -= 100;
+            }*/
+
+            //se il tempo arriva a zero, il giocatore perde
+            if ((int) this.gameTimer.getGameTime() == 0)
+            {
+                ScreenFader.Instance.StartFadeToOpaque(
+
+                    (Action)(() =>
+                    {
+                        SceneManager.LoadScene(sceneName: "Lose");
+                        ScreenFader.Instance.StartFadeToTransparent(null);
+                    })
+
+                    );
+            }
+        }
+
+    }
+
+    public void StopPlay()
+    {
+        this.isOnPlay = false;
+    }
+
+    public void UpdateScore()
+    {
+        this.scoreTxt.text = this._score.ToString();
+    }
+
+    public void ReduceScore(int s)
+    {
+        this._score -= s;
+        UpdateScore();
+    }
+
+    public void ToMainMenu()
+    {
+        StopPlay();
+        ScreenFader.Instance.StartFadeToOpaque(
+            (Action)(() =>
+            {
+                SceneManager.LoadScene(sceneName: "MainMenu");
+                ScreenFader.Instance.StartFadeToTransparent(null);
+            })
+            );
     }
 
     public void RestartRicetta()
     {
-        //così si potrebbe anche randomizzare lo spawn delle ricette
-        updateFrullatore(this._ricette[recipeIndex]);
-        updateDispensa(this._ricette[recipeIndex].ingredienti);
-        this.recipeIndex++;
-        if(this.recipeIndex == this._ricette.Length)
-        {
-            this.recipeIndex = 0;
-        }
+        //passo allo startFadeToTransparent l'action da eseguire
+        //quando ha completato il toOpaque
+        ScreenFader.Instance.StartFadeToOpaque(
+            (Action)(() =>
+            {
+                updateFrullatore(this._ricette[recipeIndex]);
+                updateDispensa(this._ricette[recipeIndex].ingredienti);
+                this.recipeIndex++;
+                if (this.recipeIndex == this._ricette.Length)
+                {
+                    this.recipeIndex = 0;
+                }
+                //passo allo startFadeToTransparent l'action da eseguire
+                //quando ha completato il toTransparent
+                ScreenFader.Instance.StartFadeToTransparent(
+
+                    (Action)( ()=>
+                    {
+                        this.score = 500;
+                        this.isOnPlay = true;
+                    })
+
+                    );
+            })
+            );
     }
 }
