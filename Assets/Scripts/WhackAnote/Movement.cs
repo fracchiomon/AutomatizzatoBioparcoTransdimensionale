@@ -7,7 +7,11 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private GameObject[] moles;
     [SerializeField] private GameObject cron;
+    [SerializeField] private GameObject hammer;
     [SerializeField] private String[] Notes;
+    [SerializeField] private float MoveSpeed;
+    [SerializeField] private AudioClip[] suoniNote;
+    private Action<String, int>[] MoleMessages;
     private AudioSource noteSound;
     private bool notaSuonata;
     public Text gameText;
@@ -15,8 +19,7 @@ public class Movement : MonoBehaviour
     private float punteggioPartita;
     public int index = 0;
     int index1 = 0;
-    [SerializeField] private float MoveSpeed;
-    [SerializeField] private AudioClip[] suoniNote;
+
 
 
     private void Awake()
@@ -29,6 +32,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         punteggioPartita = 0;
         if(moles != null)
         {
@@ -36,6 +40,10 @@ public class Movement : MonoBehaviour
         }
         this.cron.GetComponent<Cronometro>().setGameTime(20.0f);
         noteSound = GetComponent<AudioSource>();
+        for(int i = 0; i < this.moles.Length; i++)
+        {
+            this.MoleMessages[i] = FindObjectOfType<UI_Message>().SpawnMessage;
+        }
     }
 
     // Update is called once per frame
@@ -68,8 +76,10 @@ public class Movement : MonoBehaviour
         gameText.text = this.cron.GetComponent<Cronometro>().getGameTime().ToString();
         pointText.text = punteggioPartita.ToString();
         this.moles[index].GetComponent<MoleController>().Move();
+        this.hammer.GetComponent<HammerController>().Move();
         if (this.moles[index].GetComponent<MoleController>()._indexPoint == 1 && !notaSuonata)
         {
+            this.MoleMessages[index](Notes[this.moles[index].GetComponent<MoleController>().GetIndexNote()], 1);
             notaSuonata = true;
             noteSound.clip = suoniNote[this.moles[index].GetComponent<MoleController>().GetIndexNote()];
             noteSound.Play();
