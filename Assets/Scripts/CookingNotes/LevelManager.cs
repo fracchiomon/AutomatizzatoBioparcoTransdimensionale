@@ -9,25 +9,39 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private SO_Recipe[] _ricette;
-    [SerializeField] private TextMeshProUGUI scoreTxt;
+    //[SerializeField] private TextMeshProUGUI scoreTxt;
     [SerializeField] private TextMeshProUGUI timeTxt;
+    [SerializeField] private int inGameTime;
     private Action<SO_Recipe> updateFrullatore;
     private Action<SO_NotaItem[]> updateDispensa;
-    private int _score;
+    private float _score;
+    private List<int> totScore = new List<int>();
     private int recipeIndex;
     private Cronometro gameTimer;
-    private bool isOnPlay;
+    private bool _isOnPlay;
+
+    public bool isOnPlay
+    {
+        get
+        {
+            return this._isOnPlay;
+        }
+        set
+        {
+            this._isOnPlay = value;
+        }
+    }
 
     public int score
     {
         get
         {
-            return this._score;
+            return (int) this._score;
         }
         set
         {
             this._score = value;
-            UpdateScore();
+            //UpdateScore();
         }
     }
     public SO_Recipe[] ricette => this._ricette;
@@ -38,23 +52,18 @@ public class LevelManager : MonoBehaviour
         this.updateFrullatore = FindObjectOfType<FrullatoreController>().UpdateRicetta;
         this.updateDispensa = FindObjectOfType<UI_windowDispensa>().UpdateIngredienti;
         this.recipeIndex = 1;
-
-        this.isOnPlay = true;
-        this.score = 500;
-        this.gameTimer.setGameTime(300);
+        this.score = 0;
+        this._isOnPlay = true;
+        this.gameTimer.setGameTime(this.inGameTime);
     }
 
     private void Update()
     {
-        if(this.isOnPlay)
+        //Debug.Log(this.score);
+        if(this._isOnPlay)
         {
             this.gameTimer.timeRunsOut();
             this.timeTxt.text = ((int) this.gameTimer.getGameTime()).ToString();
-            /* //ad ogni minuto che passa, tolgo 100 punti
-            if (((int) this.gameTimer.getGameTime()) % 60 == 0)
-            {
-                this.score -= 100;
-            }*/
 
             //se il tempo arriva a zero, il giocatore perde
             if ((int) this.gameTimer.getGameTime() == 0)
@@ -73,25 +82,26 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public void StopPlay()
+    /*public void StopPlay()
     {
-        this.isOnPlay = false;
-    }
+        this._isOnPlay = false;
+        this.timeTxt.text = "";
+    }*/
 
-    public void UpdateScore()
+    /*public void UpdateScore()
     {
         this.scoreTxt.text = this._score.ToString();
-    }
+    }*/
 
-    public void ReduceScore(int s)
+    public void ReduceScore(float s)
     {
         this._score -= s;
-        UpdateScore();
+        //UpdateScore();
     }
 
     public void ToMainMenu()
     {
-        StopPlay();
+        this._isOnPlay = false;
         ScreenFader.Instance.StartFadeToOpaque(
             (Action)(() =>
             {
@@ -99,6 +109,19 @@ public class LevelManager : MonoBehaviour
                 ScreenFader.Instance.StartFadeToTransparent(null);
             })
             );
+    }
+
+    public int CalcolaPunteggio()
+    {
+        int gameTime = (int) this.gameTimer.getGameTime();
+        this.score += 2 * gameTime;
+        //se il punteggio diventa negativo, lo setto a 0
+        if(this.score <= 0)
+        {
+            this.score = 0;
+        }
+        this.totScore.Add(this.score);
+        return this.score;
     }
 
     public void RestartRicetta()
@@ -121,8 +144,9 @@ public class LevelManager : MonoBehaviour
 
                     (Action)( ()=>
                     {
-                        this.score = 500;
-                        this.isOnPlay = true;
+                        this.score = 0;
+                        this.gameTimer.setGameTime(this.inGameTime);
+                        this._isOnPlay = true;
                     })
 
                     );

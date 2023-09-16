@@ -42,10 +42,9 @@ public class UI_windowDispensa : MonoBehaviour
 
     private void Update()
     {
-         if(Input.GetKeyDown(KeyCode.Space) && this.addButton.interactable)
+        if(Input.GetKeyDown(KeyCode.Space) && this.addButton.interactable)
         {
             this.addButton.onClick.Invoke();
-            Debug.Log("cristo");
         }
     }
 

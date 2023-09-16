@@ -16,17 +16,17 @@ public class FrullatoreController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textRicetta;
     [SerializeField] private Animator animator;
     [SerializeField] private UnityEvent nextLevel;
-    [SerializeField] private UnityEvent stopTime;
+    [SerializeField] private LevelManager lvlManager;
     private Action<String, int> BlenderMessage;
     private Action<float, float, string, string> UpdateBar;
-    private Action<int> ReduceScore;
+    private Action<float> ReduceScore;
     private float tot, rests, notes = 0;
     private SO_Recipe _ricetta;
     private Stack<Nota> contenuto = new Stack<Nota>();
     private Stack<GameObject> buttons = new Stack<GameObject>();
     private int messageT = 2;
     //list per l'obj pooling
-    [SerializeField] private List<Nota> notesPool = new List<Nota>();
+    private List<Nota> notesPool = new List<Nota>();
 
     public Nota GetNota(SO_NotaItem so_n)
     {
@@ -91,7 +91,12 @@ public class FrullatoreController : MonoBehaviour
 
     public void Start()
     {
-        this.ReduceScore = FindObjectOfType<LevelManager>().ReduceScore;
+        if(this.lvlManager == null)
+        {
+            this.lvlManager = FindObjectOfType<LevelManager>();
+        }
+        
+        this.ReduceScore = this.lvlManager.ReduceScore;
         this.UpdateBar = FindObjectOfType<UI_CompletationPanel>().UpdateGraphics;
         UpdateRicetta(FindObjectOfType<LevelManager>().ricette[0]);
         this.BlenderMessage = FindObjectOfType<UI_Message>().SpawnMessage;
@@ -99,14 +104,14 @@ public class FrullatoreController : MonoBehaviour
 
     IEnumerator BlenderMixing()
     {
+        this.lvlManager.isOnPlay = false;
         this.animator.SetTrigger("Mixing");
-        this.stopTime.Invoke();
         while (tot != 0)
         {
             OutMix();
         }
 
-        this.BlenderMessage("Ricetta completata, sto mixando gli ingredienti!", messageT);
+        this.BlenderMessage("Ricetta completata, con un punteggio di: " + this.lvlManager.CalcolaPunteggio(), messageT);
 
         yield return new WaitForSeconds(3);
 

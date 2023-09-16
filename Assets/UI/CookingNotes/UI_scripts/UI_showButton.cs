@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class UI_showButton : MonoBehaviour
 {
@@ -17,12 +18,29 @@ public class UI_showButton : MonoBehaviour
     [SerializeField] private BTN_STATE state;
     [SerializeField] private string strOnShow;
     [SerializeField] private string strOnHide;
+    [SerializeField] private LevelManager lvlManager;
+    private Action<float> UpdateScore;
 
     private void Start()
     {
         if(this.state == BTN_STATE.SHOW)
         {
             this.btnText.text = this.strOnShow;
+        }
+        if(this.lvlManager == null)
+        {
+            this.lvlManager = FindObjectOfType<LevelManager>();
+        }
+        UpdateScore = this.lvlManager.ReduceScore;
+    }
+
+    private void Update()
+    {
+        //per ogni secondo in cui la legenda è visibile e il gioco è in play
+        //viene tolto 1 punto
+        if(this.toShow.gameObject.activeInHierarchy && this.lvlManager.isOnPlay)
+        {
+            UpdateScore(Time.deltaTime);
         }
     }
 
