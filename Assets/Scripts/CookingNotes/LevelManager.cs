@@ -2,98 +2,155 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    #region PARTE DEL SINGLETON
-    private static LevelManager _instance;
+    [SerializeField] private SO_Recipe[] _ricette;
+    //[SerializeField] private TextMeshProUGUI scoreTxt;
+    [SerializeField] private TextMeshProUGUI timeTxt;
+    [SerializeField] private int inGameTime;
+    private Action<SO_Recipe> updateFrullatore;
+    private Action<SO_NotaItem[]> updateDispensa;
+    private float _score;
+    private List<int> totScore = new List<int>();
+    private int recipeIndex;
+    private Cronometro gameTimer;
+    private bool _isOnPlay;
 
-    private LevelManager()
-    {
-        //fa creare oggetti solo all'interno della classe stessa
-    }
-
-    public static LevelManager Instance
+    public bool isOnPlay
     {
         get
         {
-            //controllo se è registrato, perché poteri richiamare il get prima dell'awake
-            if (_instance == null)
-            {
-                //lo cerco nella scena
-                _instance = FindObjectOfType<LevelManager>(true);
-
-                //controllo se l'ho trovato
-                if (_instance == null)
-                {
-                    //non è stato trovato e quindi lo creo
-                    //Resources.Load("Screen Fader Canvas"); //--> gli passo il nome di un file "" che si trova nella cartella Resource
-                    GameObject go = Instantiate<GameObject>(Resources.Load("LevelManager") as GameObject);
-                    _instance = go.GetComponent<LevelManager>();
-                    DontDestroyOnLoad(go);
-                }
-            }
-            return _instance;
+            return this._isOnPlay;
+        }
+        set
+        {
+            this._isOnPlay = value;
         }
     }
 
-    //l'awake controlla che non ci sono altre istanze "di questo singleton" in scena
-    private void Awake()
+    public int score
     {
-        if (_instance == null)
+        get
         {
-            _instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            return (int) this._score;
         }
-
-        else if (_instance != this)
+        set
         {
-            Destroy(this.gameObject);
-        }
-
-    }
-
-    private void OnDestroy()
-    {
-        if (_instance == this)
-        {
-            _instance = null;
+            this._score = value;
+            //UpdateScore();
         }
     }
-    #endregion
-
-    [SerializeField] private SO_Recipe[] _ricette;
-    private Action<SO_Recipe> updateFrullatore;
-    private Action<SO_NotaItem[]> updateDispensa;
-    private int score;
-    private int recipeIndex;
-    private float _time;
-
     public SO_Recipe[] ricette => this._ricette;
-    public int time => (int) this._time;
 
     private void Start()
     {
+        this.gameTimer = FindObjectOfType<Cronometro>();
         this.updateFrullatore = FindObjectOfType<FrullatoreController>().UpdateRicetta;
         this.updateDispensa = FindObjectOfType<UI_windowDispensa>().UpdateIngredienti;
         this.recipeIndex = 1;
+        this.score = 0;
+        this._isOnPlay = true;
+        this.gameTimer.setGameTime(this.inGameTime);
     }
 
     private void Update()
     {
-        //il punteggio verrà assegnato in base al tempo (fasce orarie) impiegato e agli sbagli commessi
-        _time += Time.deltaTime;
+        //Debug.Log(this.score);
+        if(this._isOnPlay)
+        {
+            this.gameTimer.timeRunsOut();
+            this.timeTxt.text = ((int) this.gameTimer.getGameTime()).ToString();
+
+            //se il tempo arriva a zero, il giocatore perde
+            if ((int) this.gameTimer.getGameTime() == 0)
+            {
+                ScreenFader.Instance.StartFadeToOpaque(
+
+                    (Action)(() =>
+                    {
+                        SceneManager.LoadScene(sceneName: "Lose");
+                        ScreenFader.Instance.StartFadeToTransparent(null);
+                    })
+
+                    );
+            }
+        }
+
+    }
+
+    /*public void StopPlay()
+    {
+        this._isOnPlay = false;
+        this.timeTxt.text = "";
+    }*/
+
+    /*public void UpdateScore()
+    {
+        this.scoreTxt.text = this._score.ToString();
+    }*/
+
+    public void ReduceScore(float s)
+    {
+        this._score -= s;
+        //UpdateScore();
+    }
+
+    public void ToMainMenu()
+    {
+        this._isOnPlay = false;
+        ScreenFader.Instance.StartFadeToOpaque(
+            (Action)(() =>
+            {
+                SceneManager.LoadScene(sceneName: "MainMenu");
+                ScreenFader.Instance.StartFadeToTransparent(null);
+            })
+            );
+    }
+
+    public int CalcolaPunteggio()
+    {
+        int gameTime = (int) this.gameTimer.getGameTime();
+        this.score += 2 * gameTime;
+        //se il punteggio diventa negativo, lo setto a 0
+        if(this.score <= 0)
+        {
+            this.score = 0;
+        }
+        this.totScore.Add(this.score);
+        return this.score;
     }
 
     public void RestartRicetta()
     {
-        //così si potrebbe anche randomizzare lo spawn delle ricette
-        updateFrullatore(this._ricette[recipeIndex]);
-        updateDispensa(this._ricette[recipeIndex].ingredienti);
-        this.recipeIndex++;
-        if(this.recipeIndex == this._ricette.Length)
-        {
-            this.recipeIndex = 0;
-        }
+        //passo allo startFadeToTransparent l'action da eseguire
+        //quando ha completato il toOpaque
+        ScreenFader.Instance.StartFadeToOpaque(
+            (Action)(() =>
+            {
+                updateFrullatore(this._ricette[recipeIndex]);
+                updateDispensa(this._ricette[recipeIndex].ingredienti);
+                this.recipeIndex++;
+                if (this.recipeIndex == this._ricette.Length)
+                {
+                    this.recipeIndex = 0;
+                }
+                //passo allo startFadeToTransparent l'action da eseguire
+                //quando ha completato il toTransparent
+                ScreenFader.Instance.StartFadeToTransparent(
+
+                    (Action)( ()=>
+                    {
+                        this.score = 0;
+                        this.gameTimer.setGameTime(this.inGameTime);
+                        this._isOnPlay = true;
+                    })
+
+                    );
+            })
+            );
     }
 }

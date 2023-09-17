@@ -22,7 +22,7 @@ public class UI_windowDispensa : MonoBehaviour
 
     private void Start()
     {
-        this.recipe = LevelManager.Instance.ricette[0];
+        this.recipe = FindObjectOfType<LevelManager>().ricette[0];
 
         if (this.frullatore == null)
         {
@@ -42,10 +42,9 @@ public class UI_windowDispensa : MonoBehaviour
 
     private void Update()
     {
-         if(Input.GetKeyDown(KeyCode.Space) && this.addButton.interactable)
+        if(Input.GetKeyDown(KeyCode.Space) && this.addButton.interactable)
         {
             this.addButton.onClick.Invoke();
-            Debug.Log("cristo");
         }
     }
 

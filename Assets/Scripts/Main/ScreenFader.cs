@@ -85,6 +85,11 @@ public class ScreenFader : MonoBehaviour
 
     public void StartFadeToOpaque(Action callback)
     {
+        if(this.audioSourceBgMusic == null)
+        {
+            this.audioSourceBgMusic = FindObjectOfType<BackGroundMusic>();
+        }
+
         this.gameObject.SetActive(true);
         this.onFadeCompleted = callback;
 
@@ -101,6 +106,11 @@ public class ScreenFader : MonoBehaviour
 
     public void StartFadeToTransparent(Action callback)
     {
+        if (this.audioSourceBgMusic == null)
+        {
+            this.audioSourceBgMusic = FindObjectOfType<BackGroundMusic>();
+        }
+
         this.gameObject.SetActive(true);
 
         this.onFadeCompleted = callback;
@@ -128,14 +138,24 @@ public class ScreenFader : MonoBehaviour
         {
             this.timer += Time.deltaTime;
             this.canvasGroup.alpha = Mathf.Lerp(0, 1, this.timer / this.fadeDuration); //media pesata fra min e max
-            this.audioSourceBgMusic.audioSource.volume = Mathf.Lerp(0, 1, 1 - this.timer / this.fadeDuration);
+
+            if(this.audioSourceBgMusic != null)
+            {
+                this.audioSourceBgMusic.audioSource.volume = Mathf.Lerp(0, 1, 1 - this.timer / this.fadeDuration);
+            }
+                
             yield return null;
         }
 
         //conclusione
         this.timer = 0;
         this.canvasGroup.alpha = 1;
-        this.audioSourceBgMusic.audioSource.volume = 0f;
+
+        if(this.audioSourceBgMusic != null)
+        {
+            this.audioSourceBgMusic.audioSource.volume = 0f;
+        }
+        
         this.state = STATE.OPAQUE;
         if (this.onFadeCompleted != null)
         {
@@ -156,14 +176,24 @@ public class ScreenFader : MonoBehaviour
         {
             this.timer += Time.deltaTime;
             this.canvasGroup.alpha = Mathf.Lerp(0, 1, 1 - this.timer / this.fadeDuration); //media pesata fra min e max
-            this.audioSourceBgMusic.audioSource.volume = Mathf.Lerp(0, 1, this.timer / this.fadeDuration);
+
+            if(this.audioSourceBgMusic != null)
+            {
+                this.audioSourceBgMusic.audioSource.volume = Mathf.Lerp(0, 1, this.timer / this.fadeDuration);
+            }
+            
             yield return null;
         }
 
         //conclusione
         this.timer = 0;
         this.canvasGroup.alpha = 0;
-        this.audioSourceBgMusic.audioSource.volume = 1;
+
+        if(this.audioSourceBgMusic != null)
+        {
+            this.audioSourceBgMusic.audioSource.volume = 1;
+        }
+        
         this.state = STATE.TRANSPARENT;
         if (this.onFadeCompleted != null)
         {

@@ -16,15 +16,17 @@ public class FrullatoreController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textRicetta;
     [SerializeField] private Animator animator;
     [SerializeField] private UnityEvent nextLevel;
+    [SerializeField] private LevelManager lvlManager;
     private Action<String, int> BlenderMessage;
     private Action<float, float, string, string> UpdateBar;
+    private Action<float> ReduceScore;
     private float tot, rests, notes = 0;
     private SO_Recipe _ricetta;
     private Stack<Nota> contenuto = new Stack<Nota>();
     private Stack<GameObject> buttons = new Stack<GameObject>();
     private int messageT = 2;
     //list per l'obj pooling
-    [SerializeField] private List<Nota> notesPool = new List<Nota>();
+    private List<Nota> notesPool = new List<Nota>();
 
     public Nota GetNota(SO_NotaItem so_n)
     {
@@ -89,40 +91,38 @@ public class FrullatoreController : MonoBehaviour
 
     public void Start()
     {
+        if(this.lvlManager == null)
+        {
+            this.lvlManager = FindObjectOfType<LevelManager>();
+        }
+        
+        this.ReduceScore = this.lvlManager.ReduceScore;
         this.UpdateBar = FindObjectOfType<UI_CompletationPanel>().UpdateGraphics;
-        UpdateRicetta(LevelManager.Instance.ricette[0]);
+        UpdateRicetta(FindObjectOfType<LevelManager>().ricette[0]);
         this.BlenderMessage = FindObjectOfType<UI_Message>().SpawnMessage;
     }
 
     IEnumerator BlenderMixing()
     {
+        this.lvlManager.isOnPlay = false;
         this.animator.SetTrigger("Mixing");
-
         while (tot != 0)
         {
             OutMix();
         }
 
-        this.BlenderMessage("Ricetta completata, sto mixando gli ingredienti!", messageT);
+        this.BlenderMessage("Ricetta completata, con un punteggio di: " + this.lvlManager.CalcolaPunteggio(), messageT);
 
         yield return new WaitForSeconds(3);
 
-        //screen fade
-        ScreenFader.Instance.StartFadeToOpaque(
-            (Action)(() =>
-            {
-                //bisogna caricare la prossima ricetta
-                this.nextLevel.Invoke();
-                this.UpdateBar((float)tot, this._ricetta.durataRecipe, this.notes.ToString(), this.rests.ToString());
-                //per non avere riferimento alla completation bar posso usare un action!
-                ScreenFader.Instance.StartFadeToTransparent(null);
-            })
-            );
+        //bisogna caricare la prossima ricetta
+        this.nextLevel.Invoke();
     }
 
     public void UpdateRicetta(SO_Recipe ricetta)
     {
         this.ricetta = ricetta;
+        this.UpdateBar((float)tot, this._ricetta.durataRecipe, this.notes.ToString(), this.rests.ToString());
         this.textRicetta.text = this._ricetta.textRecipe;
     }
 
@@ -137,6 +137,7 @@ public class FrullatoreController : MonoBehaviour
         {
             //Debug.Log("Mancano degli ingredienti!");
             this.BlenderMessage("Mancano degli ingredienti!", messageT);
+            this.ReduceScore(20);
         }
     }
 
@@ -165,6 +166,7 @@ public class FrullatoreController : MonoBehaviour
             Out();
             this.UpdateBar(tot, this._ricetta.durataRecipe, this.notes.ToString(), this.rests.ToString());
             this.BlenderMessage("Ingrediente sbagliato!", messageT);
+            this.ReduceScore(20);
         }
     }
 
@@ -222,7 +224,8 @@ public class FrullatoreController : MonoBehaviour
             {
                 this.notes--;
             }
-
+            //tolgo 5 pts per ogni ingrediente tolto
+            this.ReduceScore(5);
             this.UpdateBar(tot, this._ricetta.durataRecipe, this.notes.ToString(), this.rests.ToString());
             toPop.gameObject.transform.position = this.outPoint.position; 
             toPop.GetComponent<Rigidbody>().AddForce(this.outForce);

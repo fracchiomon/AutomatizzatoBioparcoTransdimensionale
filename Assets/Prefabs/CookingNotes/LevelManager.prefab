@@ -48,3 +48,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 20a87626e9cde42989d2f0bb17836609, type: 2}
   - {fileID: 11400000, guid: ca7afe3022a2c4c2ea3886959f47f82f, type: 2}
   - {fileID: 11400000, guid: 2363c1802c7414cbbb98ece837bb72b5, type: 2}
+  timeTxt: {fileID: 0}
+  inGameTime: 300
