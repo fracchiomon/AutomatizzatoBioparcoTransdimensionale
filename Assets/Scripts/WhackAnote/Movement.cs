@@ -1,7 +1,9 @@
 using System;
 using System.Data.Common;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class Movement : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private String[] Notes;
     [SerializeField] private float MoveSpeed;
     [SerializeField] private AudioClip[] suoniNote;
+    [SerializeField] private TextMeshProUGUI rightNote;
     private Action<String, int> MoleMessage;
     private AudioSource noteSound;
     private bool notaSuonata;
@@ -26,6 +29,7 @@ public class Movement : MonoBehaviour
     {
         int sharedRandIndex = UnityEngine.Random.Range(0, Notes.Length - 1);
         RandomNote.SetRandomIndex(sharedRandIndex);
+        rightNote.text = "Schiaccia la Nota " + Notes[sharedRandIndex];
     }
 
     // Start is called before the first frame update
@@ -87,6 +91,18 @@ public class Movement : MonoBehaviour
         this.moles[index].GetComponent<MoleController>().Move();
         this.hammer.GetComponent<HammerController>().Move();
     }
+
+    public void ToMainMenu()
+    {
+        ScreenFader.Instance.StartFadeToOpaque(
+            (Action)(() =>
+            {
+                SceneManager.LoadScene(sceneName: "MainMenu");
+                ScreenFader.Instance.StartFadeToTransparent(null);
+            })
+            );
+    }
+
 
 
 }
