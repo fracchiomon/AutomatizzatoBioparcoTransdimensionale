@@ -58,7 +58,6 @@ public class MoleController : MonoBehaviour
             {
                 contNote = 0;
             }
-            Debug.Log(Notes[_indexNote]);
             this.transform.position = Vector3.MoveTowards(this.transform.position, this.Points[_indexPoint].transform.position, this.MoveSpeed * Time.deltaTime);
             if (this.transform.position == this.Points[_indexPoint].transform.position && timeDelay < 0)
             {

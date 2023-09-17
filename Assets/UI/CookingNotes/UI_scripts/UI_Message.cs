@@ -13,6 +13,7 @@ public class UI_Message : MonoBehaviour
     IEnumerator Message(String message, int messageTime)
     {
         this._textMessage.text = message;
+        Debug.Log(this._textMessage.text);
         this._imageMessage.gameObject.SetActive(true);
         yield return new WaitForSeconds(messageTime);
         this._imageMessage.gameObject.SetActive(false);

@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private String[] Notes;
     [SerializeField] private float MoveSpeed;
     [SerializeField] private AudioClip[] suoniNote;
-    private Action<String, int>[] MoleMessages;
+    private Action<String, int> MoleMessage;
     private AudioSource noteSound;
     private bool notaSuonata;
     public Text gameText;
@@ -26,7 +26,6 @@ public class Movement : MonoBehaviour
     {
         int sharedRandIndex = UnityEngine.Random.Range(0, Notes.Length - 1);
         RandomNote.SetRandomIndex(sharedRandIndex);
-        Debug.Log(sharedRandIndex);
     }
 
     // Start is called before the first frame update
@@ -40,10 +39,7 @@ public class Movement : MonoBehaviour
         }
         this.cron.GetComponent<Cronometro>().setGameTime(20.0f);
         noteSound = GetComponent<AudioSource>();
-        for(int i = 0; i < this.moles.Length; i++)
-        {
-            this.MoleMessages[i] = FindObjectOfType<UI_Message>().SpawnMessage;
-        }
+        this.MoleMessage = FindObjectOfType<UI_Message>().SpawnMessage;
     }
 
     // Update is called once per frame
@@ -75,11 +71,10 @@ public class Movement : MonoBehaviour
         }
         gameText.text = this.cron.GetComponent<Cronometro>().getGameTime().ToString();
         pointText.text = punteggioPartita.ToString();
-        this.moles[index].GetComponent<MoleController>().Move();
-        this.hammer.GetComponent<HammerController>().Move();
         if (this.moles[index].GetComponent<MoleController>()._indexPoint == 1 && !notaSuonata)
         {
-            this.MoleMessages[index](Notes[this.moles[index].GetComponent<MoleController>().GetIndexNote()], 1);
+            string notaSuon = Notes[this.moles[index].GetComponent<MoleController>().GetIndexNote()];
+            this.MoleMessage(notaSuon, 1);
             notaSuonata = true;
             noteSound.clip = suoniNote[this.moles[index].GetComponent<MoleController>().GetIndexNote()];
             noteSound.Play();
@@ -89,6 +84,8 @@ public class Movement : MonoBehaviour
             notaSuonata = false;
             noteSound.Stop();
         }
+        this.moles[index].GetComponent<MoleController>().Move();
+        this.hammer.GetComponent<HammerController>().Move();
     }
 
 
