@@ -61,7 +61,8 @@ public class Lane : MonoBehaviour
 
     private void GestioneInput(float timeStamp, float marginOfError, float audioTime)
     {
-        if (Input.GetKeyDown(input) || Input.GetMouseButtonDown(button: 0))
+
+        if (Input.GetKeyDown(input))
         {
             //------------DEBUG_SECTION-------------//
             if (IsDebugEnabled)
@@ -234,6 +235,8 @@ public class Lane : MonoBehaviour
 
         ScoreManager.Miss(); //suona l'efx e resetta combo
     }
+
+
 }
 
 
