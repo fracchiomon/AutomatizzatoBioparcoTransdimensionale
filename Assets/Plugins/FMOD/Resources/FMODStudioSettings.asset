@@ -305,8 +305,14 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
-  Banks: []
+  MasterBanks:
+  - Master
+  Banks:
+  - CookingNotes
+  - FindTheTime
+  - NoteHunt
+  - Rhythmicon
+  - WhackANote
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

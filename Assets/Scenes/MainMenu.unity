@@ -1288,7 +1288,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &317868513
 BoxCollider:
@@ -1565,11 +1565,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2029140947
+      Data2: 1226277326
+      Data3: 972178338
+      Data4: -194893433
+    Path: event:/WhackANote/EFX_MOLE_NOTE
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -1579,8 +1579,8 @@ MonoBehaviour:
   AllowNonRigidbodyDoppler: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &470118740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1962,7 +1962,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &531225850
 BoxCollider:
@@ -2794,6 +2794,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8072721326655830553, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
+      propertyPath: Preload
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8072721326655830553, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/WhackANote/EFX_MOLE_BONK
+      objectReference: {fileID: 0}
+    - target: {fileID: -8072721326655830553, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
+      propertyPath: OverrideMaxDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: -8072721326655830553, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8072721326655830553, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: 1953778453
+      objectReference: {fileID: 0}
+    - target: {fileID: -8072721326655830553, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1209610427
+      objectReference: {fileID: 0}
+    - target: {fileID: -8072721326655830553, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: -1354525808
+      objectReference: {fileID: 0}
+    - target: {fileID: -8072721326655830553, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -884011112
+      objectReference: {fileID: 0}
     - target: {fileID: -134067714852466945, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2883,7 +2915,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &655075630
 BoxCollider:
@@ -3202,7 +3234,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &716238804
 BoxCollider:
@@ -5587,7 +5619,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369039077}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 72ff9865a136349928c5f9a14bae1dc8, type: 2}
   m_audioClip: {fileID: 8300000, guid: 705c6404ecc38224d94fd8446f7c0e55, type: 3}
@@ -5718,11 +5750,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1655123263
+      Data2: 1330971542
+      Data3: 653293238
+      Data4: 246093126
+    Path: event:/MainMenu/BGM
   Event: 
   PlayEvent: 1
   StopEvent: 2
@@ -5732,8 +5764,8 @@ MonoBehaviour:
   AllowNonRigidbodyDoppler: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &1475616157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b25ebf15e7e8c4dcaa7c4a780307757e, type: 3}
@@ -6137,6 +6169,8 @@ GameObject:
   - component: {fileID: 1791567335}
   - component: {fileID: 1791567334}
   - component: {fileID: 1791567337}
+  - component: {fileID: 1791567339}
+  - component: {fileID: 1791567338}
   m_Layer: 5
   m_Name: SettingsButtonOpen
   m_TagString: Untagged
@@ -6295,6 +6329,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
   clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
+--- !u!114 &1791567338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791567332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -775630876
+      Data2: 1187153574
+      Data3: -163584332
+      Data4: -196009188
+    Path: event:/MainMenu/UI_BUTTON_SELECT
+  Event: 
+  PlayEvent: 15
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1791567339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791567332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2084358646
+      Data2: 1162458916
+      Data3: -1966300281
+      Data4: 18372219
+    Path: event:/MainMenu/UI_BUTTON_HOVER
+  Event: 
+  PlayEvent: 13
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1810972047
 GameObject:
   m_ObjectHideFlags: 0
@@ -6599,6 +6695,8 @@ GameObject:
   - component: {fileID: 1842391248}
   - component: {fileID: 1842391247}
   - component: {fileID: 1842391250}
+  - component: {fileID: 1842391251}
+  - component: {fileID: 1842391252}
   m_Layer: 5
   m_Name: SettingsButtonClose
   m_TagString: Untagged
@@ -6757,6 +6855,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
   clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
+--- !u!114 &1842391251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842391245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2084358646
+      Data2: 1162458916
+      Data3: -1966300281
+      Data4: 18372219
+    Path: event:/MainMenu/UI_BUTTON_HOVER
+  Event: 
+  PlayEvent: 13
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1842391252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842391245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -775630876
+      Data2: 1187153574
+      Data3: -163584332
+      Data4: -196009188
+    Path: event:/MainMenu/UI_BUTTON_SELECT
+  Event: 
+  PlayEvent: 15
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1852534159
 GameObject:
   m_ObjectHideFlags: 0
