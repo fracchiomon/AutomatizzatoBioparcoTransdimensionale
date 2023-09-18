@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Activator
+  - Nota
+  - Mi
+  - Fa
+  - Re
+  - Si
+  - La
+  - Sol
+  - Do
+  - Menu
   layers:
   - Default
   - TransparentFX

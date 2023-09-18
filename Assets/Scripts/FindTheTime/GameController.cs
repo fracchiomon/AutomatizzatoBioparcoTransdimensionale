@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -181,8 +182,9 @@ public class GameController : MonoBehaviour
             {
 
                 movements[i].SetTrigger("from idle to correct");
-                
             }
+
+            UI_Punt.UpdateScore(5);
 
             CheckIfTheGameIsFinished();
         }

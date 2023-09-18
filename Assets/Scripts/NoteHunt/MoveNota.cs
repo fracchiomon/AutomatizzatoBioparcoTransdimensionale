@@ -5,14 +5,17 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class MoveNota : MonoBehaviour
 {
     public float speed;                                 //velocità nota
     Vector3 targetPos;
-   //[SerializeField]private UI_Punt;
+    //[SerializeField]private UI_Punt;
 
-    [SerializeField] private UI_FillableBar Bar;
+    //[SerializeField] private UI_FillableBar Bar;
+    [SerializeField] private GameObject Bar;
+
     [SerializeField] private GameObject note;           //sono le note che si generano ogni volta che si distrugge una
 
     private int score = 5;                              //score di ogni volta che la nota viene colpita
@@ -25,6 +28,7 @@ public class MoveNota : MonoBehaviour
     int direction = 1;
 
     public bool colpito = false;
+
 
 
     private void Awake()
@@ -54,25 +58,7 @@ public class MoveNota : MonoBehaviour
             NextPoint();
         }
 
-
-        //---------------------------------------------------------------------------------------------------------
-
-        ///Instantiate(note, transform.position, Quaternion.identity);
-       //// StartCoroutine(NoteTime());
-
-        //note.SetActive(false);
-
-        //new Vector3(x, y, 0), Quaternion.identity
-        // Quaternion.Euler(0, 90, 0), this.transform
-        //---------------------------------------------------------------------------------------------------------
-
     }
-
-   /* IEnumerator NoteTime()
-    {
-        yield return new WaitForSeconds(8f);
-        note.SetActive(true);
-    }*/
 
 
     void NextPoint()                        //per far ritornare avanti e indietro la nota
@@ -91,6 +77,7 @@ public class MoveNota : MonoBehaviour
         targetPos = wayPoints[pointIndex].transform.position;
     }
 
+
     public void setColpito()
     {
         colpito = true;
@@ -102,17 +89,22 @@ public class MoveNota : MonoBehaviour
         //quando viene colpita la nota nella posizione giusta
         if(colpito == true)
         {
-            Debug.Log(other.tag + " " + Bar.GetTestoNote.text);
-            if (other.tag == Bar.GetTestoNote.text)           //bar è per le note UI
+            Debug.Log(other.tag + "=othertag   bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
+            Debug.Log("Other tag=" + other.tag);
+            Debug.Log("Bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
+            if (other.tag == Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag)           //bar è per le note UI
             {
-                Debug.Log(other.tag);
+                Debug.Log("Other tag: " + other.tag);
                 //Destroy(transform.parent.gameObject);
-                
+
+
                 UI_Punt.UpdateScore(score);             //per lo score
 
                 //Instantiate(note, transform.position, Quaternion.identity);
                 note.SetActive(true);                   //serve per generare la nuova nota dopo che e' stata distrutta
                 transform.parent.gameObject.SetActive(false);
+
+               // Destroy(this.gameObject);
             }
 
             colpito = false;

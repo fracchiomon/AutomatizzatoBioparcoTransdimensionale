@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class UI_Punt : MonoBehaviour
 {
-    public Text scoreText;
-    public Text messageText;
-    private static int currentScore = 0;
-   // private string currentMessage1 = "HAI PERSO";
-    //private string currentMessage2 = "HAI VINTO";
+    [SerializeField] private Text scoreText;
+    private static int currentScore;
 
-    public int score;
 
-    // Start is called before the first frame update
-    static void Start()
+     void Start()
     {
-        UpdateScore(currentScore);                                   //inizializzo il punteggio iniziale a 0
+        currentScore = 0;
+        //UpdateScore(currentScore);                                   //inizializzo il punteggio iniziale a 0
+        scoreText.text = currentScore.ToString() + " PUNTI";
     }
 
     public static void UpdateScore(int addedValue)
@@ -28,31 +24,23 @@ public class UI_Punt : MonoBehaviour
         //scoreText.text = " " + currentScore;
     }
 
-    public void UpdateMessage()
+    public void Update()
     {
-        //scoreText = GameObject.FindGameObjectsWithTag("ScoreText").GetComponent<Text>();
-        // Text text = .GetComponent<Text>();
-        // scoreText = text;
-
-       /* if (currentScore < 10)
-        {
-            
-            score = currentScore;
-            scoreText.text = "Score: " + currentScore.ToString();
-            //currentMessage1 = message;
-            messageText.text = currentMessage1;
-            //messageText.GetComponent<TextMeshPro>().text = currentMessage1;
-
-        }
-        else
-        {
-            //messageText.text = message;
-            messageText.text = currentMessage2;
-            //messageText.GetComponent<Text>().text = currentMessage2;
-        }*/
+        scoreText.text = currentScore.ToString() + " PUNTI";
     }
 
+    public static int Punteggio()
+    {
 
+        //    if (currentScore > 15)
+        //    {
+        //        SceneManager.LoadScene(sceneName: "Victory");
 
-
+        //    }
+        //    else
+        //    {
+        //        SceneManager.LoadScene(sceneName: "Lose");
+        //    }
+        return currentScore;
+    }
 }
