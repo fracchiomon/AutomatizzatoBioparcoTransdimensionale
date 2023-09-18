@@ -12,7 +12,7 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private Texture2D CrossHair;
 
     //[SerializeField] private Camera camera;                             // --- VEDERE SE RIAGGIUNGERE
-    [SerializeField] private float MuzzleFlashSpeed;                    //fiamma sparata velocità
+    [SerializeField] private float MuzzleFlashSpeed;                    //fiamma sparata velocit?
     // private float bulletSpeed = 10;--- VEDERE SE RIAGGIUNGERE
 
     public float offset;
@@ -31,7 +31,8 @@ public class Crosshair : MonoBehaviour
     {
         //DA AGGIUNGERE SE NON FUNZIONA IL PEZZO AGGIUNTO
         pos = Input.mousePosition;
-        Cursor.SetCursor(CrossHair, (Vector2)pos, CursorMode.Auto);
+        Vector2 v = new Vector2(pos.x - CrossHair.width/2, pos.y - CrossHair.height/2);
+        Cursor.SetCursor(CrossHair, v, CursorMode.Auto);
 
         Vector3 difference = Camera.main.ScreenToWorldPoint(pos) - transform.position;
 
@@ -77,7 +78,7 @@ public class Crosshair : MonoBehaviour
                 /*Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(mouseRay))
                 {
-                    //Qualcosa è stato colpito!
+                    //Qualcosa ? stato colpito!
                 }*/
             }
 
