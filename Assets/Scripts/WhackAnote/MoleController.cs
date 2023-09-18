@@ -13,7 +13,7 @@ public class MoleController : MonoBehaviour
     private int _indexNote = 0;
     private int contNote = 0;
     private float point;
-    private float timeDelay = 2.0f;
+    private float timeDelay = 1.0f;
     private float randomNum;
     private int randIndex;
     public Boolean hasFinished;
@@ -61,7 +61,7 @@ public class MoleController : MonoBehaviour
             this.transform.position = Vector3.MoveTowards(this.transform.position, this.Points[_indexPoint].transform.position, this.MoveSpeed * Time.deltaTime);
             if (this.transform.position == this.Points[_indexPoint].transform.position && timeDelay < 0)
             {
-                timeDelay = 2.0f;
+                timeDelay = 1.0f;
                 this._indexPoint++;
             }
             else

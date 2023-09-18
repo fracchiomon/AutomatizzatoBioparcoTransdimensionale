@@ -8,12 +8,13 @@ using TMPro;
 
 public class MoveNota : MonoBehaviour
 {
-    public float speed;                                 //velocità nota
+    public float speed = 5;                                 //velocità nota
     Vector3 targetPos;
    //[SerializeField]private UI_Punt;
 
     [SerializeField] private UI_FillableBar Bar;
-    [SerializeField] private GameObject note;           //sono le note che si generano ogni volta che si distrugge una
+    [SerializeField] private GameObject note;    //sono le note che si generano ogni volta che si distrugge una
+    public Transform[] Points;
 
     private int score = 5;                              //score di ogni volta che la nota viene colpita
 
@@ -23,6 +24,8 @@ public class MoveNota : MonoBehaviour
     int pointIndex;
     int pointCount;
     int direction = 1;
+    int _indexPoint = 1;
+    float timeDelay = 1.0f;
 
     public bool colpito = false;
 
@@ -39,7 +42,7 @@ public class MoveNota : MonoBehaviour
     private void Start()
     {
         pointCount = wayPoints.Length;
-        pointIndex = 1;
+        pointIndex = 0;
         targetPos = wayPoints[pointIndex].transform.position;
     }
 
@@ -47,14 +50,29 @@ public class MoveNota : MonoBehaviour
     {
         //movimento nota
         var step = speed * Time.fixedDeltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
+        //transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
 
-        if (transform.position == targetPos) 
+        //if (transform.position == targetPos) 
+        //{
+        //    NextPoint();
+        //}
+        if (_indexPoint < this.Points.Length)
         {
-            NextPoint();
+            this.transform.position = Vector3.MoveTowards(this.transform.position, this.Points[_indexPoint].transform.position, step);
+            if (this.transform.position == this.Points[_indexPoint].transform.position && timeDelay < 0)
+            {
+                timeDelay = 1.0f;
+                this._indexPoint++;
+            }
+            else
+            {
+                timeDelay -= Time.deltaTime;
+            }
         }
-
-
+        else
+        {
+            _indexPoint = 0;
+        }
         //---------------------------------------------------------------------------------------------------------
 
         ///Instantiate(note, transform.position, Quaternion.identity);
@@ -96,7 +114,7 @@ public class MoveNota : MonoBehaviour
         colpito = true;
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerStay(Collider other)
     {
 
         //quando viene colpita la nota nella posizione giusta
@@ -114,11 +132,17 @@ public class MoveNota : MonoBehaviour
                 note.SetActive(true);                   //serve per generare la nuova nota dopo che e' stata distrutta
                 transform.parent.gameObject.SetActive(false);
             }
-
-            colpito = false;
+            else 
+                colpito = false;
             
         }
 
+    }
+
+    void OnMouseDown()
+    {
+        // Destroy the gameObject after clicking on it
+        colpito = true;
     }
 
 }
