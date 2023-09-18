@@ -52,38 +52,44 @@ public class Crosshair : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)))
-        {
-            mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPosition.z = 5.0f;
+        //if (Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)))
+        //{
+        //    mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    mouseWorldPosition.z = 5.0f;
 
-            var bullet = Instantiate(bulletPrefab, mouseWorldPosition, Quaternion.Euler(0,90,0),this.transform);
-            bullet.SetActive(true);
+        //    var bullet = Instantiate(bulletPrefab, mouseWorldPosition, Quaternion.Euler(0,90,0),this.transform);
+        //    bullet.SetActive(true);
 
-            //raycast per sparo
-            //pos.z = speed;
-            transform.position = Camera.main.ScreenToWorldPoint(pos);
+        //    //raycast per sparo
+        //    //pos.z = speed;
+        //    transform.position = Camera.main.ScreenToWorldPoint(pos);
 
-            Ray ray = Camera.main.ScreenPointToRay(pos);
-            RaycastHit hit;
+        //    Ray ray = Camera.main.ScreenPointToRay(pos);
+        //    RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Nota"))
-            {
+        //    if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Nota"))
+        //    {
 
-                Debug.Log("RAYCAST");
-                hit.collider.GetComponent<MoveNota>().setColpito();
+        //        Debug.Log("RAYCAST");
+        //        hit.collider.GetComponent<MoveNota>().setColpito();
 
 
-                //PROVA RAYCAST
-                /*Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(mouseRay))
-                {
-                    //Qualcosa ? stato colpito!
-                }*/
-            }
+        //        //PROVA RAYCAST
+        //        /*Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //        if (Physics.Raycast(mouseRay))
+        //        {
+        //            //Qualcosa ? stato colpito!
+        //        }*/
+        //    }
 
-            Destroy(bullet, MuzzleFlashSpeed);
-        }
+        //    Destroy(bullet, MuzzleFlashSpeed);
+        //}
+    }
+
+    void OnMouseDown()
+    {
+        // Destroy the gameObject after clicking on it
+        Destroy(gameObject);
     }
 
 }

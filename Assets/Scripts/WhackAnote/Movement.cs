@@ -63,7 +63,16 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Fine");
         }
-        if (this.moles[index].GetComponent <MoleController>().isHitted && this.moles[index].GetComponent<MoleController>().GetIndexNote() == RandomNote.GetRandomIndex())
+        this.GestionePunteggio();
+        this.suonoNota();
+        this.GestioneUI();
+        this.moles[index].GetComponent<MoleController>().Move();
+        this.hammer.GetComponent<HammerController>().Move();
+    }
+
+    private void GestionePunteggio()
+    {
+        if (this.moles[index].GetComponent<MoleController>().isHitted && this.moles[index].GetComponent<MoleController>().GetIndexNote() == RandomNote.GetRandomIndex())
         {
             this.punteggioPartita += this.moles[index].GetComponent<MoleController>().GetPoint();
             this.moles[index].GetComponent<MoleController>().isHitted = false;
@@ -73,8 +82,11 @@ public class Movement : MonoBehaviour
             this.punteggioPartita -= this.moles[index].GetComponent<MoleController>().GetPoint();
             this.moles[index].GetComponent<MoleController>().isHitted = false;
         }
-        gameText.text = this.cron.GetComponent<Cronometro>().getGameTime().ToString();
-        pointText.text = punteggioPartita.ToString();
+
+    }
+
+    private void suonoNota()
+    {
         if (this.moles[index].GetComponent<MoleController>()._indexPoint == 1 && !notaSuonata)
         {
             string notaSuon = Notes[this.moles[index].GetComponent<MoleController>().GetIndexNote()];
@@ -88,12 +100,12 @@ public class Movement : MonoBehaviour
             notaSuonata = false;
             noteSound.Stop();
         }
-        this.moles[index].GetComponent<MoleController>().Move();
-        this.hammer.GetComponent<HammerController>().Move();
     }
 
-
-
-
+    private void GestioneUI()
+    {
+        gameText.text = this.cron.GetComponent<Cronometro>().getGameTime().ToString();
+        pointText.text = punteggioPartita.ToString();
+    }
 
 }
