@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17820194, g: 0.22312424, b: 0.3051898, a: 1}
+  m_IndirectSpecularColor: {r: 0.17820154, g: 0.22312379, b: 0.30518863, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1266,7 +1266,7 @@ PrefabInstance:
     - target: {fileID: 11418234, guid: c209967a5ce303246a9d2f8523cbd19a, type: 3}
       propertyPath: chrController
       value: 
-      objectReference: {fileID: 1756998414}
+      objectReference: {fileID: 0}
     - target: {fileID: 14300000, guid: c209967a5ce303246a9d2f8523cbd19a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -5654,6 +5654,7 @@ GameObject:
   - component: {fileID: 1090009621}
   - component: {fileID: 1090009624}
   - component: {fileID: 1090009625}
+  - component: {fileID: 1090009626}
   m_Layer: 0
   m_Name: BackgroundSound
   m_TagString: Untagged
@@ -5784,6 +5785,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1090009626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090009619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36857ad4eb88c47958ba78194f77ae34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1098971449
 GameObject:
   m_ObjectHideFlags: 0
@@ -8034,12 +8047,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moles: []
   cron: {fileID: 0}
+  hammer: {fileID: 0}
   Notes: []
+  MoveSpeed: 0
+  suoniNote: []
+  rightNote: {fileID: 0}
   gameText: {fileID: 0}
   pointText: {fileID: 0}
   index: 0
-  MoveSpeed: 0
-  suoniNote: []
 --- !u!1 &1736377029
 GameObject:
   m_ObjectHideFlags: 0
@@ -8133,11 +8148,6 @@ Transform:
 --- !u!4 &1756998411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400020, guid: c209967a5ce303246a9d2f8523cbd19a, type: 3}
-  m_PrefabInstance: {fileID: 299916356}
-  m_PrefabAsset: {fileID: 0}
---- !u!143 &1756998414 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 14300000, guid: c209967a5ce303246a9d2f8523cbd19a, type: 3}
   m_PrefabInstance: {fileID: 299916356}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1757618229
