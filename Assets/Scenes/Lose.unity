@@ -374,14 +374,14 @@ PrefabInstance:
     - target: {fileID: 1591200362160672381, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1298871627}
+      objectReference: {fileID: 1265165631}
     - target: {fileID: 1591200362160672381, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1591200362160672381, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GiocoManager, Assembly-CSharp
+      value: UI_MenuButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2960699748224689666, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_Texture
@@ -394,7 +394,7 @@ PrefabInstance:
     - target: {fileID: 6869647859394611206, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1298871627}
+      objectReference: {fileID: 0}
     - target: {fileID: 6869647859394611206, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToLevel3
@@ -404,58 +404,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
---- !u!1 &1298871626
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1298871628}
-  - component: {fileID: 1298871627}
-  m_Layer: 0
-  m_Name: controllerButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1298871627
+--- !u!114 &1265165631 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 994854412738003789, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
+  m_PrefabInstance: {fileID: 1265165630}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298871626}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc6e25042c9e6bc4f9da931d18d6941a, type: 3}
+  m_Script: {fileID: 11500000, guid: 24c8f75072f4c43eb8a47d4d81e49796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicMixer: {fileID: 0}
-  EFXMixer: {fileID: 0}
-  MasterMixer: {fileID: 0}
---- !u!4 &1298871628
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298871626}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 421.33902, y: 117.30838, z: 1.3752799}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 890818897}
   - {fileID: 1265165630}
-  - {fileID: 1298871628}
   - {fileID: 551957982}

@@ -7994,7 +7994,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1717081261}
-  - component: {fileID: 1717081260}
   - component: {fileID: 1717081262}
   m_Layer: 0
   m_Name: controllerButton
@@ -8003,21 +8002,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1717081260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717081259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc6e25042c9e6bc4f9da931d18d6941a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MusicMixer: {fileID: 0}
-  EFXMixer: {fileID: 0}
-  MasterMixer: {fileID: 0}
 --- !u!4 &1717081261
 Transform:
   m_ObjectHideFlags: 0

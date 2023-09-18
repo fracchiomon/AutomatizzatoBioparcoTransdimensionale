@@ -143,6 +143,7 @@ public class GiocoManager : MonoBehaviour
            );
     }
 
+
     public void ExitGame()
     {
         if (Application.isPlaying)

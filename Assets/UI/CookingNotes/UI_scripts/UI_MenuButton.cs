@@ -6,8 +6,7 @@ using System;
 
 public class UI_MenuButton : MonoBehaviour
 {
-
-    public void OnClick()
+    public void ToMainMenu()
     {
         this.GetComponent<Button>().interactable = false;
         GiocoManager.Instance.ToMainMenu();
