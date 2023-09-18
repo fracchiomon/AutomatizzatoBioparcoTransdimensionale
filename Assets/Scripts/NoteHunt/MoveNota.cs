@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
+
 
 public class MoveNota : MonoBehaviour
 {
@@ -19,7 +18,7 @@ public class MoveNota : MonoBehaviour
     [SerializeField] private UI_BarNote Bar;
     [SerializeField] private GameObject note;    //sono le note che si generano ogni volta che si distrugge una
     public Transform[] Points;
-
+    [SerializeField] private string[] notePoints;
     private int score = 5;                              //score di ogni volta che la nota viene colpita
 
 
@@ -121,9 +120,9 @@ public class MoveNota : MonoBehaviour
         //quando viene colpita la nota nella posizione giusta
         if(colpito == true)
         {
-            Debug.Log(other.tag + "=othertag   bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
-            Debug.Log("Other tag=" + other.tag);
-            Debug.Log("Bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
+            //Debug.Log(other.tag + "=othertag   bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
+            //Debug.Log("Other tag=" + other.tag);
+            //Debug.Log("Bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
             if (other.tag == Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag)           //bar è per le note UI
             {
                 Debug.Log("Other tag: " + other.tag);
