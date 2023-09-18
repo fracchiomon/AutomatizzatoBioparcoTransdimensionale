@@ -56,7 +56,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GiocoManager.RHYTHMICON_ConfermaTornaAlMenu();
+            GiocoManager.Instance.RHYTHMICON_ConfermaTornaAlMenu();
         }
 
     }
