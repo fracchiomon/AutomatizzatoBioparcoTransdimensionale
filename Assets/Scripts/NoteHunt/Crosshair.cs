@@ -11,8 +11,18 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Texture2D CrossHair;
 
+
     //[SerializeField] private Camera camera;                             
     [SerializeField] private float MuzzleFlashSpeed;                    //fiamma sparata velocità
+
+    //[SerializeField] private Camera camera;                             // --- VEDERE SE RIAGGIUNGERE
+    [SerializeField] private float MuzzleFlashSpeed;                    //fiamma sparata velocit?
+    // private float bulletSpeed = 10;--- VEDERE SE RIAGGIUNGERE
+
+    public float offset;
+    public float rotX;
+    public float rotY;
+    public float rotZ;
 
     Vector3 pos;
    // Vector3 prevMousePos;
@@ -23,22 +33,26 @@ public class Crosshair : MonoBehaviour
     private void Update()
     {
         pos = Input.mousePosition;
-        Cursor.SetCursor(CrossHair, (Vector2)pos, CursorMode.Auto);
+        Vector2 v = new Vector2(pos.x - CrossHair.width/2, pos.y - CrossHair.height/2);
+        Cursor.SetCursor(CrossHair, v, CursorMode.Auto);
 
         Vector3 difference = Camera.main.ScreenToWorldPoint(pos) - transform.position;
 
 
-        if (Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)))
-        {
-            mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPosition.z = 5.0f;
+        //if (Input.GetKeyDown(KeyCode.Space) || (Input.GetMouseButtonDown(0)))
+        //{
+        //    mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    mouseWorldPosition.z = 5.0f;
+
 
             var bullet = Instantiate(bulletPrefab, mouseWorldPosition, Quaternion.Euler(0,90,0), this.transform);
             bullet.SetActive(true);
+        //    var bullet = Instantiate(bulletPrefab, mouseWorldPosition, Quaternion.Euler(0,90,0),this.transform);
+        //    bullet.SetActive(true);
 
-            //raycast per sparo
-            //pos.z = speed;
-            transform.position = Camera.main.ScreenToWorldPoint(pos);
+        //    //raycast per sparo
+        //    //pos.z = speed;
+        //    transform.position = Camera.main.ScreenToWorldPoint(pos);
 
 
             Ray ray = Camera.main.ScreenPointToRay(pos);
@@ -55,6 +69,32 @@ public class Crosshair : MonoBehaviour
  
 
         }
+        //    Ray ray = Camera.main.ScreenPointToRay(pos);
+        //    RaycastHit hit;
+
+        //    if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Nota"))
+        //    {
+
+        //        Debug.Log("RAYCAST");
+        //        hit.collider.GetComponent<MoveNota>().setColpito();
+
+
+        //        //PROVA RAYCAST
+        //        /*Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //        if (Physics.Raycast(mouseRay))
+        //        {
+        //            //Qualcosa ? stato colpito!
+        //        }*/
+        //    }
+
+        //    Destroy(bullet, MuzzleFlashSpeed);
+        //}
+    }
+
+    void OnMouseDown()
+    {
+        // Destroy the gameObject after clicking on it
+        Destroy(gameObject);
     }
 
 }

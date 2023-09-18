@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5516073037514604253}
   - component: {fileID: 8378484536714028321}
   - component: {fileID: 461436247074642783}
+  - component: {fileID: 8042621713726613521}
   m_Layer: 5
   m_Name: ToMainMenu_Btn
   m_TagString: Untagged
@@ -122,9 +123,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ToMainMenu
+      - m_Target: {fileID: 8042621713726613521}
+        m_TargetAssemblyTypeName: UI_MenuButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -148,6 +149,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
   clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
+--- !u!114 &8042621713726613521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848847929354157661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c8f75072f4c43eb8a47d4d81e49796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6352656675359290172
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +253,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.35
+  m_fontSize: 18
   m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 1

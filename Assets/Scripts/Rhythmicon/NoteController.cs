@@ -15,7 +15,7 @@ public class NoteController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GiocoManager.GetInstance();
+        gameManager = GiocoManager.Instance;
         CheckAndCalculateTempo();
     }
     private void OnValidate()

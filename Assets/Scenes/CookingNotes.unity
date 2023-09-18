@@ -999,14 +999,10 @@ PrefabInstance:
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3374360929469905258, guid: 64b94659d9f9548bfafe9b7336e42c93, type: 3}
+      objectReference: {fileID: 289333900}
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelManager, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1018,6 +1014,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7815225914669727546, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
   m_PrefabInstance: {fileID: 289333898}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &289333900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8042621713726613521, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
+  m_PrefabInstance: {fileID: 289333898}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c8f75072f4c43eb8a47d4d81e49796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &306425584
 GameObject:
   m_ObjectHideFlags: 0

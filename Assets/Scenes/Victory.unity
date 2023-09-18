@@ -377,53 +377,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1220159840
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1220159842}
-  - component: {fileID: 1220159841}
-  m_Layer: 0
-  m_Name: controllerButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1220159841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220159840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc6e25042c9e6bc4f9da931d18d6941a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MusicMixer: {fileID: 0}
-  EFXMixer: {fileID: 0}
-  MasterMixer: {fileID: 0}
---- !u!4 &1220159842
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220159840}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 421.33902, y: 117.30838, z: 1.3752799}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2551500041754706025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -515,14 +468,14 @@ PrefabInstance:
     - target: {fileID: 1591200362160672381, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1220159841}
+      objectReference: {fileID: 2551500041754706026}
     - target: {fileID: 1591200362160672381, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1591200362160672381, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GiocoManager, Assembly-CSharp
+      value: UI_MenuButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3278084470278942234, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_Name
@@ -531,11 +484,11 @@ PrefabInstance:
     - target: {fileID: 4030207217934258539, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1220159841}
+      objectReference: {fileID: 0}
     - target: {fileID: 6869647859394611206, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1220159841}
+      objectReference: {fileID: 0}
     - target: {fileID: 7660038483000093324, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
       propertyPath: m_Camera
       value: 
@@ -545,6 +498,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
+--- !u!114 &2551500041754706026 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 994854412738003789, guid: 3d6851c80082244fd84aaf2f6fac42a7, type: 3}
+  m_PrefabInstance: {fileID: 2551500041754706025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c8f75072f4c43eb8a47d4d81e49796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -553,4 +517,3 @@ SceneRoots:
   - {fileID: 95845326}
   - {fileID: 2551500041754706025}
   - {fileID: 150921506}
-  - {fileID: 1220159842}

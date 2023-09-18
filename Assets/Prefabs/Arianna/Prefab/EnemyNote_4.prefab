@@ -80,7 +80,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
@@ -246,29 +246,24 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 100018, guid: 7708e584cd8cf6a469b88e465fcc9150,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 100018, guid: 7708e584cd8cf6a469b88e465fcc9150, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3230674607113572750}
-    - targetCorrespondingSourceObject: {fileID: 100018, guid: 7708e584cd8cf6a469b88e465fcc9150,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 100018, guid: 7708e584cd8cf6a469b88e465fcc9150, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6879385290916764147}
-    - targetCorrespondingSourceObject: {fileID: 100018, guid: 7708e584cd8cf6a469b88e465fcc9150,
-        type: 3}
+    - targetCorrespondingSourceObject: {fileID: 100018, guid: 7708e584cd8cf6a469b88e465fcc9150, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2041859331100059788}
   m_SourcePrefab: {fileID: 100100000, guid: 7708e584cd8cf6a469b88e465fcc9150, type: 3}
 --- !u!4 &6894101374880633174 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400018, guid: 7708e584cd8cf6a469b88e465fcc9150,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 400018, guid: 7708e584cd8cf6a469b88e465fcc9150, type: 3}
   m_PrefabInstance: {fileID: 6894101374880762820}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6894101374880796022 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 100018, guid: 7708e584cd8cf6a469b88e465fcc9150,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 100018, guid: 7708e584cd8cf6a469b88e465fcc9150, type: 3}
   m_PrefabInstance: {fileID: 6894101374880762820}
   m_PrefabAsset: {fileID: 0}
 --- !u!135 &3230674607113572750
@@ -334,6 +329,7 @@ MonoBehaviour:
   speed: 10
   Bar: {fileID: 0}
   note: {fileID: 0}
+  Points: []
   ways: {fileID: 6074829575042148339}
   wayPoints: []
   colpito: 0

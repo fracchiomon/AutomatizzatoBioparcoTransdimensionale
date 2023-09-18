@@ -10,46 +10,75 @@ using System;
 /// </summary>
 public class GiocoManager : MonoBehaviour
 {
-    protected static GiocoManager Instance;
+    #region parte del Singleton
+    protected static GiocoManager _instance;
+
+    protected GiocoManager()
+    { }
+
+    public static GiocoManager Instance
+    {
+        get
+        {
+            //controllo se è registrato, perché poteri richiamare il get prima dell'awake
+            if (_instance == null)
+            {
+                //lo cerco nella scena
+                _instance = FindObjectOfType<GiocoManager>(true);
+
+                //controllo se l'ho trovato
+                if (_instance == null)
+                {
+                    //non è stato trovato e quindi lo creo
+                    //Resources.Load("Game"); //--> gli passo il nome di un file "" che si trova nella cartella Resource
+                    GameObject go = Instantiate<GameObject>(Resources.Load("Game") as GameObject);
+                    _instance = go.GetComponent<GiocoManager>();
+                    DontDestroyOnLoad(go);
+                }
+            }
+            return _instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+
+        else if (_instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
+#endregion
 
     [SerializeField] private AudioMixerGroup MusicMixer, EFXMixer, MasterMixer;
-
-
     private bool HasStarted;
+
     public bool GetHasStarted()
     {
         return HasStarted;
     }
+
     public void SetHasStarted(bool start)
     {
         HasStarted = start;
     }
 
 
-    protected GiocoManager()
-    { }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-
-
-    public static GiocoManager GetInstance()
-    {
-        return Instance;
-    }
-
-    public static void ToMainMenu()
+    public void ToMainMenu()
     {
         ScreenFader.Instance.StartFadeToOpaque(
             (Action)(() =>
@@ -59,32 +88,63 @@ public class GiocoManager : MonoBehaviour
             })
             );
     }
-    public static void OpenSettingsPanel()
+    public void OpenSettingsPanel()
     {
 
     }
-    public static void ToLevel1()
+    public void ToLevel1()
     {
-        SceneManager.LoadScene(sceneName: "Rhythmicon");
+         ScreenFader.Instance.StartFadeToOpaque(
+            (Action)(() =>
+            {
+                SceneManager.LoadScene(sceneName: "Rhythmicon");
+                ScreenFader.Instance.StartFadeToTransparent(null);
+            })
+            );
     }
-    public static void ToLevel2()
+    public void ToLevel2()
     {
-        SceneManager.LoadScene(sceneName: "NoteHunt");
+        ScreenFader.Instance.StartFadeToOpaque(
+           (Action)(() =>
+           {
+               SceneManager.LoadScene(sceneName: "NoteHunt");
+               ScreenFader.Instance.StartFadeToTransparent(null);
+           })
+           );
     }
-    public static void ToLevel3()
+    public void ToLevel3()
     {
-        SceneManager.LoadScene(sceneName: "FindTheTime");
+        ScreenFader.Instance.StartFadeToOpaque(
+           (Action)(() =>
+           {
+               SceneManager.LoadScene(sceneName: "FindTheTime");
+               ScreenFader.Instance.StartFadeToTransparent(null);
+           })
+           );
     }
-    public static void ToLevel4()
+    public void ToLevel4()
     {
-        SceneManager.LoadScene(sceneName: "CookingNotes");
+        ScreenFader.Instance.StartFadeToOpaque(
+           (Action)(() =>
+           {
+               SceneManager.LoadScene(sceneName: "CookingNotes");
+               ScreenFader.Instance.StartFadeToTransparent(null);
+           })
+           );
     }
-    public static void ToLevel5()
+    public void ToLevel5()
     {
-        SceneManager.LoadScene(sceneName: "WhackANote");
+        ScreenFader.Instance.StartFadeToOpaque(
+           (Action)(() =>
+           {
+               SceneManager.LoadScene(sceneName: "WhackANote");
+               ScreenFader.Instance.StartFadeToTransparent(null);
+           })
+           );
     }
 
-    public static void ExitGame()
+
+    public void ExitGame()
     {
         if (Application.isPlaying)
         {
@@ -92,10 +152,9 @@ public class GiocoManager : MonoBehaviour
         }
     }
 
-    public static void RHYTHMICON_ConfermaTornaAlMenu()
+    public void RHYTHMICON_ConfermaTornaAlMenu()
     {
         ToMainMenu();
-
     }
 
     public void SETTINGS_MusicVolumeSlider(float volume)
