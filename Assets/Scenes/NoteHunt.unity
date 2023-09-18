@@ -1534,9 +1534,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 771940105}
-  Points: []
+  Points:
+  - {fileID: 1565949049}
+  - {fileID: 797194489}
   ways: {fileID: 1903895537}
   wayPoints: []
   colpito: 0
@@ -7966,9 +7968,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 73574855}
-  Points: []
+  Points:
+  - {fileID: 154795590}
+  - {fileID: 862793376}
+  - {fileID: 742629842}
+  - {fileID: 1860015432}
+  - {fileID: 1697195562}
+  - {fileID: 1764676606}
   ways: {fileID: 1717052119}
   wayPoints: []
   colpito: 0
