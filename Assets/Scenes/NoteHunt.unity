@@ -688,8 +688,8 @@ MonoBehaviour:
   Bar: {fileID: 658481236}
   note: {fileID: 737805269}
   Points: []
+  notePoints: []
   ways: {fileID: 1514425367}
-  wayPoints: []
   colpito: 0
 --- !u!54 &295427248
 Rigidbody:
@@ -2124,8 +2124,8 @@ MonoBehaviour:
   Bar: {fileID: 658481236}
   note: {fileID: 380663478}
   Points: []
+  notePoints: []
   ways: {fileID: 1315225285}
-  wayPoints: []
   colpito: 0
 --- !u!54 &526725691
 Rigidbody:
@@ -2508,8 +2508,8 @@ MonoBehaviour:
   Bar: {fileID: 658481236}
   note: {fileID: 2047771969}
   Points: []
+  notePoints: []
   ways: {fileID: 1563295398}
-  wayPoints: []
   colpito: 0
 --- !u!54 &622508241
 Rigidbody:
@@ -4793,8 +4793,8 @@ MonoBehaviour:
   Bar: {fileID: 658481236}
   note: {fileID: 380663478}
   Points: []
+  notePoints: []
   ways: {fileID: 1429673099}
-  wayPoints: []
   colpito: 0
 --- !u!54 &1087638971
 Rigidbody:
@@ -5454,8 +5454,8 @@ MonoBehaviour:
   Bar: {fileID: 658481236}
   note: {fileID: 1283695402}
   Points: []
+  notePoints: []
   ways: {fileID: 1452599099}
-  wayPoints: []
   colpito: 0
 --- !u!54 &1287488929
 Rigidbody:
@@ -7295,8 +7295,8 @@ MonoBehaviour:
   Bar: {fileID: 658481236}
   note: {fileID: 0}
   Points: []
+  notePoints: []
   ways: {fileID: 2068004160}
-  wayPoints: []
   colpito: 0
 --- !u!54 &1900486826
 Rigidbody:
@@ -7372,8 +7372,8 @@ MonoBehaviour:
   Bar: {fileID: 658481236}
   note: {fileID: 704848268}
   Points: []
+  notePoints: []
   ways: {fileID: 1098971449}
-  wayPoints: []
   colpito: 0
 --- !u!54 &1911037274
 Rigidbody:
@@ -7877,10 +7877,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 100008, guid: 2580b1fe15543884aaf8621b6080330a, type: 3}
   CrossHair: {fileID: 2800000, guid: fe463b720f10d2c4cae5e9ecd1cc8282, type: 3}
   MuzzleFlashSpeed: 0.2
-  offset: 0
-  rotX: 0
-  rotY: 0
-  rotZ: 0
 --- !u!54 &2127373601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8009,8 +8005,8 @@ MonoBehaviour:
   Bar: {fileID: 658481236}
   note: {fileID: 1887944397}
   Points: []
+  notePoints: []
   ways: {fileID: 835592735}
-  wayPoints: []
   colpito: 0
 --- !u!54 &2142971809
 Rigidbody:
@@ -8192,6 +8188,54 @@ PrefabInstance:
       propertyPath: Points.Array.data[10]
       value: 
       objectReference: {fileID: 1617203869}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[0]
+      value: Sol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[1]
+      value: Fa
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[2]
+      value: Mi
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[3]
+      value: Re
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[4]
+      value: Do
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[5]
+      value: Si
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[6]
+      value: La
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[7]
+      value: Sol
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[8]
+      value: Fa
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[9]
+      value: Mi
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734864801877854759, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
+      propertyPath: notePoints.Array.data[10]
+      value: Re
+      objectReference: {fileID: 0}
     - target: {fileID: 5923024529663966330, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.25

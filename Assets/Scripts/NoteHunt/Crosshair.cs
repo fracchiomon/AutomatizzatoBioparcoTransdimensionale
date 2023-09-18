@@ -1,26 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Crosshair : MonoBehaviour
 {
-
-    //[SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private Transform PlayerTransform;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Texture2D CrossHair;
-
-
-    //[SerializeField] private Camera camera;                             
+                     
     [SerializeField] private float MuzzleFlashSpeed;                    //fiamma sparata velocità
-
-    // private float bulletSpeed = 10;--- VEDERE SE RIAGGIUNGERE
-
-    public float offset;
-    public float rotX;
-    public float rotY;
-    public float rotZ;
 
     Vector3 pos;
    // Vector3 prevMousePos;

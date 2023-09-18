@@ -1,9 +1,4 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class MoveNota : MonoBehaviour
@@ -23,7 +18,7 @@ public class MoveNota : MonoBehaviour
 
 
     public GameObject ways;                             //2 punti per il movimento della nota
-    public Transform[] wayPoints;
+    //public Transform[] wayPoints;
     int pointIndex;
     int pointCount;
     int direction = 1;
@@ -34,21 +29,21 @@ public class MoveNota : MonoBehaviour
 
 
 
-    private void Awake()
-    {
-        wayPoints = new Transform[ways.transform.childCount];
-        for ( int i = 0; i < ways.gameObject.transform.childCount; i++)
-        {
-            wayPoints[i] = ways.transform.GetChild(i).gameObject.transform;
-        }
-    }
+    //private void Awake()
+    //{
+    //    wayPoints = new Transform[ways.transform.childCount];
+    //    for ( int i = 0; i < ways.gameObject.transform.childCount; i++)
+    //    {
+    //        wayPoints[i] = ways.transform.GetChild(i).gameObject.transform;
+    //    }
+    //}
 
-    private void Start()
-    {
-        pointCount = wayPoints.Length;
-        pointIndex = 0;
-        targetPos = wayPoints[pointIndex].transform.position;
-    }
+    //private void Start()
+    //{
+    //    pointCount = wayPoints.Length;
+    //    pointIndex = 0;
+    //    targetPos = wayPoints[pointIndex].transform.position;
+    //}
 
     private void FixedUpdate()                  
     {
@@ -77,18 +72,17 @@ public class MoveNota : MonoBehaviour
         {
             _indexPoint = 0;
         }
-        //---------------------------------------------------------------------------------------------------------
+        if (colpito == true)
+        {
+            if (this.notePoints[_indexPoint] == Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag)
+            {
+                UI_Punt.UpdateScore(score);             //per lo score
+                note.SetActive(true);                   //serve per generare la nuova nota dopo che e' stata distrutta
+                transform.parent.gameObject.SetActive(false);
+            }
+            colpito = false;
 
-        ///Instantiate(note, transform.position, Quaternion.identity);
-       //// StartCoroutine(NoteTime());
-
-        //note.SetActive(false);
-
-        //new Vector3(x, y, 0), Quaternion.identity
-        // Quaternion.Euler(0, 90, 0), this.transform
-        //---------------------------------------------------------------------------------------------------------
-
-
+        }
     }
 
 
@@ -105,7 +99,7 @@ public class MoveNota : MonoBehaviour
         }
 
         pointIndex += direction;
-        targetPos = wayPoints[pointIndex].transform.position;
+       // targetPos = wayPoints[pointIndex].transform.position;
     }
 
 
@@ -114,35 +108,35 @@ public class MoveNota : MonoBehaviour
         colpito = true;
     }
 
-    public void OnTriggerStay(Collider other)
-    {
+    //public void OnTriggerStay(Collider other)
+    //{
 
-        //quando viene colpita la nota nella posizione giusta
-        if(colpito == true)
-        {
-            //Debug.Log(other.tag + "=othertag   bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
-            //Debug.Log("Other tag=" + other.tag);
-            //Debug.Log("Bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
-            if (other.tag == Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag)           //bar è per le note UI
-            {
-                Debug.Log("Other tag: " + other.tag);
-                //Destroy(transform.parent.gameObject);
+    //    //quando viene colpita la nota nella posizione giusta
+    //    if(colpito == true)
+    //    {
+    //        //Debug.Log(other.tag + "=othertag   bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
+    //        //Debug.Log("Other tag=" + other.tag);
+    //        //Debug.Log("Bar=" + Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag);
+    //        if (other.tag == Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag)           //bar è per le note UI
+    //        {
+    //            Debug.Log("Other tag: " + other.tag);
+    //            //Destroy(transform.parent.gameObject);
 
 
-                UI_Punt.UpdateScore(score);             //per lo score
+    //            UI_Punt.UpdateScore(score);             //per lo score
 
-                //Instantiate(note, transform.position, Quaternion.identity);
-                note.SetActive(true);                   //serve per generare la nuova nota dopo che e' stata distrutta
-                transform.parent.gameObject.SetActive(false);
+    //            //Instantiate(note, transform.position, Quaternion.identity);
+    //            note.SetActive(true);                   //serve per generare la nuova nota dopo che e' stata distrutta
+    //            transform.parent.gameObject.SetActive(false);
 
-               // Destroy(this.gameObject);
-            }
-            else 
-                colpito = false;
+    //           // Destroy(this.gameObject);
+    //        }
+    //        else 
+    //            colpito = false;
             
-        }
+    //    }
 
-    }
+   // }
 
     void OnMouseDown()
     {
