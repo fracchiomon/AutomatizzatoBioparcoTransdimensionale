@@ -92,16 +92,7 @@ public class Movement : MonoBehaviour
         this.hammer.GetComponent<HammerController>().Move();
     }
 
-    public void ToMainMenu()
-    {
-        ScreenFader.Instance.StartFadeToOpaque(
-            (Action)(() =>
-            {
-                SceneManager.LoadScene(sceneName: "MainMenu");
-                ScreenFader.Instance.StartFadeToTransparent(null);
-            })
-            );
-    }
+
 
 
 

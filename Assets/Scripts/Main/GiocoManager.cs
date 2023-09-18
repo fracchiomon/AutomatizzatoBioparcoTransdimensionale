@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using System;
 
 /// <summary>
 /// Creazione del Singleton del GameManager che si occupa della gestione delle transizione tra scene e meccaniche piu` importanti
@@ -50,7 +51,13 @@ public class GiocoManager : MonoBehaviour
 
     public static void ToMainMenu()
     {
-        SceneManager.LoadScene(sceneName: "MainMenu");
+        ScreenFader.Instance.StartFadeToOpaque(
+            (Action)(() =>
+            {
+                SceneManager.LoadScene(sceneName: "MainMenu");
+                ScreenFader.Instance.StartFadeToTransparent(null);
+            })
+            );
     }
     public static void OpenSettingsPanel()
     {
