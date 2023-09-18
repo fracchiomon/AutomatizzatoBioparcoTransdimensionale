@@ -1801,7 +1801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3333269211447949160, guid: 8ccd89c7f37cd4b4fa9bab242763fea2, type: 3}
       propertyPath: m_text
-      value: Whack-A-Note
+      value: Whack-A-Note!
       objectReference: {fileID: 0}
     - target: {fileID: 7478449192318511903, guid: 8ccd89c7f37cd4b4fa9bab242763fea2, type: 3}
       propertyPath: m_Name
@@ -5841,7 +5841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3333269211447949160, guid: 8ccd89c7f37cd4b4fa9bab242763fea2, type: 3}
       propertyPath: m_text
-      value: Note-Hunt
+      value: Note Hunt
       objectReference: {fileID: 0}
     - target: {fileID: 7478449192318511903, guid: 8ccd89c7f37cd4b4fa9bab242763fea2, type: 3}
       propertyPath: m_Name
@@ -6065,6 +6065,7 @@ GameObject:
   - component: {fileID: 1791567336}
   - component: {fileID: 1791567335}
   - component: {fileID: 1791567334}
+  - component: {fileID: 1791567337}
   m_Layer: 5
   m_Name: SettingsButtonOpen
   m_TagString: Untagged
@@ -6209,6 +6210,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791567332}
   m_CullTransparentMesh: 1
+--- !u!114 &1791567337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791567332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
+  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
 --- !u!1 &1810972047
 GameObject:
   m_ObjectHideFlags: 0
@@ -6512,6 +6527,7 @@ GameObject:
   - component: {fileID: 1842391249}
   - component: {fileID: 1842391248}
   - component: {fileID: 1842391247}
+  - component: {fileID: 1842391250}
   m_Layer: 5
   m_Name: SettingsButtonClose
   m_TagString: Untagged
@@ -6656,6 +6672,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842391245}
   m_CullTransparentMesh: 1
+--- !u!114 &1842391250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842391245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
+  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
 --- !u!1 &1852534159
 GameObject:
   m_ObjectHideFlags: 0
@@ -7694,7 +7724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3333269211447949160, guid: 8ccd89c7f37cd4b4fa9bab242763fea2, type: 3}
       propertyPath: m_text
-      value: 'Rhytmicon
+      value: 'Rhythmicon
 
 '
       objectReference: {fileID: 0}
