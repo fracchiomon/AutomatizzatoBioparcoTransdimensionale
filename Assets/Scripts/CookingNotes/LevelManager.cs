@@ -133,13 +133,17 @@ public class LevelManager : MonoBehaviour
             {
                 updateFrullatore(this._ricette[recipeIndex]);
                 updateDispensa(this._ricette[recipeIndex].ingredienti);
-                this.recipeIndex++;
 
                 //se le ricette sono finite, appare la schermata di vittoria
                 //con il punteggio ottenuto
                 if (this.recipeIndex == this._ricette.Length)
                 {
                     //this.recipeIndex = 0;
+                    SceneManager.LoadScene(sceneName: "Victory");
+                }
+                else
+                {
+                    this.recipeIndex++;
                 }
                 //passo allo startFadeToTransparent l'action da eseguire
                 //quando ha completato il toTransparent
