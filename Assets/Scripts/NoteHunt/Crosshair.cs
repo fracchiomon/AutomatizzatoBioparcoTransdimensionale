@@ -15,8 +15,6 @@ public class Crosshair : MonoBehaviour
     //[SerializeField] private Camera camera;                             
     [SerializeField] private float MuzzleFlashSpeed;                    //fiamma sparata velocità
 
-    //[SerializeField] private Camera camera;                             // --- VEDERE SE RIAGGIUNGERE
-    [SerializeField] private float MuzzleFlashSpeed;                    //fiamma sparata velocit?
     // private float bulletSpeed = 10;--- VEDERE SE RIAGGIUNGERE
 
     public float offset;
@@ -68,7 +66,7 @@ public class Crosshair : MonoBehaviour
             Destroy(bullet, MuzzleFlashSpeed);
  
 
-        }
+        
         //    Ray ray = Camera.main.ScreenPointToRay(pos);
         //    RaycastHit hit;
 
@@ -91,7 +89,7 @@ public class Crosshair : MonoBehaviour
         //}
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         // Destroy the gameObject after clicking on it
         Destroy(gameObject);

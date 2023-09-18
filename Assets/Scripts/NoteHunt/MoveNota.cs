@@ -14,12 +14,9 @@ public class MoveNota : MonoBehaviour
     //[SerializeField]private UI_Punt;
 
     //[SerializeField] private UI_FillableBar Bar;
-    [SerializeField] private GameObject Bar;
+             //sono le note che si generano ogni volta che si distrugge una
 
-
-    [SerializeField] private GameObject note;           //sono le note che si generano ogni volta che si distrugge una
-
-    [SerializeField] private UI_FillableBar Bar;
+    [SerializeField] private UI_BarNote Bar;
     [SerializeField] private GameObject note;    //sono le note che si generano ogni volta che si distrugge una
     public Transform[] Points;
 
