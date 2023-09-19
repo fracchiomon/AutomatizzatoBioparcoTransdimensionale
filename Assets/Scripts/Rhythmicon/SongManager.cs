@@ -27,7 +27,6 @@ public class SongManager : MonoBehaviour
 
     public AudioSource audioSource; //contiene la canzone
     public Lane[] lanes; //gestiscono le "corsie" sulle quali viaggeranno le note
-    //TODO: implementare piu songs in classe Song
     public string fileLocation; //dove si trova la canzone
     public uint BPM;
     public static int numOfNotes;
@@ -142,7 +141,7 @@ public class SongManager : MonoBehaviour
     {
         if (IsDebugEnabled)
             Debug.Log($"Valore nota: {ScoreManager._MAX_SCORE / numOfNotes}");
-        float noteValue = (ScoreManager._MAX_SCORE / numOfNotes > 0) ? ScoreManager._MAX_SCORE / numOfNotes : 100f;
+        float noteValue = (ScoreManager._MAX_SCORE / numOfNotes > 0) ? ScoreManager._MAX_SCORE / (numOfNotes * 2) : 100f;
         return noteValue;
     }
 
@@ -201,7 +200,7 @@ public class SongManager : MonoBehaviour
         numOfNotes = notes.Count;
         if (IsDebugEnabled)
             Debug.Log($"GetDataFromMidi()\nNumOfNotes: {numOfNotes}");
-        StartCoroutine(ScoreManager.CalcolaValoreNota());
+        StartCoroutine(ScoreManager.Instance.CalcolaValoreNota());
 
         foreach (var lane in lanes) lane.SetTimeStamps(array); //inizializzo le Lanes con i vari timestamps delle note
         SetNoteTime();
@@ -225,7 +224,28 @@ public class SongManager : MonoBehaviour
 
         //this.bgm.audioSource.volume = Mathf.Lerp(0, 1, 0.5f);
         this.bgm.audioSource.Stop();
+        if (Time.timeScale == 0) Time.timeScale = 1;
         audioSource.Play();
+    }
+    public void StopSong()
+    {
+        audioSource.Stop();
+    }
+    public void PauseSong()
+    {
+        float tempoPausa;
+        tempoPausa = audioSource.time;
+        if (Time.timeScale != 0)
+        {
+            audioSource.time = tempoPausa;
+            StartSong();
+        }
+        else
+        {
+            Time.timeScale = 0;
+            tempoPausa = audioSource.time;
+            this.bgm.audioSource.Play();
+        }
     }
 
     /// <summary>
