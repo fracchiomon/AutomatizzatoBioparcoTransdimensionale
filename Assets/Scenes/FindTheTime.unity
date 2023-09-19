@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17560424, g: 0.21973018, b: 0.30205703, a: 1}
+  m_IndirectSpecularColor: {r: 0.17560382, g: 0.2197296, b: 0.30205578, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -337,6 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 50
   punteggioVincita: 15
+  finalScore: {fileID: -8066169958573733425, guid: 5e2925508f38449258aad4a9e8c715c4, type: 3}
 --- !u!1 &263867777
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,6 +933,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  finalScore: {fileID: -8066169958573733425, guid: 5e2925508f38449258aad4a9e8c715c4, type: 3}
 --- !u!1001 &768750342
 PrefabInstance:
   m_ObjectHideFlags: 0

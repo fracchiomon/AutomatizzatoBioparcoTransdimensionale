@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17820194, g: 0.22312424, b: 0.3051898, a: 1}
+  m_IndirectSpecularColor: {r: 0.17820154, g: 0.22312379, b: 0.30518863, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2966,6 +2966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 50
   punteggioVincita: 25
+  finalScore: {fileID: -8066169958573733425, guid: 5e2925508f38449258aad4a9e8c715c4, type: 3}
 --- !u!1 &691325521
 GameObject:
   m_ObjectHideFlags: 0

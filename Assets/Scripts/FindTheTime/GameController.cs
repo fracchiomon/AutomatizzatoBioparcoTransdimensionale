@@ -31,7 +31,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private GameObject[] monsters;
     [SerializeField] private Animator[] movements;
-    [SerializeField] private Animator[] cardRotation; 
+    [SerializeField] private Animator[] cardRotation;
+
+    [SerializeField] private ScoreForMiniGame finalScore;
 
 
     private void Awake() // caricamento sprite note e durate 
@@ -241,9 +243,9 @@ public class GameController : MonoBehaviour
 
         if(countCorrectGuesses == gameGuesses)
         {
-            SceneManager.LoadScene(sceneName: "Lose");
-            Debug.Log("Game finished");
-            Debug.Log("It took you" + countGuesses + " many guesses to finish the game");
+            finalScore.SetHighScore(UI_Punt.Punteggio());
+            SceneManager.LoadScene(sceneName: "Victory");
+
         }
     }
 
