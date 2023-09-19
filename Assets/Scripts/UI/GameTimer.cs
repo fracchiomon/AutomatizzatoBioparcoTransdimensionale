@@ -5,33 +5,33 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
     Image fillableBar;
-    [SerializeField] private float maxTime ;
+    [SerializeField] private float maxTime;
     [SerializeField] private int punteggioVincita;
 
 
     private static float timeLeft;
 
-    [SerializeField] private ScoreForMiniGame finalScore; 
+    [SerializeField] private ScoreForMiniGame finalScore;
 
 
     void Start()
     {
         fillableBar = GetComponent<Image>();
 
-        
+
         timeLeft = maxTime;
     }
 
     void Update()
     {
-     
+
         timeLeft -= Time.deltaTime;
         fillableBar.fillAmount = timeLeft / maxTime;
 
-     
+
         Debug.Log(UI_Punt.Punteggio());
-        
-        if (timeLeft < 0 && UI_Punt.Punteggio()<punteggioVincita)
+
+        if (timeLeft < 0 && UI_Punt.Punteggio() < punteggioVincita)
         {
             Debug.Log("tempo finito");
 
@@ -51,7 +51,7 @@ public class GameTimer : MonoBehaviour
                 SaveManager.Instance.bestNoteHunt = UI_Punt.Punteggio();
 
             }
-            else if(SceneManager.GetActiveScene().buildIndex == 3)
+            else if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 SaveManager.Instance.bestFindTheNote = UI_Punt.Punteggio();
             }
@@ -66,7 +66,7 @@ public class GameTimer : MonoBehaviour
 
             Debug.Log("tempo finito");
 
-           // Time.timeScale = 0;
+            // Time.timeScale = 0;
         }
     }
 }

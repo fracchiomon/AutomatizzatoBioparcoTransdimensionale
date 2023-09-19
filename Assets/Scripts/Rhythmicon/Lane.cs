@@ -29,6 +29,9 @@ public class Lane : MonoBehaviour
     private int spawnIndex = 0; //indice della nota spawnata
     private int inputIndex = 0; //indice della nota colpita
 
+    public int maxMissedNotes { get; private set; }
+    public int missedNotes { get; private set; }
+
 
     private void Start()
     {
@@ -41,6 +44,8 @@ public class Lane : MonoBehaviour
             DEBUG_TEXT.SetText("START");
         }
         //------------END_DEBUG_SECTION--------//
+        maxMissedNotes = ScoreManager.Instance.GetMaxMissedNotes();
+        missedNotes = ScoreManager.Instance.GetMissedNotes();
     }
 
     // Update is called once per frame
@@ -232,6 +237,7 @@ public class Lane : MonoBehaviour
     {
         notes[inputIndex].GetComponent<SpriteRenderer>().color = Color.white;
         notes[inputIndex].GetComponent<Note>().CanBePressed = false;
+        missedNotes++;
 
         ScoreManager.Miss(); //suona l'efx e resetta combo
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -10,14 +11,25 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     [SerializeField] private SongManager songManager;
 
+
+
+
     public AudioSource hitSFX;
     //public AudioSource missSFX;
     [SerializeField] private TextMeshProUGUI ScoreText, ComboText;
+
+    private int maxMissedNotes, missedNotes;
+    public int GetMaxMissedNotes() { return maxMissedNotes; }
+    public void SetMaxMissedNotes(int numOfMaxMissNotes) { this.missedNotes = numOfMaxMissNotes; }
+    public int GetMissedNotes() { return missedNotes; }
+    public void SetMissedNotes(int numOfMissNotes) { this.missedNotes = numOfMissNotes; }
+
+
     public static int ComboScore { get; private set; }
     private static int _scoreMultiplier;
     public static int GetScoreMultiplier() { return _scoreMultiplier; }
     public static void SetScoreMultiplier(int scoreMult) { _scoreMultiplier = scoreMult; }
-    private static uint _score;
+    private static int _score;
 
     private static float _NoteValue;
     public static readonly uint _MAX_SCORE = 100000;
@@ -59,6 +71,7 @@ public class ScoreManager : MonoBehaviour
         ComboScore = 0;
         _score = 0;
         _scoreMultiplier = 0;
+        SetMissedNotes(0);
 
 
         if (IsDebugEnabled)
@@ -70,18 +83,39 @@ public class ScoreManager : MonoBehaviour
         ScoreText.text = "Punteggio: " + _score.ToString();
         ComboText.text = "Moltiplicatore: " + GetScoreMultiplier().ToString();
         ControllaInput();
-        SongManager.CheckEndGame();
+        if (CheckEndGame())
+            End();
+
         if (IsDebugEnabled)
         {
             if (SongManager.Instance.audioSource != null)
             {
                 print($"Tempo passato: {SongManager.GetAudioSourceTime()}\nTempo canzone: {SongManager.Instance.audioSource.clip.length}");
+                print($"EndGame? => {CheckEndGame()}\nScena: {SceneManager.GetActiveScene().name}, caricata: {SceneManager.GetActiveScene().isLoaded}");
             }
         }
 
+
+    }
+    public bool CheckEndGame()
+    {
+        if (SongManager.Instance.audioSource != null)
+        {
+            if (SongManager.Instance.audioSource.clip.length < SongManager.GetAudioSourceTime())
+            {
+                SongManager.Instance.StopSong();
+                return true;
+            }
+        }
+        return false;
     }
 
-
+    void End()
+    {
+        SaveManager.Instance.bestRythmicon = _score;
+        SaveManager.Instance.Save();
+        SceneManager.LoadScene(sceneName: "Victory");
+    }
     /// <summary>
     /// Sfrutto l'Update di ScoreManager per controllare se Utente digita alcuni comandi chiave come ESC per tornare al menu
     /// </summary>
@@ -112,14 +146,14 @@ public class ScoreManager : MonoBehaviour
     public static void PerfectHit()
     {
         ComboScore += 1;
-        _score += (uint)(_NoteValue * GetScoreMultiplier());
+        _score += (int)(_NoteValue * GetScoreMultiplier());
         Instance.hitSFX.pitch = UnityEngine.Random.Range(0.985f, 1.085f);
         Instance.hitSFX.Play();
     }
 
     public static IEnumerator CheckAndUpdateScoreMultiplier()
     {
-        int multPer1_Threshold = 0, multPer2_Threshold = 4, multPer3_Threshold = multPer2_Threshold * 2, multPer4_Threshold = multPer2_Threshold * 3, multPer5_Threshold = multPer2_Threshold * 5;  //threshold grezze per l'incremento del moltiplicatore del punteggio
+        int multPer1_Threshold = 0, multPer2_Threshold = 4, multPer3_Threshold = multPer2_Threshold * 2, multPer4_Threshold = multPer2_Threshold * 3, multPer5_Threshold = multPer3_Threshold * 5;  //threshold grezze per l'incremento del moltiplicatore del punteggio
 
         if (multPer1_Threshold < ComboScore && ComboScore < multPer2_Threshold)
         {

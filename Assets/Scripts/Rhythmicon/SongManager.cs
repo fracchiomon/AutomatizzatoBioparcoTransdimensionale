@@ -146,6 +146,11 @@ public class SongManager : MonoBehaviour
         return noteValue;
     }
 
+    public void SetMaxMissedNotesNumber()
+    {
+        ScoreManager.Instance.SetMaxMissedNotes((int)(numOfNotes * 0.15));
+    }
+
     /// <summary>
     /// La funzione aggiorna il valore di noteTime dividendo i Battiti per minuto su 60 secondi, ottiene così un valore in secondi
     /// </summary>
@@ -205,6 +210,7 @@ public class SongManager : MonoBehaviour
 
         foreach (var lane in lanes) lane.SetTimeStamps(array); //inizializzo le Lanes con i vari timestamps delle note
         SetNoteTime();
+        SetMaxMissedNotesNumber();
         Invoke(nameof(StartSong), songDelayInSeconds); //richiamo il metodo per avviare la canzone
     }
 
@@ -231,7 +237,6 @@ public class SongManager : MonoBehaviour
     public void StopSong()
     {
         audioSource.Stop();
-        SceneManager.LoadSceneAsync("Victory");
     }
     public void PauseSong()
     {
@@ -259,16 +264,6 @@ public class SongManager : MonoBehaviour
         return (float)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
     }
 
-    public static void CheckEndGame()
-    {
-        if (Instance.audioSource != null)
-        {
-            if (Instance.audioSource.clip.length < GetAudioSourceTime())
-            {
-                Instance.StopSong();
-            }
 
-        }
-    }
 
 }
