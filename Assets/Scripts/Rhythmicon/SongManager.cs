@@ -5,6 +5,7 @@ using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
 using System;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Singleton responsabile del parsing del file MIDI tramite Melanchall, associato alla canzone scelta; il file viene filtrato dalle Lanes (vedi Lane.cs) che si prendono la nota MIDI corrispondente, e si occupano di gestire le note e l'input da tastiera e Mouse. 
@@ -230,6 +231,7 @@ public class SongManager : MonoBehaviour
     public void StopSong()
     {
         audioSource.Stop();
+        SceneManager.LoadScene("Victory");
     }
     public void PauseSong()
     {
@@ -255,6 +257,15 @@ public class SongManager : MonoBehaviour
     public static float GetAudioSourceTime()
     {
         return (float)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+    }
+
+    public static void CheckEndGame()
+    {
+        if (Instance.audioSource != null)
+        {
+            if (Instance.audioSource.clip.length < GetAudioSourceTime())
+                Instance.StopSong();
+        }
     }
 
 }

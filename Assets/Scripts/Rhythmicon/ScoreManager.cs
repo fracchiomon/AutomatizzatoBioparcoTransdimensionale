@@ -32,10 +32,12 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
             Instance = this;
         }
-        _quitGameCanvas = FindObjectOfType<QuitGameCanvas>().GetComponentInParent<Canvas>();
-        _songSelectCanvas = FindObjectOfType<SongSelectCanvas>().GetComponentInParent<Canvas>();
-        _quitGameCanvas.enabled = false;
-        _songSelectCanvas.enabled = true;
+        _quitGameCanvas = FindObjectOfType<QuitGameCanvas>(includeInactive: true).GetComponentInParent<Canvas>();
+        _songSelectCanvas = FindObjectOfType<SongSelectCanvas>(includeInactive: true).GetComponentInParent<Canvas>();
+        if (_quitGameCanvas != null)
+            _quitGameCanvas.enabled = false;
+        if (_songSelectCanvas != null)
+            _songSelectCanvas.enabled = true;
     }
     void Start()
     {
@@ -57,6 +59,14 @@ public class ScoreManager : MonoBehaviour
         ScoreText.text = "Punteggio: " + _score.ToString();
         ComboText.text = "Moltiplicatore: " + GetScoreMultiplier().ToString();
         ControllaInput();
+        SongManager.CheckEndGame();
+        if (IsDebugEnabled)
+        {
+            if (SongManager.Instance.audioSource != null)
+            {
+                print($"Tempo passato: {SongManager.GetAudioSourceTime()}\nTempo canzone: {SongManager.Instance.audioSource.clip.length}");
+            }
+        }
 
     }
 
