@@ -13,7 +13,12 @@ public class MenuManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log( SaveManager.Instance.bestCookingNotes + " " + SaveManager.Instance.bestRythmicon);
+            Debug.Log( SaveManager.Instance.bestRythmicon + " " + SaveManager.Instance.bestNoteHunt + " " +
+
+                SaveManager.Instance.bestFindTheNote + " " + SaveManager.Instance.bestCookingNotes + " " +
+                SaveManager.Instance.bestWhackANote
+
+                );
         }
     }
 
