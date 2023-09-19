@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
     private int recipeIndex;
     private Cronometro gameTimer;
     private bool _isOnPlay;
+    private int maxPunteggio;
 
     public bool isOnPlay
     {
@@ -51,8 +52,9 @@ public class LevelManager : MonoBehaviour
         this.gameTimer = FindObjectOfType<Cronometro>();
         this.updateFrullatore = FindObjectOfType<FrullatoreController>().UpdateRicetta;
         this.updateDispensa = FindObjectOfType<UI_windowDispensa>().UpdateIngredienti;
-        this.recipeIndex = 1;
+        this.recipeIndex = 0;
         this.score = 0;
+        this.maxPunteggio = 0;
         this._isOnPlay = true;
         this.gameTimer.setGameTime(this.inGameTime);
     }
@@ -121,6 +123,12 @@ public class LevelManager : MonoBehaviour
             this.score = 0;
         }
         this.totScore.Add(this.score);
+
+        if(this.score > this.maxPunteggio)
+        {
+            this.maxPunteggio = this.score;
+        }
+
         return this.score;
     }
 
@@ -131,19 +139,19 @@ public class LevelManager : MonoBehaviour
         ScreenFader.Instance.StartFadeToOpaque(
             (Action)(() =>
             {
-                updateFrullatore(this._ricette[recipeIndex]);
-                updateDispensa(this._ricette[recipeIndex].ingredienti);
-
-                //se le ricette sono finite, appare la schermata di vittoria
-                //con il punteggio ottenuto
-                if (this.recipeIndex == this._ricette.Length)
+                if(this.recipeIndex < this._ricette.Length - 1)
                 {
-                    //this.recipeIndex = 0;
-                    SceneManager.LoadScene(sceneName: "Victory");
+                    this.recipeIndex++;
+                    updateFrullatore(this._ricette[recipeIndex]);
+                    updateDispensa(this._ricette[recipeIndex].ingredienti);
                 }
                 else
                 {
-                    this.recipeIndex++;
+                    SaveManager.Instance.bestCookingNotes = this.maxPunteggio;
+                    SaveManager.Instance.Save();
+
+                    //this.recipeIndex = 0;
+                    SceneManager.LoadScene(sceneName: "Victory");
                 }
                 //passo allo startFadeToTransparent l'action da eseguire
                 //quando ha completato il toTransparent

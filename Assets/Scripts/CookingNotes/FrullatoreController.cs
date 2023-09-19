@@ -8,6 +8,7 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.Pool;
 
+
 public class FrullatoreController : MonoBehaviour
 {
     [SerializeField] private Transform outPoint;
@@ -234,7 +235,7 @@ public class FrullatoreController : MonoBehaviour
         }
         catch(Exception e)
         {
-            Debug.Log(e);
+            this.BlenderMessage("Sono vuoto, non ho più nulla da togliere!", messageT);
         }
 
     }
