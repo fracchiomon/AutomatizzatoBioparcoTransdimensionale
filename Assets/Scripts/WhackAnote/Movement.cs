@@ -17,7 +17,6 @@ public class Movement : MonoBehaviour
     private Action<String, int> MoleMessage;
     private AudioSource noteSound;
     private bool notaSuonata;
-    public Text gameText;
     public Text pointText;
     private float punteggioPartita;
     public int index = 0;
@@ -104,7 +103,6 @@ public class Movement : MonoBehaviour
 
     private void GestioneUI()
     {
-        gameText.text = this.cron.GetComponent<Cronometro>().getGameTime().ToString();
         pointText.text = punteggioPartita.ToString();
     }
 

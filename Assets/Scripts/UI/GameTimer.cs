@@ -8,6 +8,7 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private float maxTime ;
     [SerializeField] private int punteggioVincita;
 
+
     private static float timeLeft;
 
     [SerializeField] private ScoreForMiniGame finalScore; 
@@ -16,6 +17,8 @@ public class GameTimer : MonoBehaviour
     void Start()
     {
         fillableBar = GetComponent<Image>();
+
+        
         timeLeft = maxTime;
     }
 
@@ -39,8 +42,10 @@ public class GameTimer : MonoBehaviour
         else if (timeLeft < 0 && UI_Punt.Punteggio() >= punteggioVincita)
         {
 
-
             finalScore.SetHighScore(UI_Punt.Punteggio());
+
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 SaveManager.Instance.bestNoteHunt = UI_Punt.Punteggio();
