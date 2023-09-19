@@ -1,21 +1,9 @@
 using System.Collections;
-
 using UnityEngine;
 
 
 public class UI_BarNote : MonoBehaviour
 {
-
-    //Image fillableBar;
-    //[SerializeField] private float maxTime = 70f;
-    float TimeLeft;
-    // private float timeSpawn = 0;
-
- 
-
-    //[SerializeField] private Text scoreText;
-
-
     private int choice = 0;                     //serve per generare nuove note tramite il switch
     private bool isNext = true;                 //per cambiare la nota UI
     private int prev;                           //per non generare una nota successiva uguale nella UI
@@ -26,10 +14,7 @@ public class UI_BarNote : MonoBehaviour
 
 
     void Start()
-    {
-        //fillableBar = GetComponent<Image>();
-        // timeLeft = maxTime;
-        
+    {   
         for (int i = 0; i < note.Length; i++)
         {
             note[i].SetActive(false);
@@ -37,13 +22,8 @@ public class UI_BarNote : MonoBehaviour
     }
 
     private void Update()
-    {
-
-        //  timeLeft -= Time.deltaTime;
-        // fillableBar.fillAmount = timeLeft / maxTime;
-
-        
-        if (/*TimeLeft > 0 &&*/ isNext)
+    { 
+        if (isNext)
         {
             
             choice = new System.Random().Next(0, 6);
@@ -107,18 +87,6 @@ public class UI_BarNote : MonoBehaviour
             prev = choice;
 
         }
-        //else
-        //{
-        //    UI_Punt.Punteggio();
-        //}
-        
-        //else /*if (TimeLeft < 0)*/
-        //{
-        //    UI_Punt.Punteggio();
-
-        //    //Time.timeScale = 0;                     //quando la barra finisce termina il gioco
-        //}
-
     }
 
     IEnumerator NoteTime(int ch)                        //stabilisce il tempo della nota che deve essere generata nella UI

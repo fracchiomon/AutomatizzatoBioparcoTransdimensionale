@@ -7,14 +7,19 @@ public class HammerController : MonoBehaviour
     private float rotationSpeed = 5.0f; // Velocità di rotazione
     private float startTime; // Tempo di inizio della rotazione
     private bool isRotating = false;
-    //private Transform hammerCoord;
     [SerializeField] private float moveSpeed = 6.0f;
-
+    private float minX = -4.0f;
+    private float maxX = 4.0f;
     public void Move()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         Vector3 movement = new Vector3(horizontalInput * moveSpeed * Time.deltaTime, 0, 0);
-        transform.Translate(movement);
+        Vector3 newPosition = transform.position + movement;
+
+        // Assicurati che la nuova posizione sia compresa tra minX e maxX
+        newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
+
+        transform.position = newPosition;
 
         if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown("space")) && !isRotating)
         {
@@ -46,18 +51,5 @@ public class HammerController : MonoBehaviour
             transform.localRotation = Quaternion.Euler(rotationAngle, 0.0f, 0.0f);
         }
 
-        //if (this.hammerCoord.position.y < -4)
-        //{
-        //    Vector3 hammerPos = transform.position;
-        //    hammerPos.y += moveSpeed * Time.deltaTime;
-        //    transform.position = hammerPos;
-        //}
-
-        //if (this.hammerCoord.position.y > 4)
-        //{
-        //    Vector3 hammerPos = transform.position;
-        //    hammerPos.y -= moveSpeed * Time.deltaTime;
-        //    transform.position = hammerPos;
-        //}
     }
 }

@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
     {
         int sharedRandIndex = UnityEngine.Random.Range(0, Notes.Length - 1);
         RandomNote.SetRandomIndex(sharedRandIndex);
-        rightNote.text = "Schiaccia la Nota " + Notes[sharedRandIndex];
+        rightNote.text = "whack the note " + Notes[sharedRandIndex];
     }
 
     // Start is called before the first frame update
