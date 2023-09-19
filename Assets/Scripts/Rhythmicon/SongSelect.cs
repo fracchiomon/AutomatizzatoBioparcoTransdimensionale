@@ -17,7 +17,6 @@ public class SongSelect : MonoBehaviour
     public List<Song> Songs;
 
 
-    // Start is called before the first frame update
     void Awake()
     {
         if (Instance == null) Instance = this;

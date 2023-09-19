@@ -15,6 +15,7 @@ public class SongManager : MonoBehaviour
     public bool nonStaticIsDebugEnabled;
     public float DEBUG_TIMESCALE;
 
+    private BackGroundMusic bgm;
     public static SongManager Instance { get; private set; } //per richiamare istanza di questo oggetto
     public ScoreManager scoreManager;
     public SongSelect SongSelection { get; private set; }
@@ -50,12 +51,14 @@ public class SongManager : MonoBehaviour
     {
         Instance = this; // istanzio il singleton
         IsDebugEnabled = nonStaticIsDebugEnabled;
+        bgm = FindObjectOfType<BackGroundMusic>();
 
 
     }
     private void Start()
     {
-        Time.timeScale = 0; //start da tempo fermo, avvia quando selezionata canzone
+        //if (ScreenFader.Instance) occorre sapere da 
+        //Time.timeScale = 0; //start da tempo fermo, avvia quando selezionata canzone
 
         SongSelection = SongSelect.GetInstance();
 
@@ -209,11 +212,19 @@ public class SongManager : MonoBehaviour
     public void StartGame()
     {
         if (Time.timeScale != 1)
+        {
+
             Time.timeScale = 1;
+
+
+        }
 
     }
     public void StartSong() //riproduce il file audio
     {
+
+        //this.bgm.audioSource.volume = Mathf.Lerp(0, 1, 0.5f);
+        this.bgm.audioSource.Stop();
         audioSource.Play();
     }
 
