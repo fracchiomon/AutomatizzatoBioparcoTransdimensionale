@@ -69,13 +69,13 @@ public class Note : MonoBehaviour
         float movementSpeed = (SongManager.Instance.noteSpawnY - SongManager.Instance.noteDespawnY) / (SongManager.Instance.noteTime * 2);
         float movementAmountThisFrame = movementSpeed * Time.deltaTime;
 
-        bool checkTmoreThanOne;
+        //bool checkTmoreThanOne;
 
         if (t > 1)
         {
             if (IsDebugEnabled)
             {
-                checkTmoreThanOne = true;
+                //checkTmoreThanOne = true;
                 //DEBUG_TEXT.SetText($"t = {t}; t > 1 ? {checkTmoreThanOne}");
 
             }
@@ -86,7 +86,7 @@ public class Note : MonoBehaviour
             if (IsDebugEnabled)
             {
 
-                checkTmoreThanOne = false;
+                //checkTmoreThanOne = false;
                 //DEBUG_TEXT.SetText($"t = {t}; t > 1 ? {checkTmoreThanOne}");
             }
 
