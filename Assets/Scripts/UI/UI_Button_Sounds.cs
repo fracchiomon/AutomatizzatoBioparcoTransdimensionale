@@ -18,6 +18,7 @@ public class UI_Button_Sounds : MonoBehaviour, IPointerEnterHandler
 
         hoverAudio.playOnAwake = clickAudio.playOnAwake = false;
         hoverAudio.priority = clickAudio.priority = 1;
+        clickAudio.volume = 1f;
 
     }
 
@@ -26,7 +27,7 @@ public class UI_Button_Sounds : MonoBehaviour, IPointerEnterHandler
         if (hoverEFX != null)
         {
             hoverAudio.clip = hoverEFX;
-            hoverAudio.PlayOneShot(hoverEFX);
+            hoverAudio.Play();
         }
     }
 
@@ -35,7 +36,7 @@ public class UI_Button_Sounds : MonoBehaviour, IPointerEnterHandler
         if (clickEFX != null)
         {
             clickAudio.clip = clickEFX;
-            clickAudio.PlayOneShot(clickEFX);
+            clickAudio.Play();
         }
     }
 

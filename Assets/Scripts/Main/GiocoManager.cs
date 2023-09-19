@@ -62,7 +62,7 @@ public class GiocoManager : MonoBehaviour
             _instance = null;
         }
     }
-#endregion
+    #endregion
 
     [SerializeField] private AudioMixerGroup MusicMixer, EFXMixer, MasterMixer;
     private bool HasStarted;
@@ -94,13 +94,14 @@ public class GiocoManager : MonoBehaviour
     }
     public void ToLevel1()
     {
-         ScreenFader.Instance.StartFadeToOpaque(
-            (Action)(() =>
-            {
-                SceneManager.LoadScene(sceneName: "Rhythmicon");
-                ScreenFader.Instance.StartFadeToTransparent(null);
-            })
-            );
+        ScreenFader.Instance.StartFadeToOpaque(
+           (Action)(() =>
+           {
+               SceneManager.LoadScene(sceneName: "Rhythmicon");
+               ScreenFader.Instance.StartFadeToTransparent(null);
+               Time.timeScale = 0;
+           })
+           );
     }
     public void ToLevel2()
     {
