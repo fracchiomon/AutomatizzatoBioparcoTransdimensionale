@@ -16,11 +16,12 @@ public class SaveData
     public int scoreFindTheNote;
     public int scoreWhackANote;
 
-    public SaveData()
+    public SaveData(/*int scoreRythmicon, int scoreNoteHunt, int scoreCookingNotes, int scoreFindTheNote, int */)
     {
         this.scoreRythmicon = 0;
         this.scoreNoteHunt = 0;
         this.scoreCookingNotes = 0;
+        this.scoreFindTheNote = 0;
         this.scoreWhackANote = 0;
     }
 

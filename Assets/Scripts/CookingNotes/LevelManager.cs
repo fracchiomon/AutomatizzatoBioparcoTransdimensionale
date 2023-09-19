@@ -138,6 +138,11 @@ public class LevelManager : MonoBehaviour
                 //con il punteggio ottenuto
                 if (this.recipeIndex == this._ricette.Length)
                 {
+                    //fzn del GiocoManager che prende il punteggio
+
+                    //SaveManager.Instance.bestCookingNotes = this.maxPunteggio;
+                    //SaveManager.Instance.Save();
+
                     //this.recipeIndex = 0;
                     SceneManager.LoadScene(sceneName: "Victory");
                 }
