@@ -29,13 +29,17 @@ public class GameTimer : MonoBehaviour
         {
             Debug.Log("tempo finito");
 
-            Time.timeScale = 0;                     //quando la barra finisce termina il gioco
+           // Time.timeScale = 0;                     //quando la barra finisce termina il gioco
 
             SceneManager.LoadScene(sceneName: "Lose");
         }
-        else if (timeLeft < 0 && UI_Punt.Punteggio() > punteggioVincita)
+        else if (timeLeft < 0 && UI_Punt.Punteggio() >= punteggioVincita)
         {
             SceneManager.LoadScene(sceneName: "Victory");
+
+            Debug.Log("tempo finito");
+
+           // Time.timeScale = 0;
         }
     }
 }

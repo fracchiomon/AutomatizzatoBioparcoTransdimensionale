@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour
 
     private bool firstAnim1, firstAnim2;
 
+    private int addScore = 5; 
+
     [SerializeField] private GameObject[] monsters;
     [SerializeField] private Animator[] movements;
     [SerializeField] private Animator[] cardRotation; 
@@ -184,7 +186,7 @@ public class GameController : MonoBehaviour
                 movements[i].SetTrigger("from idle to correct");
             }
 
-            UI_Punt.UpdateScore(5);
+            UI_Punt.UpdateScore(addScore);
 
             CheckIfTheGameIsFinished();
         }
@@ -239,7 +241,7 @@ public class GameController : MonoBehaviour
 
         if(countCorrectGuesses == gameGuesses)
         {
-            SceneManager.LoadScene(sceneName: "Victory");
+            SceneManager.LoadScene(sceneName: "Lose");
             Debug.Log("Game finished");
             Debug.Log("It took you" + countGuesses + " many guesses to finish the game");
         }

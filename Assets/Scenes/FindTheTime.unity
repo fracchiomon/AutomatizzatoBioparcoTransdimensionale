@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eea3590e5654cbfbd80b3b62c596aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 20
-  punteggioVincita: 10
+  maxTime: 50
+  punteggioVincita: 15
 --- !u!1 &263867777
 GameObject:
   m_ObjectHideFlags: 0
