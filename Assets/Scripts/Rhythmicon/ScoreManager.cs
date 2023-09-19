@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -32,12 +33,22 @@ public class ScoreManager : MonoBehaviour
             Destroy(gameObject);
             Instance = this;
         }
-        _quitGameCanvas = FindObjectOfType<QuitGameCanvas>(includeInactive: true).GetComponentInParent<Canvas>();
-        _songSelectCanvas = FindObjectOfType<SongSelectCanvas>(includeInactive: true).GetComponentInParent<Canvas>();
-        if (_quitGameCanvas != null)
-            _quitGameCanvas.enabled = false;
-        if (_songSelectCanvas != null)
-            _songSelectCanvas.enabled = true;
+        try
+        {
+            _quitGameCanvas = FindObjectOfType<QuitGameCanvas>(includeInactive: true).GetComponentInParent<Canvas>();
+            _songSelectCanvas = FindObjectOfType<SongSelectCanvas>(includeInactive: true).GetComponentInParent<Canvas>();
+            if (_quitGameCanvas != null)
+                _quitGameCanvas.enabled = false;
+            if (_songSelectCanvas != null)
+                _songSelectCanvas.enabled = true;
+        }
+        catch
+        {
+            if (IsDebugEnabled)
+            {
+                print(new Exception().Message);
+            }
+        }
     }
     void Start()
     {
@@ -79,10 +90,10 @@ public class ScoreManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //GiocoManager.Instance.RHYTHMICON_ConfermaTornaAlMenu();
-            if (_songSelectCanvas.enabled) _songSelectCanvas.enabled = false;
-            _quitGameCanvas.enabled = true;
-            SongManager.Instance.PauseSong();
+            GiocoManager.Instance.RHYTHMICON_ConfermaTornaAlMenu();
+            //if (_songSelectCanvas.enabled) _songSelectCanvas.enabled = false;
+            //_quitGameCanvas.enabled = true;
+            //SongManager.Instance.PauseSong();
 
 
         }
@@ -102,7 +113,7 @@ public class ScoreManager : MonoBehaviour
     {
         ComboScore += 1;
         _score += (uint)(_NoteValue * GetScoreMultiplier());
-        Instance.hitSFX.pitch = Random.Range(0.985f, 1.085f);
+        Instance.hitSFX.pitch = UnityEngine.Random.Range(0.985f, 1.085f);
         Instance.hitSFX.Play();
     }
 

@@ -231,7 +231,7 @@ public class SongManager : MonoBehaviour
     public void StopSong()
     {
         audioSource.Stop();
-        SceneManager.LoadScene("Victory");
+        SceneManager.LoadSceneAsync("Victory");
     }
     public void PauseSong()
     {
