@@ -1,23 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using FMOD;
+using FMODUnity;
 
 public class UI_Button_Sounds : MonoBehaviour, IPointerEnterHandler
 {
-    [SerializeField] private AudioClip hoverEFX, clickEFX;
+    [SerializeField] private StudioEventEmitter hoverEFX, clickEFX;
     private Button thisBtn;
-    private AudioSource hoverAudio, clickAudio;
 
     void Awake()
     {
         thisBtn = GetComponent<Button>();
-        hoverAudio = this.gameObject.AddComponent<AudioSource>();
-        clickAudio = this.gameObject.AddComponent<AudioSource>();
+        //hoverAudio = this.gameObject.AddComponent<AudioSource>();
+        //clickAudio = this.gameObject.AddComponent<AudioSource>();
 
-        hoverAudio.playOnAwake = clickAudio.playOnAwake = false;
-        hoverAudio.priority = clickAudio.priority = 1;
+        //hoverAudio.playOnAwake = clickAudio.playOnAwake = false;
+        //hoverAudio.priority = clickAudio.priority = 1;
 
     }
 
@@ -25,8 +24,7 @@ public class UI_Button_Sounds : MonoBehaviour, IPointerEnterHandler
     {
         if (hoverEFX != null)
         {
-            hoverAudio.clip = hoverEFX;
-            hoverAudio.PlayOneShot(hoverEFX);
+            hoverEFX.Play();
         }
     }
 
@@ -34,8 +32,7 @@ public class UI_Button_Sounds : MonoBehaviour, IPointerEnterHandler
     {
         if (clickEFX != null)
         {
-            clickAudio.clip = clickEFX;
-            clickAudio.PlayOneShot(clickEFX);
+            clickEFX.Play();
         }
     }
 

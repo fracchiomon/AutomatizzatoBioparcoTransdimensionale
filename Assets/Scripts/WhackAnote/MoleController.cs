@@ -1,13 +1,13 @@
 using System;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using FMODUnity;
 
 public class MoleController : MonoBehaviour
 {
     [SerializeField] private float MoveSpeed;
     [SerializeField] private GameObject randNote;
     [SerializeField] private String[] Notes;
-    private AudioSource bonk;
+    private StudioEventEmitter bonk;
     public Transform[] Points;
     public int _indexPoint = 0;
     private int _indexNote = 0;
@@ -28,7 +28,7 @@ public class MoleController : MonoBehaviour
         this.hasFinished = false;
         this.isHitted = false;
         this.point = 10.0f;
-        this.bonk = GetComponent<AudioSource>();
+        this.bonk = GetComponent<StudioEventEmitter>();
     }
 
     public void Move()

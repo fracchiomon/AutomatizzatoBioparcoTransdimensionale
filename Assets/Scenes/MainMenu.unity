@@ -1550,37 +1550,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &407367785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407367778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 2029140947
-      Data2: 1226277326
-      Data3: 972178338
-      Data4: -194893433
-    Path: event:/WhackANote/EFX_MOLE_NOTE
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  AllowNonRigidbodyDoppler: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1001 &470118740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2888,15 +2857,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8723321559174685600, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3770369161191622540, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 407367784}
-    - targetCorrespondingSourceObject: {fileID: 3770369161191622540, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 407367785}
   m_SourcePrefab: {fileID: 100100000, guid: 51e12d8e2fbfd2947a969f3f8012a6c1, type: 3}
 --- !u!1 &655075629
 GameObject:
@@ -3124,6 +3091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 714861281}
   - component: {fileID: 714861282}
+  - component: {fileID: 714861283}
   m_Layer: 5
   m_Name: MasterVolumeSlider
   m_TagString: Untagged
@@ -3198,16 +3166,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 1852534160}
   m_HandleRect: {fileID: 1819920709}
   m_Direction: 0
-  m_MinValue: 0.0001
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GiocoManager, Assembly-CSharp
-        m_MethodName: SETTINGS_MasterVolumeSlider
+      - m_Target: {fileID: 714861283}
+        m_TargetAssemblyTypeName: sliderController, Assembly-CSharp
+        m_MethodName: SetMasterVolume
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3217,6 +3185,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &714861283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714861280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306817fbcbc514ee1b51f87b6d6eecac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &716238803
 GameObject:
   m_ObjectHideFlags: 0
@@ -4681,6 +4661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 988230699}
   - component: {fileID: 988230700}
+  - component: {fileID: 988230701}
   m_Layer: 5
   m_Name: EFXVolumeSlider
   m_TagString: Untagged
@@ -4762,9 +4743,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GiocoManager, Assembly-CSharp
-        m_MethodName: SETTINGS_EFXVolumeSlider
+      - m_Target: {fileID: 988230701}
+        m_TargetAssemblyTypeName: sliderController, Assembly-CSharp
+        m_MethodName: SetEFXVolume
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4774,6 +4755,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &988230701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988230698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306817fbcbc514ee1b51f87b6d6eecac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1064240716
 GameObject:
   m_ObjectHideFlags: 0
@@ -4784,6 +4777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1064240717}
   - component: {fileID: 1064240718}
+  - component: {fileID: 1064240719}
   m_Layer: 5
   m_Name: MusicVolumeSlider
   m_TagString: Untagged
@@ -4865,9 +4859,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GiocoManager, Assembly-CSharp
-        m_MethodName: SETTINGS_MusicVolumeSlider
+      - m_Target: {fileID: 1064240719}
+        m_TargetAssemblyTypeName: sliderController, Assembly-CSharp
+        m_MethodName: SetMusicVolume
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4877,6 +4871,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1064240719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064240716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306817fbcbc514ee1b51f87b6d6eecac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1087007470
 GameObject:
   m_ObjectHideFlags: 0
@@ -5602,7 +5608,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1369039079}
-  - component: {fileID: 1369039078}
   - component: {fileID: 1369039080}
   - component: {fileID: 1369039081}
   m_Layer: 0
@@ -5612,102 +5617,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1369039078
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369039077}
-  m_Enabled: 0
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 72ff9865a136349928c5f9a14bae1dc8, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 705c6404ecc38224d94fd8446f7c0e55, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.2
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!4 &1369039079
 Transform:
   m_ObjectHideFlags: 0
@@ -6327,8 +6236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
-  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
+  hoverEFX: {fileID: 1791567339}
+  clickEFX: {fileID: 1791567338}
 --- !u!114 &1791567338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6350,7 +6259,7 @@ MonoBehaviour:
       Data4: -196009188
     Path: event:/MainMenu/UI_BUTTON_SELECT
   Event: 
-  PlayEvent: 15
+  PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -6381,7 +6290,7 @@ MonoBehaviour:
       Data4: 18372219
     Path: event:/MainMenu/UI_BUTTON_HOVER
   Event: 
-  PlayEvent: 13
+  PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
@@ -6853,8 +6762,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
-  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
+  hoverEFX: {fileID: 1842391251}
+  clickEFX: {fileID: 1842391252}
 --- !u!114 &1842391251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6911,7 +6820,7 @@ MonoBehaviour:
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   AllowNonRigidbodyDoppler: 0
   Params: []
   OverrideAttenuation: 0

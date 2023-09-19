@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
 using System;
+using FMOD;
+using FMODUnity;
 
 /// <summary>
 /// Creazione del Singleton del GameManager che si occupa della gestione delle transizione tra scene e meccaniche piu` importanti
@@ -39,13 +39,20 @@ public class GiocoManager : MonoBehaviour
             return _instance;
         }
     }
-
+    string Music_vcaPath = "vca:/Music";
+    string EFX_vcaPath = "vca:/EFX";
+    string Master_vcaPath = "vca:/Master";
     private void Awake()
     {
         if (_instance == null)
         {
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
+
+            MusicMixer = FMODUnity.RuntimeManager.GetVCA(Music_vcaPath);
+            EFXMixer = FMODUnity.RuntimeManager.GetVCA(EFX_vcaPath);
+            MasterMixer = FMODUnity.RuntimeManager.GetVCA(Master_vcaPath);
+
         }
 
         else if (_instance != this)
@@ -62,9 +69,9 @@ public class GiocoManager : MonoBehaviour
             _instance = null;
         }
     }
-#endregion
+    #endregion
 
-    [SerializeField] private AudioMixerGroup MusicMixer, EFXMixer, MasterMixer;
+    private FMOD.Studio.VCA MusicMixer, EFXMixer, MasterMixer;
     private bool HasStarted;
 
     public bool GetHasStarted()
@@ -94,13 +101,13 @@ public class GiocoManager : MonoBehaviour
     }
     public void ToLevel1()
     {
-         ScreenFader.Instance.StartFadeToOpaque(
-            (Action)(() =>
-            {
-                SceneManager.LoadScene(sceneName: "Rhythmicon");
-                ScreenFader.Instance.StartFadeToTransparent(null);
-            })
-            );
+        ScreenFader.Instance.StartFadeToOpaque(
+           (Action)(() =>
+           {
+               SceneManager.LoadScene(sceneName: "Rhythmicon");
+               ScreenFader.Instance.StartFadeToTransparent(null);
+           })
+           );
     }
     public void ToLevel2()
     {
@@ -159,19 +166,18 @@ public class GiocoManager : MonoBehaviour
 
     public void SETTINGS_MusicVolumeSlider(float volume)
     {
-        MusicMixer.audioMixer.SetFloat("MUSIC_VOLUME", Mathf.Log10(volume) * 20);
+        MusicMixer.setVolume(-Mathf.Log10(Mathf.Abs(volume)) * 20);
     }
 
     public void SETTINGS_EFXVolumeSlider(float volume)
     {
-        EFXMixer.audioMixer.SetFloat("EFX_VOLUME", Mathf.Log10(volume) * 20);
+        EFXMixer.setVolume(-Mathf.Log10(Mathf.Abs(volume)) * 20);
     }
 
     public void SETTINGS_MasterVolumeSlider(float volume)
     {
-        MasterMixer.audioMixer.SetFloat("MASTER_VOLUME", Mathf.Log10(volume) * 20);
-        MusicMixer.audioMixer.SetFloat("MUSIC_VOLUME", Mathf.Log10(volume) * 20);
-        EFXMixer.audioMixer.SetFloat("EFX_VOLUME", Mathf.Log10(volume) * 20);
+        MasterMixer.setVolume(-Mathf.Log10(Mathf.Abs(volume)) * 20);
+
     }
 
 

@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Events;
 using System;
+using FMOD;
+using FMODUnity;
 
 public class ScreenFader : MonoBehaviour
 {
@@ -20,13 +19,13 @@ public class ScreenFader : MonoBehaviour
         get
         {
             //controllo se è registrato, perché poteri richiamare il get prima dell'awake
-            if(_instance == null)
+            if (_instance == null)
             {
                 //lo cerco nella scena
                 _instance = FindObjectOfType<ScreenFader>(true);
 
                 //controllo se l'ho trovato
-                if(_instance == null)
+                if (_instance == null)
                 {
                     //non è stato trovato e quindi lo creo
                     //Resources.Load("Screen Fader Canvas"); //--> gli passo il nome di un file "" che si trova nella cartella Resource
@@ -42,7 +41,7 @@ public class ScreenFader : MonoBehaviour
     //l'awake controlla che non ci sono altre istanze "di questo singleton" in scena
     private void Awake()
     {
-        if(_instance == null)
+        if (_instance == null)
         {
             _instance = this;
             DontDestroyOnLoad(this.gameObject);
@@ -57,7 +56,7 @@ public class ScreenFader : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(_instance == this)
+        if (_instance == this)
         {
             _instance = null;
         }
@@ -85,7 +84,7 @@ public class ScreenFader : MonoBehaviour
 
     public void StartFadeToOpaque(Action callback)
     {
-        if(this.audioSourceBgMusic == null)
+        if (this.audioSourceBgMusic == null)
         {
             this.audioSourceBgMusic = FindObjectOfType<BackGroundMusic>();
         }
@@ -95,7 +94,7 @@ public class ScreenFader : MonoBehaviour
 
         //se ho già una couroutine attiva, la interrompo prima di far ripartire quella
         //verso l'opacità 
-        if(this.couroutine != null)
+        if (this.couroutine != null)
         {
             StopCoroutine(this.couroutine);
         }
@@ -139,11 +138,11 @@ public class ScreenFader : MonoBehaviour
             this.timer += Time.deltaTime;
             this.canvasGroup.alpha = Mathf.Lerp(0, 1, this.timer / this.fadeDuration); //media pesata fra min e max
 
-            if(this.audioSourceBgMusic != null)
+            if (this.audioSourceBgMusic != null)
             {
-                this.audioSourceBgMusic.audioSource.volume = Mathf.Lerp(0, 1, 1 - this.timer / this.fadeDuration);
+                this.audioSourceBgMusic.audioSource.EventInstance.setVolume(Mathf.Lerp(0, 1, 1 - this.timer / this.fadeDuration));
             }
-                
+
             yield return null;
         }
 
@@ -151,17 +150,17 @@ public class ScreenFader : MonoBehaviour
         this.timer = 0;
         this.canvasGroup.alpha = 1;
 
-        if(this.audioSourceBgMusic != null)
+        if (this.audioSourceBgMusic != null)
         {
-            this.audioSourceBgMusic.audioSource.volume = 0f;
+            this.audioSourceBgMusic.audioSource.EventInstance.setVolume(0);
         }
-        
+
         this.state = STATE.OPAQUE;
         if (this.onFadeCompleted != null)
         {
             this.onFadeCompleted();
         }
-        
+
     }
 
     private IEnumerator CouroutineToTransparent()
@@ -177,11 +176,11 @@ public class ScreenFader : MonoBehaviour
             this.timer += Time.deltaTime;
             this.canvasGroup.alpha = Mathf.Lerp(0, 1, 1 - this.timer / this.fadeDuration); //media pesata fra min e max
 
-            if(this.audioSourceBgMusic != null)
+            if (this.audioSourceBgMusic != null)
             {
-                this.audioSourceBgMusic.audioSource.volume = Mathf.Lerp(0, 1, this.timer / this.fadeDuration);
+                this.audioSourceBgMusic.audioSource.EventInstance.setVolume(Mathf.Lerp(0, 1, this.timer / this.fadeDuration));
             }
-            
+
             yield return null;
         }
 
@@ -189,11 +188,11 @@ public class ScreenFader : MonoBehaviour
         this.timer = 0;
         this.canvasGroup.alpha = 0;
 
-        if(this.audioSourceBgMusic != null)
+        if (this.audioSourceBgMusic != null)
         {
-            this.audioSourceBgMusic.audioSource.volume = 1;
+            this.audioSourceBgMusic.audioSource.EventInstance.setVolume(1f);
         }
-        
+
         this.state = STATE.TRANSPARENT;
         if (this.onFadeCompleted != null)
         {
@@ -205,7 +204,7 @@ public class ScreenFader : MonoBehaviour
     private void Start()
     {
         this.audioSourceBgMusic = FindObjectOfType<BackGroundMusic>();
-        if(this.canvasGroup == null)
+        if (this.canvasGroup == null)
         {
             this.canvasGroup = GetComponent<CanvasGroup>();
         }

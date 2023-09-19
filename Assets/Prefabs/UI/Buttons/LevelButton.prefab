@@ -282,8 +282,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
-  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
+  hoverEFX: {fileID: 5247811036373963637}
+  clickEFX: {fileID: 6933763822550901014}
 --- !u!114 &6933763822550901014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,11 +305,11 @@ MonoBehaviour:
       Data4: -196009188
     Path: event:/MainMenu/UI_BUTTON_SELECT
   Event: 
-  PlayEvent: 15
+  PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   AllowNonRigidbodyDoppler: 0
   Params: []
   OverrideAttenuation: 0
@@ -336,11 +336,11 @@ MonoBehaviour:
       Data4: 18372219
     Path: event:/MainMenu/UI_BUTTON_HOVER
   Event: 
-  PlayEvent: 13
+  PlayEvent: 0
   StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
-  Preload: 0
+  Preload: 1
   AllowNonRigidbodyDoppler: 0
   Params: []
   OverrideAttenuation: 0

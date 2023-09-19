@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8378484536714028321}
   - component: {fileID: 461436247074642783}
   - component: {fileID: 8042621713726613521}
+  - component: {fileID: -6834606005566171402}
+  - component: {fileID: -6731572725471550463}
   m_Layer: 5
   m_Name: ToMainMenu_Btn
   m_TagString: Untagged
@@ -147,8 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a02b273608b854af09b0821e868c6daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverEFX: {fileID: 8300000, guid: 8f34ab60da9c749ca94d4a45147db223, type: 3}
-  clickEFX: {fileID: 8300000, guid: 51e044c18867c49ed9dd06767fc0e270, type: 3}
+  hoverEFX: {fileID: -6834606005566171402}
+  clickEFX: {fileID: -6731572725471550463}
 --- !u!114 &8042621713726613521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +163,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c8f75072f4c43eb8a47d4d81e49796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6834606005566171402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848847929354157661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -2084358646
+      Data2: 1162458916
+      Data3: -1966300281
+      Data4: 18372219
+    Path: event:/MainMenu/UI_BUTTON_HOVER
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &-6731572725471550463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848847929354157661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -775630876
+      Data2: 1187153574
+      Data3: -163584332
+      Data4: -196009188
+    Path: event:/MainMenu/UI_BUTTON_SELECT
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 1
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6352656675359290172
 GameObject:
   m_ObjectHideFlags: 0
