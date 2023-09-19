@@ -160,10 +160,14 @@ public class SaveManager : MonoBehaviour
         {
             SaveLoad_JSON.ApplySaveData(SaveLoad_JSON.LoadFromFile());
         }
-        //se non trova un file, ne crea uno con i punteggi a zero
+        //se non trova un file, setta i punteggi a zero
         else
         {
-            SaveLoad_JSON.SaveToFile(new SaveData());
+            this._bestRythmicon = 0;
+            this._bestNoteHunt = 0;
+            this._bestCookingNotes = 0;
+            this._bestFindTheNote = 0;
+            this._bestWhackANote = 0;
         }
     }
 
