@@ -264,7 +264,10 @@ public class SongManager : MonoBehaviour
         if (Instance.audioSource != null)
         {
             if (Instance.audioSource.clip.length < GetAudioSourceTime())
+            {
                 Instance.StopSong();
+            }
+
         }
     }
 

@@ -9,7 +9,7 @@ public class UI_MenuButton : MonoBehaviour
     public void ToMainMenu()
     {
         this.GetComponent<Button>().interactable = false;
-        SongManager.Instance.StopSong();
+        if (SongManager.Instance != null) SongManager.Instance.StopSong();
         GiocoManager.Instance.ToMainMenu();
     }
 
