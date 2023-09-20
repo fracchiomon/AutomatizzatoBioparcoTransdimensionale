@@ -6,11 +6,11 @@ using UnityEngine.UIElements;
 public class Settings : MonoBehaviour
 {
 
-    private void Awake()
+    /*private void Awake()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
 
-    }
+    }*/
     public void ChangeSettingsActive(bool visibility)
     {
         gameObject.SetActive(visibility);
