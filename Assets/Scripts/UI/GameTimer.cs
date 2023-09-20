@@ -6,58 +6,63 @@ public class GameTimer : MonoBehaviour
 {
     Image fillableBar;
     [SerializeField] private float maxTime;
+    private float timeLeft;
+
     [SerializeField] private int punteggioVincita;
+    //[SerializeField] private ScoreForMiniGame finalScore;
+    private static int currentScore;
+    [SerializeField] private Text scoreText;
 
-
-    private static float timeLeft;
-
-    [SerializeField] private ScoreForMiniGame finalScore;
 
 
     void Start()
     {
+
         fillableBar = GetComponent<Image>();
-
-
         timeLeft = maxTime;
+
+        currentScore = 0;
+
     }
 
-    void Update()
+
+    public void GameTimerUpdate()
     {
 
         timeLeft -= Time.deltaTime;
         fillableBar.fillAmount = timeLeft / maxTime;
 
+        scoreText.text = currentScore.ToString() + " POINTS";
 
-        Debug.Log(UI_Punt.Punteggio());
-
-        if (timeLeft < 0 && UI_Punt.Punteggio() < punteggioVincita)
+        if (timeLeft < 0 && currentScore < punteggioVincita)
         {
-            Debug.Log("tempo finito");
-
-            // Time.timeScale = 0;                     //quando la barra finisce termina il gioco
-            finalScore.SetHighScore(UI_Punt.Punteggio());
+          
+            ScoreForMiniGame.Instance.SetHighScore(currentScore);
             SceneManager.LoadScene(sceneName: "Lose");
+
         }
-        else if (timeLeft < 0 && UI_Punt.Punteggio() >= punteggioVincita)
+
+        else if (timeLeft < 0 && currentScore >= punteggioVincita)
         {
 
-            finalScore.SetHighScore(UI_Punt.Punteggio());
+            ScoreForMiniGame.Instance.SetHighScore(currentScore);
 
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
-                SaveManager.Instance.bestNoteHunt = UI_Punt.Punteggio();
+                SaveManager.Instance.bestNoteHunt = currentScore;
 
             }
+
             else if (SceneManager.GetActiveScene().buildIndex == 3)
             {
-                SaveManager.Instance.bestFindTheNote = UI_Punt.Punteggio();
+                SaveManager.Instance.bestFindTheNote = currentScore;
             }
+
             else if (SceneManager.GetActiveScene().buildIndex == 6)
             {
-                SaveManager.Instance.bestWhackANote = UI_Punt.Punteggio();
+                SaveManager.Instance.bestWhackANote = currentScore;
             }
 
             SaveManager.Instance.Save();
@@ -66,7 +71,20 @@ public class GameTimer : MonoBehaviour
 
             Debug.Log("tempo finito");
 
-            // Time.timeScale = 0;
+         
         }
     }
+
+    public static void UpdateScore(int addedValue)
+    {
+        currentScore += addedValue;                                 //per aggiornare il punteggio ogni volta che la nota viene distrutta = +5 punteggio
+        Debug.Log("Score: " + currentScore);
+        
+    }
+
+    public float GetTimeLeft()
+    {
+        return timeLeft; 
+    }
 }
+

@@ -335,9 +335,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54eea3590e5654cbfbd80b3b62c596aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 50
+  maxTime: 40
   punteggioVincita: 15
-  finalScore: {fileID: -8066169958573733425, guid: 5e2925508f38449258aad4a9e8c715c4, type: 3}
+  scoreText: {fileID: 489364035}
 --- !u!1 &263867777
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,9 +678,8 @@ GameObject:
   - component: {fileID: 489364033}
   - component: {fileID: 489364036}
   - component: {fileID: 489364035}
-  - component: {fileID: 489364034}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -705,19 +704,6 @@ RectTransform:
   m_AnchoredPosition: {x: 47, y: 15.266}
   m_SizeDelta: {x: -62, y: -63}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &489364034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 489364032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 034011557c5918c458cae718cb1890b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 489364035}
 --- !u!114 &489364035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -751,7 +737,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 0 POINTS
 --- !u!222 &489364036
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -934,6 +920,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   finalScore: {fileID: -8066169958573733425, guid: 5e2925508f38449258aad4a9e8c715c4, type: 3}
+  fillableBar: {fileID: 250990467}
 --- !u!1001 &768750342
 PrefabInstance:
   m_ObjectHideFlags: 0

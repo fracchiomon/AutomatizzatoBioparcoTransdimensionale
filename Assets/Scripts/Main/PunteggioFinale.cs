@@ -5,13 +5,11 @@ using UnityEngine.UI;
 
 public class PunteggioFinale : MonoBehaviour
 {
-    [SerializeField] private ScoreForMiniGame finalScore;
-
-    [SerializeField] private Text screenScore;
+     [SerializeField] private Text screenScore;
 
     private void Start()
     {
       
-        screenScore.text = "Your score is "+finalScore.GetHighScore().ToString(); 
+        screenScore.text = "Your score is "+ScoreForMiniGame.Instance.GetHighScore().ToString(); 
     }
 }
