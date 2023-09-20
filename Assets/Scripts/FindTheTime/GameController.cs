@@ -18,9 +18,9 @@ public class GameController : MonoBehaviour
 
     private bool firstGuess, secondGuess;
 
-    private int countGuesses, countCorrectGuesses, gameGuesses;
+    private int countCorrectGuesses, gameGuesses;
 
-    private int firstGuessIndex, secondGuessIndex; 
+    private int firstGuessIndex, secondGuessIndex; // prima e seconda carta girata
 
     private string firstGuessPuzzle, secondGuessPuzzle;
 
@@ -57,7 +57,6 @@ public class GameController : MonoBehaviour
         gameGuesses = gamePuzzles.Count / 2; // quante serve indovinare 
         setAnimation();
         this.gameTimer = FindObjectOfType<GameTimer>();
-        //movements[0].SetTrigger("from idle to correct");
     }
 
     private void Update()
@@ -71,7 +70,6 @@ public class GameController : MonoBehaviour
         {
           
             movements[i] = monsters[i].GetComponent<Animator>();
-            Debug.Log("entro");
         }
     }
 
@@ -111,7 +109,7 @@ public class GameController : MonoBehaviour
     {
         foreach( Button btn in btns)
         {
-            btn.onClick.AddListener(() => PickAPuzzle()); 
+            btn.onClick.AddListener(() => PickAPuzzle()); // funzione lambda definita sul momento
         }
     }
 
@@ -122,15 +120,14 @@ public class GameController : MonoBehaviour
     {
         string name = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
 
-        if ( !firstGuess ) // if tuch a button
+        if ( !firstGuess ) // primo tasto premuto
         {
             firstGuess = true;
-            firstGuessIndex = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
+            firstGuessIndex = int.Parse(name);
             firstGuessPuzzle = gamePuzzles[firstGuessIndex].name;
             if (!firstAnim1)
             {
                 cardRotation[firstGuessIndex].SetTrigger("MostraCarta");
-                //cardRotation[secondGuessIndex].SetTrigger("ToIdle");
                 firstAnim1 = true;
             }
 
@@ -141,26 +138,15 @@ public class GameController : MonoBehaviour
         else if(!secondGuess)
         {
             secondGuess = true;
-            secondGuessIndex = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
+            secondGuessIndex = int.Parse(name);
 
             secondGuessPuzzle = gamePuzzles[secondGuessIndex].name;
             if (!firstAnim2)
             {
                 cardRotation[secondGuessIndex].SetTrigger("MostraCarta");
-                //cardRotation[secondGuessIndex].SetTrigger("ToIdle");
                 firstAnim2 = true;
             }
             btns[secondGuessIndex].image.sprite = gamePuzzles[secondGuessIndex];
-
-            //if(firstGuessPuzzle == secondGuessPuzzle)
-            //{
-
-            //    Debug.Log("the puzzle match");
-            //}
-            //else
-            //{
-            //    Debug.Log("the puzzle don't match");
-            //}
 
             StartCoroutine(CheckIfThePuzzlesMatch());
         }
@@ -204,11 +190,6 @@ public class GameController : MonoBehaviour
             correct = false; 
             yield return new WaitForSeconds(.5f); // aspetto .5f secondi che l'immagine sia visibile
 
-            //cardRotation[firstGuessIndex].SetTrigger("NascondiCarta");
-            //cardRotation[secondGuessIndex].SetTrigger("NascondiCarta");
-            //cardRotation[firstGuessIndex].SetTrigger("ToIdle");
-            //cardRotation[secondGuessIndex].SetTrigger("ToIdle");
-
             btns[firstGuessIndex].image.sprite = bgImage; // ritorna immagine del dietro
             btns[secondGuessIndex].image.sprite = bgImage;
 
@@ -251,7 +232,6 @@ public class GameController : MonoBehaviour
         if(countCorrectGuesses == gameGuesses)
         {
             _scoreVincita = (int) fillableBar.GetComponent<GameTimer>().GetTimeLeft() ;
-            Debug.Log(_scoreVincita);
             _scoreVincita *= 10;
             ScoreForMiniGame.Instance.SetHighScore(_scoreVincita);
             SaveManager.Instance.bestFindTheNote = this._scoreVincita;

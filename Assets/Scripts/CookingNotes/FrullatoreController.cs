@@ -3,10 +3,8 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
-using UnityEngine.Pool;
 
 
 public class FrullatoreController : MonoBehaviour
@@ -37,7 +35,7 @@ public class FrullatoreController : MonoBehaviour
         {
             //se ho delle note nella pool, prendo quella che mi serve
             //il ciclo forech scorre "al contrario" così da poter fare il remove senza problemi
-            foreach(Nota n in this.notesPool.Reverse<Nota>())
+            foreach(Nota n in this.notesPool.Reverse<Nota>()) // controllo tutte le note nel notePool
             {
                 if (so_n.type.Equals(n.nome))
                 {

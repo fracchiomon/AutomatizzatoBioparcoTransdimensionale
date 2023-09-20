@@ -65,11 +65,6 @@ public class MoveNota : MonoBehaviour
         this.gT.GameTimerUpdate();
     }
 
-    public void setColpito()
-    {
-        colpito = true;
-    }
-
 
     void OnMouseDown()
     {

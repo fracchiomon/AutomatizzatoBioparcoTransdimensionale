@@ -13,7 +13,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float MoveSpeed;
     [SerializeField] private AudioClip[] suoniNote;
     [SerializeField] private TextMeshProUGUI rightNote;
-    [SerializeField] private GameObject fillableBar;
     private Action<String, int> MoleMessage;
     private AudioSource noteSound;
     private bool notaSuonata;
@@ -57,7 +56,6 @@ public class Movement : MonoBehaviour
         }
         this.GestionePunteggio();
         this.suonoNota();
-        fillableBar.GetComponent<GameTimer>().GameTimerUpdate();
         this.moles[index].GetComponent<MoleController>().Move();
         this.hammer.GetComponent<HammerController>().Move();
         this.gT.GameTimerUpdate();

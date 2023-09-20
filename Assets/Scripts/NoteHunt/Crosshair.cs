@@ -11,9 +11,4 @@ public class Crosshair : MonoBehaviour
         Cursor.SetCursor(CrossHairOn, v, CursorMode.Auto);
     }
 
-    public void OnMouseDown()
-    {
-        Destroy(gameObject);                 // Destroy the gameObject after clicking on it
-    }
-
 }
