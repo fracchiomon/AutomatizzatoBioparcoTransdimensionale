@@ -11,9 +11,6 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     [SerializeField] private SongManager songManager;
 
-    [SerializeField] private ScoreForMiniGame finalScore;
-
-
 
     public AudioSource hitSFX;
     //public AudioSource missSFX;
@@ -121,7 +118,7 @@ public class ScoreManager : MonoBehaviour
     {
         SongManager.Instance.StopSong();
 
-        finalScore.SetHighScore(_score);
+        ScoreForMiniGame.Instance.SetHighScore(_score);
         SaveManager.Instance.bestRythmicon = _score;
         if (IsDebugEnabled)
         {
