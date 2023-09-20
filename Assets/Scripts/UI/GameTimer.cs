@@ -65,7 +65,7 @@ public class GameTimer : MonoBehaviour
 
                 else if (SceneManager.GetActiveScene().buildIndex == 3)
                 {
-                    SaveManager.Instance.bestFindTheNote = currentScore;
+                    SaveManager.Instance.bestFindTheNote = FindObjectOfType<GameController>().scoreVincita;
                 }
 
                 else if (SceneManager.GetActiveScene().buildIndex == 6)

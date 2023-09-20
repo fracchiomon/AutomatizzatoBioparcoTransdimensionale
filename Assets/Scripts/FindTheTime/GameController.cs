@@ -34,8 +34,10 @@ public class GameController : MonoBehaviour
     [SerializeField] private Animator[] cardRotation;
 
     [SerializeField] private GameObject fillableBar;
-    private int tempoRimasto; 
+    private int _scoreVincita; 
     private int addScore = 5;
+
+    public int scoreVincita => _scoreVincita;
 
     private void Awake() // caricamento sprite note e durate 
     {
@@ -249,9 +251,10 @@ public class GameController : MonoBehaviour
 
         if(countCorrectGuesses == gameGuesses)
         {
-            tempoRimasto = (int) fillableBar.GetComponent<GameTimer>().GetTimeLeft() ;
-            Debug.Log(tempoRimasto); 
-            ScoreForMiniGame.Instance.SetHighScore( 10 * tempoRimasto);
+            _scoreVincita = (int) fillableBar.GetComponent<GameTimer>().GetTimeLeft() ;
+            Debug.Log(_scoreVincita);
+            _scoreVincita *= 10;
+            ScoreForMiniGame.Instance.SetHighScore(_scoreVincita);
             SceneManager.LoadScene(sceneName: "Victory");
 
         }
