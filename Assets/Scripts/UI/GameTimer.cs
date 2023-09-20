@@ -15,6 +15,12 @@ public class GameTimer : MonoBehaviour
 
 
 
+    private static float timeLeft;
+
+    //[SerializeField] private ScoreForMiniGame finalScore;
+
+
+
     void Start()
     {
 
@@ -36,14 +42,22 @@ public class GameTimer : MonoBehaviour
 
         if (timeLeft < 0 && currentScore < punteggioVincita)
         {
+
           
             ScoreForMiniGame.Instance.SetHighScore(currentScore);
+
+            Debug.Log("tempo finito");
+
+            // Time.timeScale = 0;                     //quando la barra finisce termina il gioco
+            ScoreForMiniGame.Instance.SetHighScore(UI_Punt.Punteggio());
+
             SceneManager.LoadScene(sceneName: "Lose");
 
         }
 
         else if (timeLeft < 0 && currentScore >= punteggioVincita)
         {
+
 
             ScoreForMiniGame.Instance.SetHighScore(currentScore);
 
@@ -52,6 +66,14 @@ public class GameTimer : MonoBehaviour
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 SaveManager.Instance.bestNoteHunt = currentScore;
+
+
+            ScoreForMiniGame.Instance.SetHighScore(UI_Punt.Punteggio());
+
+            if (SceneManager.GetActiveScene().buildIndex == 2)
+            {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                SaveManager.Instance.bestNoteHunt = UI_Punt.Punteggio();
 
             }
 

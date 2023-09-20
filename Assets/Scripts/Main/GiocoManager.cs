@@ -154,12 +154,6 @@ public class GiocoManager : MonoBehaviour
     }
 
 
-
-    public void RHYTHMICON_ConfermaTornaAlMenu()
-    {
-        ToMainMenu();
-    }
-
     public void SETTINGS_MusicVolumeSlider(float volume)
     {
         MusicMixer.audioMixer.SetFloat("MUSIC_VOLUME", Mathf.Log10(volume) * 20);
