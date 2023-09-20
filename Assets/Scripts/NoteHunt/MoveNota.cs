@@ -1,5 +1,4 @@
 using UnityEngine;
-//using UnityEngine.Events;
 using System;
 
 public class MoveNota : MonoBehaviour
@@ -10,7 +9,7 @@ public class MoveNota : MonoBehaviour
     [SerializeField] private GameObject note;                               //sono le note che si generano ogni volta che si distrugge una
     public Transform[] Points;
     [SerializeField] private string[] notePoints;
-    private int score = 5;  //score di ogni volta che la nota viene colpita
+    private int score = 5;                                                  //score di ogni volta che la nota viene colpita
 
 
     public GameObject ways;                                                 //2 punti per il movimento della nota
@@ -33,7 +32,6 @@ public class MoveNota : MonoBehaviour
 
     private void Update()                  
     {
-        //uI_BarNote.GetComponent<UI_BarNote>().cambioNota();
         this.cambioNota();
 
         if (_indexPoint < this.Points.Length)
