@@ -15,12 +15,6 @@ public class GameTimer : MonoBehaviour
 
 
 
-    private static float timeLeft;
-
-    //[SerializeField] private ScoreForMiniGame finalScore;
-
-
-
     void Start()
     {
 
@@ -43,13 +37,13 @@ public class GameTimer : MonoBehaviour
         if (timeLeft < 0 && currentScore < punteggioVincita)
         {
 
-          
+
             ScoreForMiniGame.Instance.SetHighScore(currentScore);
 
             Debug.Log("tempo finito");
 
             // Time.timeScale = 0;                     //quando la barra finisce termina il gioco
-            ScoreForMiniGame.Instance.SetHighScore(UI_Punt.Punteggio());
+            ScoreForMiniGame.Instance.SetHighScore(currentScore);
 
             SceneManager.LoadScene(sceneName: "Lose");
 
@@ -61,41 +55,34 @@ public class GameTimer : MonoBehaviour
 
             ScoreForMiniGame.Instance.SetHighScore(currentScore);
 
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
-            if (SceneManager.GetActiveScene().buildIndex == 2)
-            {
-                SaveManager.Instance.bestNoteHunt = currentScore;
+                if (SceneManager.GetActiveScene().buildIndex == 2)
+                {
+                    Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+                    SaveManager.Instance.bestNoteHunt = currentScore;
 
+                }
 
-            ScoreForMiniGame.Instance.SetHighScore(UI_Punt.Punteggio());
+                else if (SceneManager.GetActiveScene().buildIndex == 3)
+                {
+                    SaveManager.Instance.bestFindTheNote = currentScore;
+                }
 
-            if (SceneManager.GetActiveScene().buildIndex == 2)
-            {
-                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-                SaveManager.Instance.bestNoteHunt = UI_Punt.Punteggio();
+                else if (SceneManager.GetActiveScene().buildIndex == 6)
+                {
+                    SaveManager.Instance.bestWhackANote = currentScore;
+                }
+
+                SaveManager.Instance.Save();
+
+                SceneManager.LoadScene(sceneName: "Victory");
+
+                Debug.Log("tempo finito");
+
 
             }
-
-            else if (SceneManager.GetActiveScene().buildIndex == 3)
-            {
-                SaveManager.Instance.bestFindTheNote = currentScore;
-            }
-
-            else if (SceneManager.GetActiveScene().buildIndex == 6)
-            {
-                SaveManager.Instance.bestWhackANote = currentScore;
-            }
-
-            SaveManager.Instance.Save();
-
-            SceneManager.LoadScene(sceneName: "Victory");
-
-            Debug.Log("tempo finito");
-
-         
         }
-    }
+ 
 
     public static void UpdateScore(int addedValue)
     {
