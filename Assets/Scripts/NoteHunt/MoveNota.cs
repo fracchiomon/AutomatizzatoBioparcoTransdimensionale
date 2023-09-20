@@ -1,23 +1,25 @@
 using UnityEngine;
-
+//using UnityEngine.Events;
+using System;
 
 public class MoveNota : MonoBehaviour
 {
-    [SerializeField] private float speed = 5;                                 //velocit� nota
+    [SerializeField] private float speed = 5;
 
     [SerializeField] private UI_BarNote Bar;
-    [SerializeField] private GameObject note;    //sono le note che si generano ogni volta che si distrugge una
+    [SerializeField] private GameObject note;                               //sono le note che si generano ogni volta che si distrugge una
     public Transform[] Points;
     [SerializeField] private string[] notePoints;
-    private int score = 5;                              //score di ogni volta che la nota viene colpita
+    private int score = 5;  //score di ogni volta che la nota viene colpita
 
 
-    public GameObject ways;                             //2 punti per il movimento della nota
+    public GameObject ways;                                                 //2 punti per il movimento della nota
     private int _indexPoint;
     private float timeDelay;
 
     private bool colpito;
 
+    private Action cambioNota;
     private GameTimer gT; 
 
     private void Start()
@@ -25,11 +27,14 @@ public class MoveNota : MonoBehaviour
         this._indexPoint = 0;
         this.timeDelay = 0.5f;
         this.colpito = false;
+        this.cambioNota = FindObjectOfType<UI_BarNote>().cambioNota;
     }
 
-    private void FixedUpdate()                  
+    private void Update()                  
     {
- 
+        //uI_BarNote.GetComponent<UI_BarNote>().cambioNota();
+        this.cambioNota();
+
         if (_indexPoint < this.Points.Length)
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, this.Points[_indexPoint].transform.position, speed * Time.fixedDeltaTime);
@@ -52,7 +57,7 @@ public class MoveNota : MonoBehaviour
             if (this.notePoints[_indexPoint] == Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag)
             {
                 GameTimer.UpdateScore(score);             //per lo score
-                note.SetActive(true);                   //serve per generare la nuova nota dopo che e' stata distrutta
+                note.SetActive(true);   
                 this.transform.parent.gameObject.SetActive(false);
             }
             colpito = false;
@@ -68,8 +73,7 @@ public class MoveNota : MonoBehaviour
 
     void OnMouseDown()
     {
-        // Destroy the gameObject after clicking on it
-        colpito = true;
+        colpito = true;                     // Destroy the gameObject after clicking on it
     }
 
 }
