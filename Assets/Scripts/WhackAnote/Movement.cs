@@ -8,12 +8,12 @@ using TMPro;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private GameObject[] moles;
-    [SerializeField] private GameObject cron;
     [SerializeField] private GameObject hammer;
     [SerializeField] private String[] Notes;
     [SerializeField] private float MoveSpeed;
     [SerializeField] private AudioClip[] suoniNote;
     [SerializeField] private TextMeshProUGUI rightNote;
+    [SerializeField] private GameObject fillableBar;
     private Action<String, int> MoleMessage;
     private AudioSource noteSound;
     private bool notaSuonata;
@@ -40,7 +40,6 @@ public class Movement : MonoBehaviour
         {
             this.moles[index].transform.position = this.moles[index].GetComponent<MoleController>().Points[moles[index].GetComponent<MoleController>()._indexPoint].transform.position;
         }
-        this.cron.GetComponent<Cronometro>().setGameTime(20.0f);
         noteSound = GetComponent<AudioSource>();
         this.MoleMessage = FindObjectOfType<UI_Message>().SpawnMessage;
     }
@@ -57,14 +56,10 @@ public class Movement : MonoBehaviour
             }
             index = index1;
         }
-        this.cron.GetComponent<Cronometro>().timeRunsOut();
-        if (this.cron.GetComponent<Cronometro>().getGameTime() < 0)
-        {
-            Debug.Log("Fine");
-        }
         this.GestionePunteggio();
         this.suonoNota();
-        this.GestioneUI();
+        //this.GestioneUI();
+        fillableBar.GetComponent<GameTimer>().GameTimerUpdate();
         this.moles[index].GetComponent<MoleController>().Move();
         this.hammer.GetComponent<HammerController>().Move();
     }
@@ -73,12 +68,12 @@ public class Movement : MonoBehaviour
     {
         if (this.moles[index].GetComponent<MoleController>().isHitted && this.moles[index].GetComponent<MoleController>().GetIndexNote() == RandomNote.GetRandomIndex())
         {
-            this.punteggioPartita += this.moles[index].GetComponent<MoleController>().GetPoint();
+            GameTimer.UpdateScore(this.moles[index].GetComponent<MoleController>().GetPoint());
             this.moles[index].GetComponent<MoleController>().isHitted = false;
         }
         else if (this.moles[index].GetComponent<MoleController>().isHitted)
         {
-            this.punteggioPartita -= this.moles[index].GetComponent<MoleController>().GetPoint();
+            GameTimer.UpdateScore(-this.moles[index].GetComponent<MoleController>().GetPoint());
             this.moles[index].GetComponent<MoleController>().isHitted = false;
         }
 
@@ -101,9 +96,9 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void GestioneUI()
-    {
-        pointText.text = punteggioPartita.ToString();
-    }
+    //private void GestioneUI()
+    //{
+    //    pointText.text = punteggioPartita.ToString();
+    //}
 
 }
