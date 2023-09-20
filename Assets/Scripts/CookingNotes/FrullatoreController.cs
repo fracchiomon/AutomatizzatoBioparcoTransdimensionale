@@ -102,11 +102,12 @@ public class FrullatoreController : MonoBehaviour
         UpdateRicetta(FindObjectOfType<LevelManager>().ricette[0]);
         this.BlenderMessage = FindObjectOfType<UI_Message>().SpawnMessage;
     }
-
+    [SerializeField] private UI_Button_Sounds suonoMixBTN;
     IEnumerator BlenderMixing()
     {
         this.lvlManager.isOnPlay = false;
         this.animator.SetTrigger("Mixing");
+        this.suonoMixBTN.ButtonClicked();
         while (tot != 0)
         {
             OutMix();
