@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MoveNota : MonoBehaviour
 {
-    [SerializeField] private float speed = 5;                                 //velocità nota
+    [SerializeField] private float speed = 5;                                 //velocitï¿½ nota
 
     [SerializeField] private UI_BarNote Bar;
     [SerializeField] private GameObject note;    //sono le note che si generano ogni volta che si distrugge una
@@ -17,6 +17,8 @@ public class MoveNota : MonoBehaviour
     private float timeDelay;
 
     private bool colpito;
+
+    private GameTimer gT; 
 
     private void Start()
     {
@@ -49,7 +51,7 @@ public class MoveNota : MonoBehaviour
         {
             if (this.notePoints[_indexPoint] == Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag)
             {
-                UI_Punt.UpdateScore(score);             //per lo score
+                GameTimer.UpdateScore(score);             //per lo score
                 note.SetActive(true);                   //serve per generare la nuova nota dopo che e' stata distrutta
                 this.transform.parent.gameObject.SetActive(false);
             }
