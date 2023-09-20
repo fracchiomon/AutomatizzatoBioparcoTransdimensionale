@@ -1368,7 +1368,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 851416265}
-  - component: {fileID: 851416264}
   - component: {fileID: 851416263}
   - component: {fileID: 851416266}
   m_Layer: 0
@@ -1474,18 +1473,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &851416264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851416262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36857ad4eb88c47958ba78194f77ae34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &851416265
 Transform:
   m_ObjectHideFlags: 0
@@ -1510,7 +1497,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 851416262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36857ad4eb88c47958ba78194f77ae34, type: 3}
+  m_Script: {fileID: 11500000, guid: bdd446ac3f2961d4abdd5a2728d2ac5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &865701565
