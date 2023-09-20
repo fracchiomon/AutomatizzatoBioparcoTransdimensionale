@@ -18,9 +18,9 @@ public class Movement : MonoBehaviour
     private AudioSource noteSound;
     private bool notaSuonata;
     public Text pointText;
-    private float punteggioPartita;
     public int index = 0;
     int index1 = 0;
+    private Action gT;
 
 
 
@@ -34,14 +34,13 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        punteggioPartita = 0;
         if(moles != null)
         {
             this.moles[index].transform.position = this.moles[index].GetComponent<MoleController>().Points[moles[index].GetComponent<MoleController>()._indexPoint].transform.position;
         }
         noteSound = GetComponent<AudioSource>();
         this.MoleMessage = FindObjectOfType<UI_Message>().SpawnMessage;
+        this.gT = FindObjectOfType<GameTimer>().GameTimerUpdate;
     }
 
     // Update is called once per frame
@@ -58,10 +57,10 @@ public class Movement : MonoBehaviour
         }
         this.GestionePunteggio();
         this.suonoNota();
-        //this.GestioneUI();
         fillableBar.GetComponent<GameTimer>().GameTimerUpdate();
         this.moles[index].GetComponent<MoleController>().Move();
         this.hammer.GetComponent<HammerController>().Move();
+        this.gT();
     }
 
     private void GestionePunteggio()
@@ -95,10 +94,5 @@ public class Movement : MonoBehaviour
             noteSound.Stop();
         }
     }
-
-    //private void GestioneUI()
-    //{
-    //    pointText.text = punteggioPartita.ToString();
-    //}
 
 }
