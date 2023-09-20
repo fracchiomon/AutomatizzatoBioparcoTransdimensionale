@@ -12,8 +12,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private SongManager songManager;
 
 
-    public AudioSource hitSFX;
-    //public AudioSource missSFX;
+    [SerializeField] private AudioSource hitSFX, normalHitSFX, missSFX;
     [SerializeField] private TextMeshProUGUI ScoreText, ComboText;
 
     private int maxMissedNotes, missedNotes;
@@ -161,6 +160,12 @@ public class ScoreManager : MonoBehaviour
         Instance.hitSFX.pitch = UnityEngine.Random.Range(0.985f, 1.085f);
         Instance.hitSFX.Play();
     }
+    public static void NormalHit()
+    {
+        _score += (int)(_NoteValue);
+        Instance.normalHitSFX.pitch = UnityEngine.Random.Range(0.985f, 1.085f);
+        Instance.normalHitSFX.Play();
+    }
 
     public static IEnumerator CheckAndUpdateScoreMultiplier()
     {
@@ -195,7 +200,7 @@ public class ScoreManager : MonoBehaviour
     {
         ComboScore = 0;
         SetScoreMultiplier(0);
-        //Instance.missSFX.Play();
+        Instance.missSFX.Play();
     }
 
 }

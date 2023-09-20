@@ -99,8 +99,7 @@ public class Lane : MonoBehaviour
                 else //Nota non colpita perfettamente
                 {
                     //SpegniNota();
-                    notes[inputIndex].GetComponent<SpriteRenderer>().color = Color.black;
-                    notes[inputIndex].GetComponent<Note>().CanBePressed = false;
+                    NormalHit();
                     Destroy(notes[inputIndex].gameObject, 1f);
                     inputIndex++;
 
@@ -125,6 +124,13 @@ public class Lane : MonoBehaviour
             //Invoke(nameof(SpegniNota), 3f);
             inputIndex++;
         }
+    }
+
+    private void NormalHit()
+    {
+        notes[inputIndex].GetComponent<SpriteRenderer>().color = Color.black;
+        notes[inputIndex].GetComponent<Note>().CanBePressed = false;
+        ScoreManager.NormalHit();
     }
 
     private void SpawnNote()
