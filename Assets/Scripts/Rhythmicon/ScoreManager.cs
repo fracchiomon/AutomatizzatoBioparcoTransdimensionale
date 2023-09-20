@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance;
     [SerializeField] private SongManager songManager;
 
+    [SerializeField] private ScoreForMiniGame finalScore;
 
 
 
@@ -77,6 +78,10 @@ public class ScoreManager : MonoBehaviour
         if (IsDebugEnabled)
             Debug.Log($"Valore nota in ScoreManager: {_NoteValue}");
     }
+
+    /// <summary>
+    /// Uso l'update per funzioni chiave come il controllo del fine gioco e l'aggiornamento del punteggio
+    /// </summary>
     void Update()
     {
         StartCoroutine(CheckAndUpdateScoreMultiplier());
@@ -101,18 +106,27 @@ public class ScoreManager : MonoBehaviour
     {
         if (SongManager.Instance.audioSource != null)
         {
-            if (SongManager.Instance.audioSource.clip.length < SongManager.GetAudioSourceTime())
+            if (SongManager.Instance.audioSource.clip.length <= SongManager.GetAudioSourceTime())
             {
-                SongManager.Instance.StopSong();
                 return true;
             }
         }
         return false;
     }
 
+    /// <summary>
+    /// Se il gioco finisce, interrompe la canzone, salva i punteggi e richiama la scena di Vittoria
+    /// </summary>
     void End()
     {
+        SongManager.Instance.StopSong();
+
+        finalScore.SetHighScore(_score);
         SaveManager.Instance.bestRythmicon = _score;
+        if (IsDebugEnabled)
+        {
+            print(SaveManager.Instance.bestRythmicon);
+        }
         SaveManager.Instance.Save();
         SceneManager.LoadScene(sceneName: "Victory");
     }
@@ -124,7 +138,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GiocoManager.Instance.RHYTHMICON_ConfermaTornaAlMenu();
+            GiocoManager.Instance.ToMainMenu();
             //if (_songSelectCanvas.enabled) _songSelectCanvas.enabled = false;
             //_quitGameCanvas.enabled = true;
             //SongManager.Instance.PauseSong();
