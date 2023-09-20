@@ -2143,12 +2143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f288a12ae10a254e9f1e09ca450f742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonStaticIsDebugEnabled: 1
+  nonStaticIsDebugEnabled: 0
   DEBUG_TIMESCALE: 1
   scoreManager: {fileID: 1091280289}
   songDelayInSeconds: 0
   marginOfError: 0.7
-  inputDelayInMilliseconds: 0
+  inputDelayInMilliseconds: 15
   audioSource: {fileID: 0}
   lanes:
   - {fileID: 500639420}
@@ -2170,8 +2170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c513269811756478ddfb4967de1560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDebugEnabled: 1
+  IsDebugEnabled: 0
   songManager: {fileID: 1091280288}
+  finalScore: {fileID: -8066169958573733425, guid: 5e2925508f38449258aad4a9e8c715c4, type: 3}
   hitSFX: {fileID: 96176479}
   ScoreText: {fileID: 1050568941}
   ComboText: {fileID: 1948591241}
@@ -4104,7 +4105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -4113,7 +4114,7 @@ PrefabInstance:
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8969823491045893465}
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -4124,7 +4125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_enabled
+      value: ToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -4132,7 +4133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Behaviour, UnityEngine
+      value: UI_MenuButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8378484536714028321, guid: 71d8926e2d6f2744aac7cf0f20452bbe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
