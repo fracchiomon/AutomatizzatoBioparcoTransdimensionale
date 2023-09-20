@@ -9,7 +9,6 @@ public class GameTimer : MonoBehaviour
     private float timeLeft;
 
     [SerializeField] private int punteggioVincita;
-    //[SerializeField] private ScoreForMiniGame finalScore;
     private static int currentScore;
     [SerializeField] private Text scoreText;
 
