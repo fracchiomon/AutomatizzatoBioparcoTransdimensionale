@@ -1,7 +1,7 @@
-# unity-gamedev2023 - Temporary Title
+# AutomatizzatoBioparcoTransdimensionale - Temporary Title
 ---
 ## Come importare il progetto su Unity?
-* Avvia GitHub Desktop e clona la repository, oppure da Terminale: `git clone https://github.com/fracchiomon/unity-gamedev2023` (verranno richieste le credenziali di github per poter scaricare la repo)
+* Avvia GitHub Desktop e clona la repository, oppure da Terminale: `git clone https://github.com/fracchiomon/AutomatizzatoBioparcoTransdimensionale` (verranno richieste le credenziali di github per poter scaricare la repo)
 * Apri Unity Hub
 * Dal menu "Open Project" scegli la cartella della repo appena clonata.
 
