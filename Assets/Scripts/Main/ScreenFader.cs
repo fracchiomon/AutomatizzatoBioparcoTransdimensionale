@@ -73,7 +73,7 @@ public class ScreenFader : MonoBehaviour
     }
 
     [SerializeField] private STATE state = STATE.OPAQUE;
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private float fadeDuration = 2.5f;
 
     public float GetFadeDuration() { return this.fadeDuration; }
@@ -82,6 +82,7 @@ public class ScreenFader : MonoBehaviour
     private Action onFadeCompleted;
     private float timer = 0;
 
+    public CanvasGroup canvasGroup => this._canvasGroup;
 
     private IEnumerator couroutine;
 
@@ -139,7 +140,7 @@ public class ScreenFader : MonoBehaviour
         while (this.timer < this.fadeDuration)
         {
             this.timer += Time.deltaTime;
-            this.canvasGroup.alpha = Mathf.Lerp(0, 1, this.timer / this.fadeDuration); //media pesata fra min e max
+            this._canvasGroup.alpha = Mathf.Lerp(0, 1, this.timer / this.fadeDuration); //media pesata fra min e max
 
             if (this.audioSourceBgMusic != null)
             {
@@ -151,7 +152,7 @@ public class ScreenFader : MonoBehaviour
 
         //conclusione
         this.timer = 0;
-        this.canvasGroup.alpha = 1;
+        this._canvasGroup.alpha = 1;
 
         if (this.audioSourceBgMusic != null)
         {
@@ -177,7 +178,7 @@ public class ScreenFader : MonoBehaviour
         while (this.timer < this.fadeDuration)
         {
             this.timer += Time.deltaTime;
-            this.canvasGroup.alpha = Mathf.Lerp(0, 1, 1 - this.timer / this.fadeDuration); //media pesata fra min e max
+            this._canvasGroup.alpha = Mathf.Lerp(0, 1, 1 - this.timer / this.fadeDuration); //media pesata fra min e max
 
             if (this.audioSourceBgMusic != null)
             {
@@ -190,7 +191,7 @@ public class ScreenFader : MonoBehaviour
 
         //conclusione
         this.timer = 0;
-        this.canvasGroup.alpha = 0;
+        this._canvasGroup.alpha = 0;
 
         if (this.audioSourceBgMusic != null)
         {
@@ -208,9 +209,9 @@ public class ScreenFader : MonoBehaviour
     private void Start()
     {
         this.audioSourceBgMusic = FindObjectOfType<BackGroundMusic>();
-        if (this.canvasGroup == null)
+        if (this._canvasGroup == null)
         {
-            this.canvasGroup = GetComponent<CanvasGroup>();
+            this._canvasGroup = GetComponent<CanvasGroup>();
         }
     }
 }
