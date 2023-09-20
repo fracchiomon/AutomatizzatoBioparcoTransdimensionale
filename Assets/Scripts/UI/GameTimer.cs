@@ -29,7 +29,7 @@ public class GameTimer : MonoBehaviour
         fillableBar.fillAmount = timeLeft / maxTime;
 
 
-        Debug.Log(UI_Punt.Punteggio());
+        //Debug.Log(UI_Punt.Punteggio());
 
         if (timeLeft < 0 && UI_Punt.Punteggio() < punteggioVincita)
         {
