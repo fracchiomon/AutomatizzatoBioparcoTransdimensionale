@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 
 public class Song : MonoBehaviour
 {
+    
     public AudioSource songSource { get; private set; }
     public AudioClip clip { get; private set; }
     public string SONG_NAME, SONG_ARTIST;
@@ -74,10 +75,10 @@ public class Song : MonoBehaviour
 
         if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError) //catch di errori di connessione o protocollo
         {
-            Debug.LogError(www.error);
+            if(SongManager.Instance.nonStaticIsDebugEnabled) Debug.LogError(www.error);
             throw new Exception("Errore di connessione");
         }
-        print(MIDI_SONG_PATH);
+        if (SongManager.Instance.nonStaticIsDebugEnabled) print(MIDI_SONG_PATH);
 
     }
 
@@ -87,7 +88,7 @@ public class Song : MonoBehaviour
     private void ReadFromFile()
     {
         MIDI_SONG_PATH = Application.streamingAssetsPath + "/" + "MIDI/" + MIDI_SONG_LEVEL + "/" + MIDI_SONG_DIFFICULTY + "/" + MIDI_SONG_NAME;
-        print(MIDI_SONG_PATH);
+        if (SongManager.Instance.nonStaticIsDebugEnabled) print(MIDI_SONG_PATH);
 
     }
 
