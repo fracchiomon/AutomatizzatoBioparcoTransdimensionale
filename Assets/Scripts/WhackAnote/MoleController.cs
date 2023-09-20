@@ -12,7 +12,7 @@ public class MoleController : MonoBehaviour
     public int _indexPoint = 0;
     private int _indexNote = 0;
     private int contNote = 0;
-    private float point;
+    private int point;
     private float timeDelay = 1.0f;
     private float randomNum;
     private int randIndex;
@@ -27,7 +27,7 @@ public class MoleController : MonoBehaviour
         //this.anim.SetTrigger("idle");
         this.hasFinished = false;
         this.isHitted = false;
-        this.point = 10.0f;
+        this.point = 10;
         this.bonk = GetComponent<AudioSource>();
     }
 
@@ -92,7 +92,7 @@ public class MoleController : MonoBehaviour
         }
     }
 
-    public float GetPoint()
+    public int GetPoint()
     {
         return this.point;
     }
