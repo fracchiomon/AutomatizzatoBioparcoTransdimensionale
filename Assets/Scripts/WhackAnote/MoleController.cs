@@ -12,7 +12,7 @@ public class MoleController : MonoBehaviour
     private int _indexNote = 0;
     private int contNote = 0;
     private int point;
-    private float timeDelay = 1.0f;
+    private float timeDelay;
     private float randomNum;
     private int randIndex;
     public Boolean hasFinished;
@@ -28,18 +28,21 @@ public class MoleController : MonoBehaviour
         this.isHitted = false;
         this.point = 10;
         this.bonk = GetComponent<AudioSource>();
+        randIndex = RandomNote.GetRandomIndex();
+        this.timeDelay = 1.5f;
+        //Debug.Log(RandomNote.GetRandomIndex() + " kk ");
     }
 
     public void Move()
     {
-        randIndex = RandomNote.GetRandomIndex();
+        //randIndex = RandomNote.GetRandomIndex();
         hasFinished = false;
         if (_indexPoint < this.Points.Length)
         {
             if (_indexPoint == 0 && contNote == 0)
             {
                 randomNum = UnityEngine.Random.value;
-                if (randomNum <= 0.75f)
+                if (randomNum <= 0.67f)
                 {
                     _indexNote = randIndex;
                 }
@@ -60,7 +63,7 @@ public class MoleController : MonoBehaviour
             this.transform.position = Vector3.MoveTowards(this.transform.position, this.Points[_indexPoint].transform.position, this.MoveSpeed * Time.deltaTime);
             if (this.transform.position == this.Points[_indexPoint].transform.position && timeDelay < 0)
             {
-                timeDelay = 1.0f;
+                timeDelay = 1.5f;
                 this._indexPoint++;
             }
             else

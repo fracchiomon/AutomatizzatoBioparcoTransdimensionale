@@ -16,7 +16,7 @@ public class RandomNote : MonoBehaviour
     public static void SetRandomIndex(int rand)
     {
         randomNoteIndex = rand;
-        Debug.Log(rand);
+        //Debug.Log(rand);
     } 
 
 }

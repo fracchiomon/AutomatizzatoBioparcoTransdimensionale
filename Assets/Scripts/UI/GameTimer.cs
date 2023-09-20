@@ -57,7 +57,6 @@ public class GameTimer : MonoBehaviour
                 else if (SceneManager.GetActiveScene().buildIndex == 6)
                 {
                     SaveManager.Instance.bestWhackANote = currentScore;
-                    Debug.Log(this.currentScore);
                 }
 
                 SaveManager.Instance.Save();
