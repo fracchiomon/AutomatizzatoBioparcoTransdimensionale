@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Diagnostics;
 using UnityEngine;
 
 
@@ -28,7 +27,6 @@ public class UI_BarNote : MonoBehaviour
 
         if (isNext)
         {
-            UnityEngine.Debug.Log(choice);
             choice = new System.Random().Next(0, 6);
 
             if (choice == prev)                          //se la nota scelta e' uguale a quella precedente ne sceglie una nuova
