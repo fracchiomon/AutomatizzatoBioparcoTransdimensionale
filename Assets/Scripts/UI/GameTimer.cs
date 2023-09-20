@@ -44,12 +44,10 @@ public class GameTimer : MonoBehaviour
 
             ScoreForMiniGame.Instance.SetHighScore(UI_Punt.Punteggio());
 
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-
             if (SceneManager.GetActiveScene().buildIndex == 2)
             {
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                 SaveManager.Instance.bestNoteHunt = UI_Punt.Punteggio();
-
             }
             else if (SceneManager.GetActiveScene().buildIndex == 3)
             {
