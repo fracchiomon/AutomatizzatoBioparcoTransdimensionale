@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17820194, g: 0.22312424, b: 0.3051898, a: 1}
+  m_IndirectSpecularColor: {r: 0.17820154, g: 0.22312379, b: 0.30518863, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5012,7 +5012,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1090009619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36857ad4eb88c47958ba78194f77ae34, type: 3}
+  m_Script: {fileID: 11500000, guid: bdd446ac3f2961d4abdd5a2728d2ac5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1098971449
@@ -6216,7 +6216,6 @@ GameObject:
   - component: {fileID: 1445105731}
   - component: {fileID: 1445105730}
   - component: {fileID: 1445105729}
-  - component: {fileID: 1445105733}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6320,18 +6319,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1445105733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1445105728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 034011557c5918c458cae718cb1890b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1452599099
 GameObject:
   m_ObjectHideFlags: 0
@@ -6914,7 +6901,6 @@ GameObject:
   - component: {fileID: 1662683166}
   - component: {fileID: 1662683168}
   - component: {fileID: 1662683167}
-  - component: {fileID: 1662683169}
   m_Layer: 5
   m_Name: Punti
   m_TagString: Untagged
@@ -6983,18 +6969,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662683165}
   m_CullTransparentMesh: 1
---- !u!114 &1662683169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662683165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 034011557c5918c458cae718cb1890b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1677757489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7003345789226185497, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
