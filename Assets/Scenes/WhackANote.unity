@@ -2386,14 +2386,14 @@ MonoBehaviour:
   - Do +8va
   MoveSpeed: 1
   suoniNote:
-  - {fileID: 8300000, guid: 41771b7d01951472790b89fbad6f1c47, type: 3}
-  - {fileID: 8300000, guid: 684983be4608e401e9805ed75bd82a6d, type: 3}
-  - {fileID: 8300000, guid: d9dbe451523d346c3a5a8ddad628f54d, type: 3}
-  - {fileID: 8300000, guid: c43f9eb63d4764dd3968f8e2f000fb98, type: 3}
-  - {fileID: 8300000, guid: 3034b8b7927a341fabf1092858c596a0, type: 3}
-  - {fileID: 8300000, guid: 249b292fd4c5c4d4397c18b3e0a62448, type: 3}
-  - {fileID: 8300000, guid: 4c321a8b3c0b8488ab67aeab04ab28a8, type: 3}
-  - {fileID: 8300000, guid: 4d142be451f4a417998e71d924f06f3d, type: 3}
+  - {fileID: 8300000, guid: 52ad83036364a7a468e53ee41d43bec8, type: 3}
+  - {fileID: 8300000, guid: 2dd94cb24ddbda34897d5dc069ea5bf3, type: 3}
+  - {fileID: 8300000, guid: 88285783c2e306c4fa467f7ad36b6328, type: 3}
+  - {fileID: 8300000, guid: 686c959b8680c934eafd9c0dc25aeeff, type: 3}
+  - {fileID: 8300000, guid: 4062796a0f08d8440ab5e5f5a6f741c0, type: 3}
+  - {fileID: 8300000, guid: 9b5172e2e45ed134593614004f9ab53b, type: 3}
+  - {fileID: 8300000, guid: e037cc68c05e7de41afd7cd48ad9354e, type: 3}
+  - {fileID: 8300000, guid: c3d46fb246a723c4c9c45f7b601987cd, type: 3}
   rightNote: {fileID: 516803340}
   fillableBar: {fileID: 1331662715}
   pointText: {fileID: 2122294436}
@@ -2425,7 +2425,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.8
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
