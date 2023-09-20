@@ -8630,7 +8630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTransform: {fileID: 1486734886}
-  CrossHairOn: {fileID: 2800000, guid: fa47bd1937c2b403b9a8b8a7058ee434, type: 3}
+  CrossHairOn: {fileID: 2800000, guid: c39b1ff221a3ee04180081f53c98e8d0, type: 3}
 --- !u!54 &2127373601
 Rigidbody:
   m_ObjectHideFlags: 0
