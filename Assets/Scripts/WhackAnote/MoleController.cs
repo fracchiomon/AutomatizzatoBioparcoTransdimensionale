@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public class MoleController : MonoBehaviour
@@ -40,7 +39,7 @@ public class MoleController : MonoBehaviour
             if (_indexPoint == 0 && contNote == 0)
             {
                 randomNum = UnityEngine.Random.value;
-                if (randomNum <= 0.5f)
+                if (randomNum <= 0.75f)
                 {
                     _indexNote = randIndex;
                 }
