@@ -13,15 +13,12 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private Text scoreText;
 
 
-
     void Start()
     {
-
         fillableBar = GetComponent<Image>();
         timeLeft = maxTime;
 
         currentScore = 0;
-
     }
 
 
@@ -35,31 +32,21 @@ public class GameTimer : MonoBehaviour
 
         if (timeLeft < 0 && currentScore < punteggioVincita)
         {
-
-
             ScoreForMiniGame.Instance.SetHighScore(currentScore);
 
-            Debug.Log("tempo finito");
-
-            // Time.timeScale = 0;                     //quando la barra finisce termina il gioco
             ScoreForMiniGame.Instance.SetHighScore(currentScore);
 
             SceneManager.LoadScene(sceneName: "Lose");
-
         }
 
         else if (timeLeft < 0 && currentScore >= punteggioVincita)
         {
-
-
             ScoreForMiniGame.Instance.SetHighScore(currentScore);
-
 
                 if (SceneManager.GetActiveScene().buildIndex == 2)
                 {
                     Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
                     SaveManager.Instance.bestNoteHunt = currentScore;
-
                 }
 
                 else if (SceneManager.GetActiveScene().buildIndex == 3)
@@ -75,19 +62,13 @@ public class GameTimer : MonoBehaviour
                 SaveManager.Instance.Save();
 
                 SceneManager.LoadScene(sceneName: "Victory");
-
-                Debug.Log("tempo finito");
-
-
             }
         }
  
 
     public static void UpdateScore(int addedValue)
     {
-        currentScore += addedValue;                                 //per aggiornare il punteggio ogni volta che la nota viene distrutta = +5 punteggio
-        Debug.Log("Score: " + currentScore);
-        
+        currentScore += addedValue;                                     
     }
 
     public float GetTimeLeft()
