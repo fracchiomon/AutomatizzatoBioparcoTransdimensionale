@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
+using Unity.Burst.CompilerServices;
 
 public class ScreenFader : MonoBehaviour
 {
@@ -72,7 +73,10 @@ public class ScreenFader : MonoBehaviour
         TO_TRANSPARENT
     }
 
+    //SOLO per questa evenienza disabilito il warning 
+    #pragma warning disable CS0414
     [SerializeField] private STATE state = STATE.OPAQUE;
+    #pragma warning restore CS0414
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private float fadeDuration = 2.5f;
 

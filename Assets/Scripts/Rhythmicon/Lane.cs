@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro; //Debug
+using System.Collections;
 
 public class Lane : MonoBehaviour
 {
@@ -51,20 +52,19 @@ public class Lane : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawnNote();
-
+        StartCoroutine(SpawnNote());
         if (inputIndex < timeStamps.Count) //se non sono state colpite tutte le note?
         {
             float timeStamp = timeStamps[inputIndex];
             float marginOfError = SongManager.Instance.marginOfError;
             float audioTime = (SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000f));
 
-            GestioneInput(timeStamp, marginOfError, audioTime);
+            StartCoroutine(GestioneInput(timeStamp, marginOfError, audioTime));
         }
 
     }
 
-    private void GestioneInput(float timeStamp, float marginOfError, float audioTime)
+    private System.Collections.IEnumerator GestioneInput(float timeStamp, float marginOfError, float audioTime)
     {
 
         if (Input.GetKeyDown(input))
@@ -95,6 +95,7 @@ public class Lane : MonoBehaviour
 
                     if (IsDebugEnabled)
                         print($"nuovo inputIndex: {inputIndex}");
+                    yield break;
                 }
                 else //Nota non colpita perfettamente
                 {
@@ -105,6 +106,7 @@ public class Lane : MonoBehaviour
 
                     if (IsDebugEnabled)
                         print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
+                    yield break;
                 }
             }
         }
@@ -123,17 +125,14 @@ public class Lane : MonoBehaviour
 
             //Invoke(nameof(SpegniNota), 3f);
             inputIndex++;
+            yield break;
         }
+        yield return null;
     }
 
-    private void NormalHit()
-    {
-        notes[inputIndex].GetComponent<SpriteRenderer>().color = Color.black;
-        notes[inputIndex].GetComponent<Note>().CanBePressed = false;
-        ScoreManager.NormalHit();
-    }
+    
 
-    private void SpawnNote()
+    private System.Collections.IEnumerator SpawnNote()
     {
         if (spawnIndex < timeStamps.Count) //gestione dello spawn finche' ci sono note nella lista
         {
@@ -145,8 +144,10 @@ public class Lane : MonoBehaviour
                 if (IsDebugEnabled)
                     Debug.Log("nota: " + note.name + "spawnIndex = " + spawnIndex);
                 //Debug.Log($"Spawn Y: {SongManager.Instance.noteSpawnY}; Spawn Y attuale: {note.transform.position.y}");
+                yield break;
             }
         }
+        yield return null;
     }
 
     private GameObject CreaNuovaNotaPrefab()
@@ -238,6 +239,12 @@ public class Lane : MonoBehaviour
         ScoreManager.PerfectHit(); //suona l'efx e incrementa punteggio e indicatore combo
     }
 
+    private void NormalHit()
+    {
+        notes[inputIndex].GetComponent<SpriteRenderer>().color = Color.black;
+        notes[inputIndex].GetComponent<Note>().CanBePressed = false;
+        ScoreManager.NormalHit();
+    }
 
     private void Miss()
     {

@@ -5265,6 +5265,26 @@
             (hours:minutes:seconds:frames:subframes).
             </remarks>
         </member>
+        <member name="F:Melanchall.DryWetMidi.Core.SmpteOffsetEvent.MaxHours">
+            <summary>
+            Represents the largest possible hours value.
+            </summary>
+        </member>
+        <member name="F:Melanchall.DryWetMidi.Core.SmpteOffsetEvent.MaxMinutes">
+            <summary>
+            Represents the largest possible minutes value.
+            </summary>
+        </member>
+        <member name="F:Melanchall.DryWetMidi.Core.SmpteOffsetEvent.MaxSeconds">
+            <summary>
+            Represents the largest possible seconds value.
+            </summary>
+        </member>
+        <member name="F:Melanchall.DryWetMidi.Core.SmpteOffsetEvent.MaxSubFrames">
+            <summary>
+            Represents the largest possible sub-frames value.
+            </summary>
+        </member>
         <member name="M:Melanchall.DryWetMidi.Core.SmpteOffsetEvent.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Melanchall.DryWetMidi.Core.SmpteOffsetEvent"/>.
@@ -8537,6 +8557,7 @@
             by reference to events in the <paramref name="trackChunks"/>.
             </remarks>
             <exception cref="T:System.ArgumentNullException"><paramref name="trackChunks"/> is <c>null</c>.</exception>
+            <exception cref="T:System.ArgumentException"><paramref name="trackChunks"/> is an empty collection.</exception>
         </member>
         <member name="M:Melanchall.DryWetMidi.Core.TrackChunkUtilities.Explode(Melanchall.DryWetMidi.Core.TrackChunk)">
             <summary>
@@ -11024,31 +11045,6 @@
             Last Note On event with corresponding note number and channel should be taken.
             </summary>
         </member>
-        <member name="T:Melanchall.DryWetMidi.Interaction.IObjectId">
-            <summary>
-            Represents the ID (key) of an object.
-            </summary>
-        </member>
-        <member name="T:Melanchall.DryWetMidi.Interaction.ObjectIdUtilities">
-            <summary>
-            Provides methods to get the ID (key) of an object.
-            </summary>
-        </member>
-        <member name="M:Melanchall.DryWetMidi.Interaction.ObjectIdUtilities.GetObjectId(Melanchall.DryWetMidi.Interaction.ITimedObject)">
-            <summary>
-            Gets the ID (key) of the specified object using standard logic.
-            </summary>
-            <param name="obj">Object to get ID for.</param>
-            <returns>An object that represents the ID of the <paramref name="obj"/>.</returns>
-            <exception cref="T:System.NotSupportedException">Getting of ID for <paramref name="obj"/> is not supported.</exception>
-        </member>
-        <member name="M:Melanchall.DryWetMidi.Interaction.ObjectIdUtilities.GetObjectId``1(``0)">
-            <summary>
-            Gets the ID (key) as the specified value.
-            </summary>
-            <param name="id">ID to wrap and return.</param>
-            <returns>An object that holds <paramref name="id"/>.</returns>
-        </member>
         <member name="T:Melanchall.DryWetMidi.Interaction.Parameter">
             <summary>
             Represents parameter (RPN or NRPN) encoded as series of Control Change events.
@@ -11893,6 +11889,19 @@
             </item>
             </list>
             </exception>
+        </member>
+        <member name="M:Melanchall.DryWetMidi.Interaction.TempoMap.Equals(System.Object)">
+            <summary>
+            Determines whether the specified object is equal to the current object.
+            </summary>
+            <param name="obj">The object to compare with the current object.</param>
+            <returns><c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Melanchall.DryWetMidi.Interaction.TempoMap.GetHashCode">
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>A 32-bit signed integer hash code.</returns>
         </member>
         <member name="T:Melanchall.DryWetMidi.Interaction.TempoMapManager">
             <summary>
@@ -18527,6 +18536,8 @@
             will be treated as just Note On/Note Off events. The default value is <c>false</c>. More info in the
             <see href="https://melanchall.github.io/drywetmidi/articles/playback/Data-tracking.html#notes-tracking">Data tracking: Notes tracking</see> article.
             </summary>
+            <exception cref="T:System.InvalidOperationException">Can't enable notes tracking due to the
+            <see cref="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableNotesTracking"/> hint has been specified on the playback creation.</exception>
         </member>
         <member name="P:Melanchall.DryWetMidi.Multimedia.Playback.TrackProgram">
             <summary>
@@ -18536,6 +18547,8 @@
             <see href="https://melanchall.github.io/drywetmidi/articles/playback/Data-tracking.html#midi-parameters-values-tracking">Data tracking: MIDI parameters values tracking</see>
             article.
             </summary>
+            <exception cref="T:System.InvalidOperationException">Can't enable program tracking due to the
+            <see cref="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableProgramTracking"/> hint has been specified on the playback creation.</exception>
         </member>
         <member name="P:Melanchall.DryWetMidi.Multimedia.Playback.TrackPitchValue">
             <summary>
@@ -18545,6 +18558,8 @@
             <see href="https://melanchall.github.io/drywetmidi/articles/playback/Data-tracking.html#midi-parameters-values-tracking">Data tracking: MIDI parameters values tracking</see>
             article.
             </summary>
+            <exception cref="T:System.InvalidOperationException">Can't enable pitch value tracking due to the
+            <see cref="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisablePitchValueTracking"/> hint has been specified on the playback creation.</exception>
         </member>
         <member name="P:Melanchall.DryWetMidi.Multimedia.Playback.TrackControlValue">
             <summary>
@@ -18554,6 +18569,8 @@
             <see href="https://melanchall.github.io/drywetmidi/articles/playback/Data-tracking.html#midi-parameters-values-tracking">Data tracking: MIDI parameters values tracking</see>
             article.
             </summary>
+            <exception cref="T:System.InvalidOperationException">Can't enable control value tracking due to the
+            <see cref="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableControlValueTracking"/> hint has been specified on the playback creation.</exception>
         </member>
         <member name="P:Melanchall.DryWetMidi.Multimedia.Playback.Speed">
             <summary>
@@ -18907,6 +18924,48 @@
             <param name="rawTime">Absolute time of the event in MIDI ticks.</param>
             <returns>MIDI event that should be played. It can be modified original event or a new one.</returns>
         </member>
+        <member name="T:Melanchall.DryWetMidi.Multimedia.PlaybackHint">
+            <summary>
+            Provide a hint for a playback creation. The hint can improve performance if you don't need
+            some features of the <see cref="T:Melanchall.DryWetMidi.Multimedia.Playback"/>.
+            </summary>
+        </member>
+        <member name="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.Default">
+            <summary>
+            Enable usage of all features of the <see cref="T:Melanchall.DryWetMidi.Multimedia.Playback"/>.
+            </summary>
+        </member>
+        <member name="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableNotesTracking">
+            <summary>
+            Disable usage of notes tracking. You won't be able to set <see cref="P:Melanchall.DryWetMidi.Multimedia.Playback.TrackNotes"/>
+            to <c>true</c>.
+            </summary>
+        </member>
+        <member name="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableProgramTracking">
+            <summary>
+            Disable usage of program tracking. You won't be able to set <see cref="P:Melanchall.DryWetMidi.Multimedia.Playback.TrackProgram"/>
+            to <c>true</c>.
+            </summary>
+        </member>
+        <member name="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisablePitchValueTracking">
+            <summary>
+            Disable usage of pitch value tracking. You won't be able to set <see cref="P:Melanchall.DryWetMidi.Multimedia.Playback.TrackPitchValue"/>
+            to <c>true</c>.
+            </summary>
+        </member>
+        <member name="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableControlValueTracking">
+            <summary>
+            Disable usage of control value tracking. You won't be able to set <see cref="P:Melanchall.DryWetMidi.Multimedia.Playback.TrackControlValue"/>
+            to <c>true</c>.
+            </summary>
+        </member>
+        <member name="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableDataTracking">
+            <summary>
+            Disable usage of data tracking at all. Includes <see cref="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableNotesTracking"/>,
+            <see cref="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableProgramTracking"/>, <see cref="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisablePitchValueTracking"/> and
+            <see cref="F:Melanchall.DryWetMidi.Multimedia.PlaybackHint.DisableControlValueTracking"/>.
+            </summary>
+        </member>
         <member name="T:Melanchall.DryWetMidi.Multimedia.PlaybackSettings">
             <summary>
             Settings according to which an instance of the <see cref="T:Melanchall.DryWetMidi.Multimedia.Playback"/> should be created.
@@ -18927,6 +18986,12 @@
             <summary>
             Gets or sets settings which define how notes should be detected and built internally
             by the <see cref="T:Melanchall.DryWetMidi.Multimedia.Playback"/>.
+            </summary>
+        </member>
+        <member name="P:Melanchall.DryWetMidi.Multimedia.PlaybackSettings.Hint">
+            <summary>
+            Gets or sets a hint for a playback creation. The hint can improve performance if you don't need
+            some features of the <see cref="T:Melanchall.DryWetMidi.Multimedia.Playback"/>.
             </summary>
         </member>
         <member name="T:Melanchall.DryWetMidi.Multimedia.PlaybackUtilities">
@@ -33215,8 +33280,7 @@
         <member name="P:Melanchall.DryWetMidi.Tools.SplitByObjectsSettings.KeySelector">
             <summary>
             Gets or sets a method to get the ID (key) of an object. The default value
-            is <c>null</c> which means the default key selector will be used. You can use
-            the property to implement custom key selection (please see <see cref="T:Melanchall.DryWetMidi.Interaction.ObjectIdUtilities"/>).
+            is <c>null</c> which means the default key selector will be used.
             </summary>
         </member>
         <member name="P:Melanchall.DryWetMidi.Tools.SplitByObjectsSettings.WriteToAllFilesPredicate">
@@ -33424,7 +33488,7 @@
             <paramref name="settings"/>.</returns>
             <exception cref="T:System.ArgumentNullException"><paramref name="midiFile"/> is <c>null</c>.</exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> at the specified distance from an object's start or end.
             More info in the <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsatdistance">Objects splitting: SplitObjectsAtDistance</see>
@@ -33437,6 +33501,10 @@
             <param name="tempoMap">Tempo map used for distances calculations.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33453,7 +33521,7 @@
             </exception>
             <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"><paramref name="from"/> specified an invalid value.</exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a collection of <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> at the specified distance from an
             object's start or end. More info in the
@@ -33467,6 +33535,10 @@
             <param name="tempoMap">Tempo map used for distances calculations.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33483,7 +33555,7 @@
             </exception>
             <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"><paramref name="from"/> specified an invalid value.</exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.MidiFile"/> at the specified distance from an object's start or end.
             More info in the <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsatdistance">Objects splitting: SplitObjectsAtDistance</see>
@@ -33495,6 +33567,10 @@
             <param name="from">Point of an object <paramref name="distance"/> should be measured from.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33508,7 +33584,7 @@
             </exception>
             <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"><paramref name="from"/> specified an invalid value.</exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,System.Double,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,System.Double,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> by the specified ratio of an object's length measuring
             it from the object's start or end. For example, 0.5 means splitting at the center of an object. More info
@@ -33523,6 +33599,10 @@
             <param name="tempoMap">Tempo map used for distances calculations.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33547,7 +33627,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,System.Double,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,System.Double,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a collection of <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> by the specified ratio of an object's
             length measuring it from the object's start or end. For example, 0.5 means splitting at the center of an object.
@@ -33562,6 +33642,10 @@
             <param name="tempoMap">Tempo map used for distances calculations.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33586,7 +33670,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,System.Double,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,System.Double,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.MidiFile"/> by the specified ratio of an object's length measuring
             it from the object's start or end. For example, 0.5 means splitting at the center of an object. More info
@@ -33600,6 +33684,10 @@
             <param name="from">Point of an object distance should be measured from.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException"><paramref name="midiFile"/> is <c>null</c>.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="ratio"/> is out of valid range.</exception>
             <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">
@@ -33614,7 +33702,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects at the specified distance from an object's start or end. More info in the
             <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsatdistance">Objects splitting: SplitObjectsAtDistance</see>
@@ -33624,6 +33712,10 @@
             <param name="distance">Distance to split objects at.</param>
             <param name="from">Point of an object <paramref name="distance"/> should be measured from.</param>
             <param name="tempoMap">Tempo map used for distances calculations.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <returns>Objects that are result of splitting <paramref name="objects"/> going in the same
             order as elements of <paramref name="objects"/>.</returns>
             <exception cref="T:System.ArgumentNullException">
@@ -33642,7 +33734,7 @@
             </exception>
             <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"><paramref name="from"/> specified an invalid value.</exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},System.Double,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsAtDistance(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},System.Double,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Tools.LengthedObjectTarget,Melanchall.DryWetMidi.Interaction.TempoMap,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects by the specified ratio of an object's length measuring it from
             the object's start or end. For example, 0.5 means splitting at the center of an object. More info in the
@@ -33654,6 +33746,10 @@
             <param name="lengthType">The type an object's length should be processed according to.</param>
             <param name="from">Point of an object distance should be measured from.</param>
             <param name="tempoMap">Tempo map used for distances calculations.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <returns>Objects that are result of splitting <paramref name="objects"/> going in the same
             order as elements of <paramref name="objects"/>.</returns>
             <exception cref="T:System.ArgumentNullException">
@@ -33680,7 +33776,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByGrid(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.IGrid,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByGrid(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.IGrid,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> by the specified grid. More info in the
             <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsbygrid">Objects splitting: SplitObjectsByGrid</see> article.
@@ -33694,6 +33790,10 @@
             <param name="tempoMap">Tempo map used to calculate times to split by.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33709,7 +33809,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByGrid(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.IGrid,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByGrid(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.IGrid,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a collection of <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> by the specified grid. More info in the
             <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsbygrid">Objects splitting: SplitObjectsByGrid</see> article.
@@ -33723,6 +33823,10 @@
             <param name="tempoMap">Tempo map used to calculate times to split by.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33738,7 +33842,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByGrid(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.IGrid,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByGrid(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.IGrid,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.MidiFile"/> by the specified grid. More info in the
             <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsbygrid">Objects splitting: SplitObjectsByGrid</see> article.
@@ -33751,6 +33855,10 @@
             <param name="grid">Grid to split objects by.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33763,7 +33871,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByGrid(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},Melanchall.DryWetMidi.Interaction.IGrid,Melanchall.DryWetMidi.Interaction.TempoMap)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByGrid(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},Melanchall.DryWetMidi.Interaction.IGrid,Melanchall.DryWetMidi.Interaction.TempoMap,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects by the specified grid. More info in the
             <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsbygrid">Objects splitting: SplitObjectsByGrid</see> article.
@@ -33774,6 +33882,10 @@
             <param name="objects">Objects to split.</param>
             <param name="grid">Grid to split objects by.</param>
             <param name="tempoMap">Tempo map used to calculate times to split by.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <returns>Objects that are result of splitting <paramref name="objects"/> going in the same
             order as elements of <paramref name="objects"/>.</returns>
             <exception cref="T:System.ArgumentNullException">
@@ -33791,7 +33903,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByPartsNumber(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,System.Int32,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByPartsNumber(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,System.Int32,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> into the specified number of parts of the equal length.
             More info in the <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsbypartsnumber">Objects splitting: SplitObjectsByPartsNumber</see>
@@ -33808,6 +33920,10 @@
             <param name="tempoMap">Tempo map used to calculate times to split by.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33822,7 +33938,7 @@
             <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="partsNumber"/> is zero or negative.</exception>
             <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"><paramref name="lengthType"/> specified an invalid value.</exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByPartsNumber(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,System.Int32,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByPartsNumber(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,System.Int32,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a collection of <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> into the specified number of parts of
             the equal length. More info in the
@@ -33840,6 +33956,10 @@
             <param name="tempoMap">Tempo map used to calculate times to split by.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33854,7 +33974,7 @@
             <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="partsNumber"/> is zero or negative.</exception>
             <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"><paramref name="lengthType"/> specified an invalid value.</exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByPartsNumber(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,System.Int32,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByPartsNumber(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,System.Int32,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.MidiFile"/> into the specified number of parts of the equal length.
             More info in the <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsbypartsnumber">Objects splitting: SplitObjectsByPartsNumber</see>
@@ -33870,11 +33990,15 @@
             <param name="lengthType">Type of a part's length.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException"><paramref name="midiFile"/> is <c>null</c>.</exception>
             <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="partsNumber"/> is zero or negative.</exception>
             <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"><paramref name="lengthType"/> specified an invalid value.</exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByPartsNumber(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},System.Int32,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Interaction.TempoMap)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByPartsNumber(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},System.Int32,Melanchall.DryWetMidi.Interaction.TimeSpanType,Melanchall.DryWetMidi.Interaction.TempoMap,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects into the specified number of parts of the equal length. More info in the
             <see href="https://melanchall.github.io/drywetmidi/articles/tools/Objects-splitting.html#splitobjectsbypartsnumber">Objects splitting: SplitObjectsByPartsNumber</see>
@@ -33888,6 +34012,10 @@
             <param name="partsNumber">The number of parts to split objects into.</param>
             <param name="lengthType">Type of a part's length.</param>
             <param name="tempoMap">Tempo map used to calculate times to split by.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <returns>Objects that are result of splitting <paramref name="objects"/> going in the same
             order as elements of <paramref name="objects"/>.</returns>
             <exception cref="T:System.ArgumentNullException">
@@ -33904,7 +34032,7 @@
             <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="partsNumber"/> is zero or negative.</exception>
             <exception cref="T:System.ComponentModel.InvalidEnumArgumentException"><paramref name="lengthType"/> specified an invalid value.</exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByStep(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByStep(Melanchall.DryWetMidi.Core.TrackChunk,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> by the specified step so every object will be split
             at points equally distanced from each other starting from the object's start time. More info in the
@@ -33920,6 +34048,10 @@
             <param name="tempoMap">Tempo map used to calculate times to split by.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33935,7 +34067,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByStep(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByStep(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Core.TrackChunk},Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Interaction.TempoMap,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a collection of <see cref="T:Melanchall.DryWetMidi.Core.TrackChunk"/> by the specified step so every object
             will be split at points equally distanced from each other starting from the object's start time. More info
@@ -33951,6 +34083,10 @@
             <param name="tempoMap">Tempo map used to calculate times to split by.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33966,7 +34102,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByStep(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByStep(Melanchall.DryWetMidi.Core.MidiFile,Melanchall.DryWetMidi.Interaction.ObjectType,Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Interaction.ObjectDetectionSettings,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects within a <see cref="T:Melanchall.DryWetMidi.Core.MidiFile"/> by the specified step so every object will be split
             at points equally distanced from each other starting from the object's start time. More info in the
@@ -33981,6 +34117,10 @@
             <param name="step">Step to split objects by.</param>
             <param name="objectDetectionSettings">Settings according to which objects should be
             detected and built.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <exception cref="T:System.ArgumentNullException">
             <para>One of the following errors occurred:</para>
             <list type="bullet">
@@ -33993,7 +34133,7 @@
             </list>
             </exception>
         </member>
-        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByStep(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Interaction.TempoMap)">
+        <member name="M:Melanchall.DryWetMidi.Tools.Splitter.SplitObjectsByStep(System.Collections.Generic.IEnumerable{Melanchall.DryWetMidi.Interaction.ITimedObject},Melanchall.DryWetMidi.Interaction.ITimeSpan,Melanchall.DryWetMidi.Interaction.TempoMap,System.Predicate{Melanchall.DryWetMidi.Interaction.ITimedObject})">
             <summary>
             Splits objects by the specified step so every object will be split at points
             equally distanced from each other starting from the object's start time. More info in the
@@ -34006,6 +34146,10 @@
             <param name="objects">Objects to split.</param>
             <param name="step">Step to split objects by.</param>
             <param name="tempoMap">Tempo map used to calculate times to split by.</param>
+            <param name="filter">Predicate used to determine whether an object should be split or not.
+            <c>true</c> as a return value of the predicate means an object should be split; <c>false</c>
+            means don't split it. <c>null</c> (the default value) can be passed to the parameter
+            to process all objects.</param>
             <returns>Objects that are result of splitting <paramref name="objects"/> going in the same
             order as elements of <paramref name="objects"/>.</returns>
             <exception cref="T:System.ArgumentNullException">
