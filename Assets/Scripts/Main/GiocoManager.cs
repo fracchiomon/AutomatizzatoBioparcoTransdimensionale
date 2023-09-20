@@ -98,8 +98,16 @@ public class GiocoManager : MonoBehaviour
            (Action)(() =>
            {
                SceneManager.LoadScene(sceneName: "Rhythmicon");
-               ScreenFader.Instance.StartFadeToTransparent(null);
-               Time.timeScale = 0;
+               ScreenFader.Instance.StartFadeToTransparent(
+
+                   (Action)(()=>{
+
+                       Time.timeScale = 0;
+
+                    })
+
+                   );
+               //Time.timeScale = 0;
            })
            );
     }
@@ -153,12 +161,6 @@ public class GiocoManager : MonoBehaviour
         }
     }
 
-
-
-    public void RHYTHMICON_ConfermaTornaAlMenu()
-    {
-        ToMainMenu();
-    }
 
     public void SETTINGS_MusicVolumeSlider(float volume)
     {

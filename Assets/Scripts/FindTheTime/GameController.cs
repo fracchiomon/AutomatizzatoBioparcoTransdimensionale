@@ -27,14 +27,15 @@ public class GameController : MonoBehaviour
 
     private bool firstAnim1, firstAnim2;
 
-    private int addScore = 5; 
+   
 
     [SerializeField] private GameObject[] monsters;
     [SerializeField] private Animator[] movements;
     [SerializeField] private Animator[] cardRotation;
 
-    [SerializeField] private ScoreForMiniGame finalScore;
-
+    [SerializeField] private GameObject fillableBar;
+    private int tempoRimasto; 
+    private int addScore = 5;
 
     private void Awake() // caricamento sprite note e durate 
     {
@@ -56,6 +57,11 @@ public class GameController : MonoBehaviour
         setAnimation();
 
         //movements[0].SetTrigger("from idle to correct");
+    }
+
+    private void Update()
+    {
+        fillableBar.GetComponent<GameTimer>().GameTimerUpdate();
     }
 
     void setAnimation()
@@ -188,7 +194,7 @@ public class GameController : MonoBehaviour
                 movements[i].SetTrigger("from idle to correct");
             }
 
-            UI_Punt.UpdateScore(addScore);
+            GameTimer.UpdateScore(addScore);
 
             CheckIfTheGameIsFinished();
         }
@@ -243,7 +249,9 @@ public class GameController : MonoBehaviour
 
         if(countCorrectGuesses == gameGuesses)
         {
-            finalScore.SetHighScore(UI_Punt.Punteggio());
+            tempoRimasto = (int) fillableBar.GetComponent<GameTimer>().GetTimeLeft() ;
+            Debug.Log(tempoRimasto); 
+            ScoreForMiniGame.Instance.SetHighScore( 10 * tempoRimasto);
             SceneManager.LoadScene(sceneName: "Victory");
 
         }

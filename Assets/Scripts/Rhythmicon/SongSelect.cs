@@ -16,7 +16,6 @@ public class SongSelect : MonoBehaviour
     public Song songToLoad;
     public List<Song> Songs;
 
-
     void Awake()
     {
         if (Instance == null) Instance = this;
