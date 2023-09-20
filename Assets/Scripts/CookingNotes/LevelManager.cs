@@ -15,11 +15,11 @@ public class LevelManager : MonoBehaviour
     private Action<SO_Recipe> updateFrullatore;
     private Action<SO_NotaItem[]> updateDispensa;
     private float _score;
-    private List<int> totScore = new List<int>();
+    private int totScore;
+    //private List<int> totScore = new List<int>();
     private int recipeIndex;
     private Cronometro gameTimer;
     private bool _isOnPlay;
-    private int maxPunteggio;
 
     public bool isOnPlay
     {
@@ -54,7 +54,7 @@ public class LevelManager : MonoBehaviour
         this.updateDispensa = FindObjectOfType<UI_windowDispensa>().UpdateIngredienti;
         this.recipeIndex = 0;
         this.score = 0;
-        this.maxPunteggio = 0;
+        this.totScore = 0;
         this._isOnPlay = true;
         this.gameTimer.setGameTime(this.inGameTime);
     }
@@ -122,12 +122,8 @@ public class LevelManager : MonoBehaviour
         {
             this.score = 0;
         }
-        this.totScore.Add(this.score);
 
-        if(this.score > this.maxPunteggio)
-        {
-            this.maxPunteggio = this.score;
-        }
+        this.totScore += this.score;
 
         return this.score;
     }
@@ -147,9 +143,9 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    SaveManager.Instance.bestCookingNotes = this.maxPunteggio;
+                    SaveManager.Instance.bestCookingNotes = this.totScore;
                     SaveManager.Instance.Save();
-
+                    ScoreForMiniGame.Instance.SetHighScore(this.totScore);
                     //this.recipeIndex = 0;
                     SceneManager.LoadScene(sceneName: "Victory");
                 }
