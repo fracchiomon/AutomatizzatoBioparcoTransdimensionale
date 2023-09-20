@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17820154, g: 0.22312379, b: 0.30518863, a: 1}
+  m_IndirectSpecularColor: {r: 0.17820194, g: 0.22312424, b: 0.3051898, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -692,6 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  fillableBar: {fileID: 0}
   Bar: {fileID: 658481236}
   note: {fileID: 737805269}
   Points: []
@@ -1983,6 +1984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  fillableBar: {fileID: 0}
   Bar: {fileID: 658481236}
   note: {fileID: 380663478}
   Points: []
@@ -2366,6 +2368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  fillableBar: {fileID: 0}
   Bar: {fileID: 658481236}
   note: {fileID: 2047771969}
   Points: []
@@ -2807,6 +2810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTime: 50
   punteggioVincita: 25
+  scoreText: {fileID: 1662683167}
 --- !u!1 &691325521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4803,6 +4807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  fillableBar: {fileID: 0}
   Bar: {fileID: 658481236}
   note: {fileID: 380663478}
   Points: []
@@ -5741,6 +5746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  fillableBar: {fileID: 0}
   Bar: {fileID: 658481236}
   note: {fileID: 1283695402}
   Points: []
@@ -6326,7 +6332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034011557c5918c458cae718cb1890b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1662683167}
 --- !u!1 &1452599099
 GameObject:
   m_ObjectHideFlags: 0
@@ -6990,7 +6995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 034011557c5918c458cae718cb1890b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1662683167}
 --- !u!4 &1677757489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7003345789226185497, guid: 51ca87d96c849e74ead93bbeb46b1a61, type: 3}
@@ -7761,6 +7765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  fillableBar: {fileID: 0}
   Bar: {fileID: 658481236}
   note: {fileID: 0}
   Points: []
@@ -7837,6 +7842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  fillableBar: {fileID: 0}
   Bar: {fileID: 658481236}
   note: {fileID: 704848268}
   Points: []
@@ -8776,6 +8782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  fillableBar: {fileID: 0}
   Bar: {fileID: 658481236}
   note: {fileID: 1887944397}
   Points: []

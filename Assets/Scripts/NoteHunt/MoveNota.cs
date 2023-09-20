@@ -5,7 +5,7 @@ using System;
 public class MoveNota : MonoBehaviour
 {
     [SerializeField] private float speed = 5;
-
+    [SerializeField] private GameObject fillableBar;
     [SerializeField] private UI_BarNote Bar;
     [SerializeField] private GameObject note;                               //sono le note che si generano ogni volta che si distrugge una
     public Transform[] Points;
@@ -20,7 +20,7 @@ public class MoveNota : MonoBehaviour
     private bool colpito;
 
     private Action cambioNota;
-    private GameTimer gT; 
+    private Action gT; 
 
     private void Start()
     {
@@ -28,6 +28,7 @@ public class MoveNota : MonoBehaviour
         this.timeDelay = 0.5f;
         this.colpito = false;
         this.cambioNota = FindObjectOfType<UI_BarNote>().cambioNota;
+        this.gT = FindObjectOfType<GameTimer>().GameTimerUpdate;
     }
 
     private void Update()                  
@@ -63,6 +64,7 @@ public class MoveNota : MonoBehaviour
             colpito = false;
 
         }
+        this.gT();
     }
 
     public void setColpito()
