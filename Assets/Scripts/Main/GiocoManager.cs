@@ -102,8 +102,8 @@ public class GiocoManager : MonoBehaviour
 
                    (Action)(()=>{
 
-                       Time.timeScale = 0;
-
+                       //Time.timeScale = 0;
+                       ScreenFader.Instance.canvasGroup.alpha = 0;
                     })
 
                    );
