@@ -88,7 +88,7 @@ public class SaveLoad_JSON : MonoBehaviour
         data.scoreNoteHunt = SaveManager.Instance.bestNoteHunt;
         data.scoreCookingNotes = SaveManager.Instance.bestCookingNotes;
         data.scoreFindTheNote = SaveManager.Instance.bestFindTheNote;
-        data.scoreWhackANote = SaveManager.Instance.bestWhackANote = data.scoreWhackANote;
+        data.scoreWhackANote = SaveManager.Instance.bestWhackANote;
 
         return data;
     }

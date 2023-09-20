@@ -16,7 +16,7 @@ public class SaveData
     public int scoreFindTheNote;
     public int scoreWhackANote;
 
-    public SaveData(/*int scoreRythmicon, int scoreNoteHunt, int scoreCookingNotes, int scoreFindTheNote, int */)
+    public SaveData()
     {
         this.scoreRythmicon = 0;
         this.scoreNoteHunt = 0;

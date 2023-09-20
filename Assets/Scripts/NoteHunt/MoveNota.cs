@@ -19,7 +19,7 @@ public class MoveNota : MonoBehaviour
     private bool colpito;
 
     private Action cambioNota;
-    private Action gT; 
+    private GameTimer gT; 
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class MoveNota : MonoBehaviour
         this.timeDelay = 0.5f;
         this.colpito = false;
         this.cambioNota = FindObjectOfType<UI_BarNote>().cambioNota;
-        this.gT = FindObjectOfType<GameTimer>().GameTimerUpdate;
+        this.gT = FindObjectOfType<GameTimer>();
     }
 
     private void Update()                  
@@ -55,14 +55,14 @@ public class MoveNota : MonoBehaviour
         {
             if (this.notePoints[_indexPoint] == Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag)
             {
-                GameTimer.UpdateScore(score);             //per lo score
+                this.gT.UpdateScore(score);             //per lo score
                 note.SetActive(true);   
                 this.transform.parent.gameObject.SetActive(false);
             }
             colpito = false;
 
         }
-        this.gT();
+        this.gT.GameTimerUpdate();
     }
 
     public void setColpito()

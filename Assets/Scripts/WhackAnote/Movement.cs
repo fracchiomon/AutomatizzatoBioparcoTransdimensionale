@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     public Text pointText;
     public int index = 0;
     int index1 = 0;
-    private Action gT;
+    private GameTimer gT;
 
 
 
@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
         }
         noteSound = GetComponent<AudioSource>();
         this.MoleMessage = FindObjectOfType<UI_Message>().SpawnMessage;
-        this.gT = FindObjectOfType<GameTimer>().GameTimerUpdate;
+        this.gT = FindObjectOfType<GameTimer>();
     }
 
     // Update is called once per frame
@@ -60,22 +60,21 @@ public class Movement : MonoBehaviour
         fillableBar.GetComponent<GameTimer>().GameTimerUpdate();
         this.moles[index].GetComponent<MoleController>().Move();
         this.hammer.GetComponent<HammerController>().Move();
-        this.gT();
+        this.gT.GameTimerUpdate();
     }
 
     private void GestionePunteggio()
     {
         if (this.moles[index].GetComponent<MoleController>().isHitted && this.moles[index].GetComponent<MoleController>().GetIndexNote() == RandomNote.GetRandomIndex())
         {
-            GameTimer.UpdateScore(this.moles[index].GetComponent<MoleController>().GetPoint());
+            this.gT.UpdateScore(this.moles[index].GetComponent<MoleController>().GetPoint());
             this.moles[index].GetComponent<MoleController>().isHitted = false;
         }
         else if (this.moles[index].GetComponent<MoleController>().isHitted)
         {
-            GameTimer.UpdateScore(-this.moles[index].GetComponent<MoleController>().GetPoint());
+            this.gT.UpdateScore(-this.moles[index].GetComponent<MoleController>().GetPoint());
             this.moles[index].GetComponent<MoleController>().isHitted = false;
         }
-
     }
 
     private void suonoNota()

@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
 
     private bool firstAnim1, firstAnim2;
 
-   
+    private GameTimer gameTimer;
 
     [SerializeField] private GameObject[] monsters;
     [SerializeField] private Animator[] movements;
@@ -56,13 +56,13 @@ public class GameController : MonoBehaviour
         ShuffleList(gamePuzzles);
         gameGuesses = gamePuzzles.Count / 2; // quante serve indovinare 
         setAnimation();
-
+        this.gameTimer = FindObjectOfType<GameTimer>();
         //movements[0].SetTrigger("from idle to correct");
     }
 
     private void Update()
     {
-        fillableBar.GetComponent<GameTimer>().GameTimerUpdate();
+        this.gameTimer.GameTimerUpdate();
     }
 
     void setAnimation()
@@ -195,7 +195,7 @@ public class GameController : MonoBehaviour
                 movements[i].SetTrigger("from idle to correct");
             }
 
-            GameTimer.UpdateScore(addScore);
+            this.gameTimer.UpdateScore(addScore);
 
             CheckIfTheGameIsFinished();
         }
@@ -254,6 +254,8 @@ public class GameController : MonoBehaviour
             Debug.Log(_scoreVincita);
             _scoreVincita *= 10;
             ScoreForMiniGame.Instance.SetHighScore(_scoreVincita);
+            SaveManager.Instance.bestFindTheNote = this._scoreVincita;
+            SaveManager.Instance.Save();
             SceneManager.LoadScene(sceneName: "Victory");
 
         }

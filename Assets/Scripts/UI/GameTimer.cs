@@ -9,7 +9,7 @@ public class GameTimer : MonoBehaviour
     private float timeLeft;
 
     [SerializeField] private int punteggioVincita;
-    private static int currentScore;
+    private int currentScore;
     [SerializeField] private Text scoreText;
 
 
@@ -57,6 +57,7 @@ public class GameTimer : MonoBehaviour
                 else if (SceneManager.GetActiveScene().buildIndex == 6)
                 {
                     SaveManager.Instance.bestWhackANote = currentScore;
+                    Debug.Log(this.currentScore);
                 }
 
                 SaveManager.Instance.Save();
@@ -66,7 +67,7 @@ public class GameTimer : MonoBehaviour
         }
  
 
-    public static void UpdateScore(int addedValue)
+    public void UpdateScore(int addedValue)
     {
         currentScore += addedValue;                                     
     }
