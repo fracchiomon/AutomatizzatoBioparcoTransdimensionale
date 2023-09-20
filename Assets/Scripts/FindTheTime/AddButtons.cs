@@ -1,0 +1,20 @@
+
+using UnityEngine;
+
+public class AddButtons : MonoBehaviour
+{
+
+    [SerializeField] private Transform puzzleField;
+
+    [SerializeField] private GameObject btn; 
+
+    private void Start()
+    {
+        for (int i = 0; i < 8; i++ )
+        {
+            GameObject button = Instantiate(btn); // copia e assegna il gameobject
+            button.name = "" + i;
+            button.transform.SetParent(puzzleField , false); //
+        }
+    }
+}
