@@ -693,10 +693,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fillableBar: {fileID: 0}
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 737805269}
   Points: []
   notePoints: []
+  shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
   ways: {fileID: 1514425367}
 --- !u!54 &295427248
 Rigidbody:
@@ -1985,10 +1986,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fillableBar: {fileID: 0}
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 380663478}
   Points: []
   notePoints: []
+  shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
   ways: {fileID: 1315225285}
 --- !u!54 &526725691
 Rigidbody:
@@ -2369,10 +2371,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fillableBar: {fileID: 0}
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 2047771969}
   Points: []
   notePoints: []
+  shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
   ways: {fileID: 1563295398}
 --- !u!54 &622508241
 Rigidbody:
@@ -4808,10 +4811,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fillableBar: {fileID: 0}
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 380663478}
   Points: []
   notePoints: []
+  shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
   ways: {fileID: 1429673099}
 --- !u!54 &1087638971
 Rigidbody:
@@ -5747,10 +5751,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fillableBar: {fileID: 0}
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 1283695402}
   Points: []
   notePoints: []
+  shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
   ways: {fileID: 1452599099}
 --- !u!54 &1287488929
 Rigidbody:
@@ -7740,10 +7745,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fillableBar: {fileID: 0}
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 0}
   Points: []
   notePoints: []
+  shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
   ways: {fileID: 2068004160}
 --- !u!54 &1900486826
 Rigidbody:
@@ -7817,10 +7823,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fillableBar: {fileID: 0}
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 704848268}
   Points: []
   notePoints: []
+  shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
   ways: {fileID: 1098971449}
 --- !u!54 &1911037274
 Rigidbody:
@@ -8757,10 +8764,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fillableBar: {fileID: 0}
-  Bar: {fileID: 658481236}
+  Bar: {fileID: 658481240}
   note: {fileID: 1887944397}
   Points: []
   notePoints: []
+  shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
   ways: {fileID: 835592735}
 --- !u!54 &2142971809
 Rigidbody:

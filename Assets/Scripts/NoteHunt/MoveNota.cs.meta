@@ -3,7 +3,12 @@ guid: 2e8294fab32782345be126f02a70f429
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fillableBar: {instanceID: 0}
+  - Bar: {instanceID: 0}
+  - note: {instanceID: 0}
+  - shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
+  - ways: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

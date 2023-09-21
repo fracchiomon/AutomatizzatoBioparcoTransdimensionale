@@ -11,6 +11,8 @@ public class MoveNota : MonoBehaviour
     [SerializeField] private string[] notePoints;
     private int score = 5;                                                  //score di ogni volta che la nota viene colpita
 
+    [SerializeField] private AudioClip shootSFX;                            //clip audio dello sparo
+    private AudioSource shootSFXSource;                                     //source creata nell'object che contiene la clip
 
     public GameObject ways;                                                 //2 punti per il movimento della nota
     private int _indexPoint;
@@ -19,7 +21,14 @@ public class MoveNota : MonoBehaviour
     private bool colpito;
 
     private Action cambioNota;
-    private GameTimer gT; 
+    private GameTimer gT;
+
+    private void Awake()
+    {
+        shootSFXSource = this.gameObject.AddComponent<AudioSource>();                  //creazione componente e inizializzazione parametri
+        shootSFXSource.priority = 1;
+        shootSFXSource.volume = 0.6f;
+    }
 
     private void Start()
     {
@@ -28,6 +37,10 @@ public class MoveNota : MonoBehaviour
         this.colpito = false;
         this.cambioNota = FindObjectOfType<UI_BarNote>().cambioNota;
         this.gT = FindObjectOfType<GameTimer>();
+
+        shootSFXSource.clip = shootSFX;                                      //assegno clip audio a componente
+        
+        
     }
 
     private void Update()                  
@@ -56,6 +69,9 @@ public class MoveNota : MonoBehaviour
             if (this.notePoints[_indexPoint] == Bar.GetComponent<UI_BarNote>().getNotaSelezionata().tag)
             {
                 this.gT.UpdateScore(score);             //per lo score
+
+                
+
                 note.SetActive(true);   
                 this.transform.parent.gameObject.SetActive(false);
             }
@@ -69,6 +85,9 @@ public class MoveNota : MonoBehaviour
     void OnMouseDown()
     {
         colpito = true;                     // Destroy the gameObject after clicking on it
+                                            //riproduzione suono sparo
+        if (shootSFXSource != null)
+            shootSFXSource.Play();
     }
 
 }

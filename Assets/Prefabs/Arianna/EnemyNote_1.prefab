@@ -483,6 +483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
+  fillableBar: {fileID: 0}
   Bar: {fileID: 0}
   note: {fileID: 0}
   Points:
@@ -492,9 +493,9 @@ MonoBehaviour:
   - {fileID: 7473968732422094029}
   - {fileID: 2717879062819171401}
   - {fileID: 1470773293324805456}
+  notePoints: []
+  shootSFX: {fileID: 8300000, guid: f37120f11bb25854586562a632c48606, type: 3}
   ways: {fileID: 7166831925338957025}
-  wayPoints: []
-  colpito: 0
 --- !u!4 &5467403373638469535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400018, guid: 7708e584cd8cf6a469b88e465fcc9150, type: 3}
