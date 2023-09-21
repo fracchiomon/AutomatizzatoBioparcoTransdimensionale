@@ -80,7 +80,7 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        StartCoroutine(CheckAndUpdateScoreMultiplier());
+        CheckAndUpdateScoreMultiplier();
         ScoreText.text = "Punteggio: " + _score.ToString();
         ComboText.text = "Moltiplicatore: " + GetScoreMultiplier().ToString();
         ControllaInput();
@@ -167,33 +167,33 @@ public class ScoreManager : MonoBehaviour
         Instance.normalHitSFX.Play();
     }
 
-    public static IEnumerator CheckAndUpdateScoreMultiplier()
-    {
-        int multPer1_Threshold = 0, multPer2_Threshold = 4, multPer3_Threshold = multPer2_Threshold * 2, multPer4_Threshold = multPer2_Threshold * 3, multPer5_Threshold = multPer3_Threshold * 5;  //threshold grezze per l'incremento del moltiplicatore del punteggio
+    [SerializeField] private int[] MultiplierThresholds;  //threshold grezze per l'incremento del moltiplicatore del punteggio
+    int multPer1_Threshold = 0;
 
-        if (multPer1_Threshold < ComboScore && ComboScore < multPer2_Threshold)
+    public static void CheckAndUpdateScoreMultiplier()
+    {
+
+        if (multPer1_Threshold < ComboScore && ComboScore < MultiplierThresholds[0])
         {
             SetScoreMultiplier(1);
 
         }
-        else if (multPer2_Threshold < ComboScore && ComboScore < multPer3_Threshold)
+        else if (MultiplierThresholds[1] < ComboScore && ComboScore < MultiplierThresholds[2])
         {
             SetScoreMultiplier(2);
 
         }
-        else if (multPer3_Threshold < ComboScore && ComboScore < multPer4_Threshold)
+        else if (MultiplierThresholds[2] < ComboScore && ComboScore < MultiplierThresholds[3])
         {
             SetScoreMultiplier(3);
 
         }
-        else if (multPer4_Threshold < ComboScore && ComboScore < multPer5_Threshold)
+        else if (MultiplierThresholds[3] < ComboScore && ComboScore < MultiplierThresholds[4])
         {
             SetScoreMultiplier(4);
         }
-        else if (ComboScore >= multPer5_Threshold)
+        else if (ComboScore >= MultiplierThresholds[4])
             SetScoreMultiplier(5);
-        yield return null;
-
     }
 
     public static void Miss()
