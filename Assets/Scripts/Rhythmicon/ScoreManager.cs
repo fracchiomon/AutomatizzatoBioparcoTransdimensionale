@@ -124,7 +124,10 @@ public class ScoreManager : MonoBehaviour
             print(SaveManager.Instance.bestRythmicon);
         }
         SaveManager.Instance.Save();
-        SceneManager.LoadScene(sceneName: "Victory");
+        if (missedNotes < GetMaxMissedNotes())
+            SceneManager.LoadScene(sceneName: "Victory");
+        else
+            SceneManager.LoadScene(sceneName: "Lose");
     }
     /// <summary>
     /// Sfrutto l'Update di ScoreManager per controllare se Utente digita alcuni comandi chiave come ESC per tornare al menu

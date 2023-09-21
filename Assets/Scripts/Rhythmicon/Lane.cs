@@ -251,7 +251,7 @@ public class Lane : MonoBehaviour
         notes[inputIndex].GetComponent<SpriteRenderer>().color = Color.white;
         notes[inputIndex].GetComponent<Note>().CanBePressed = false;
         missedNotes++;
-
+        ScoreManager.Instance.SetMissedNotes(missedNotes);
         ScoreManager.Miss(); //suona l'efx e resetta combo
     }
 
