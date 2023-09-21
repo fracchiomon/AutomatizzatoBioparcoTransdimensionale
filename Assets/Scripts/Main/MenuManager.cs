@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
+    //aggiunta la spunta per disattivare da inspector stampa di debug
+    [SerializeField] private bool IsDebugEnabled;
+
     private void Start()
     {
         SaveManager.Instance.Load();
@@ -11,14 +14,26 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+        if (IsDebugEnabled)
         {
-            Debug.Log( SaveManager.Instance.bestRythmicon + " " + SaveManager.Instance.bestNoteHunt + " " +
+            if(Input.GetKeyDown(KeyCode.P))
+            {
+                Debug.Log( SaveManager.Instance.bestRythmicon + " " + SaveManager.Instance.bestNoteHunt + " " +
 
-                SaveManager.Instance.bestFindTheNote + " " + SaveManager.Instance.bestCookingNotes + " " +
-                SaveManager.Instance.bestWhackANote
+                    SaveManager.Instance.bestFindTheNote + " " + SaveManager.Instance.bestCookingNotes + " " +
+                    SaveManager.Instance.bestWhackANote
 
-                );
+                    );
+            }
+
+        }
+        //grezzo check per l'uscita dal gioco qualora non fossimo su WebGL
+        if(Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            if(!(Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))) 
+            {
+                Application.Quit(exitCode: 0 );
+            }
         }
     }
 

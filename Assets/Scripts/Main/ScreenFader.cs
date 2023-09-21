@@ -71,8 +71,9 @@ public class ScreenFader : MonoBehaviour
         OPAQUE,
         TO_TRANSPARENT
     }
-
-    [SerializeField] private STATE state = STATE.OPAQUE;
+#pragma warning disable CS0414
+    [SerializeField] private STATE state = STATE.OPAQUE;    //con la direttiva pragma disattivo il warning ESCLUSIVAMENTE PER QUESTA EVENIENZA
+#pragma warning restore CS0414
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private float fadeDuration = 2.5f;
 

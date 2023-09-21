@@ -485,10 +485,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2395,7 +2395,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e037cc68c05e7de41afd7cd48ad9354e, type: 3}
   - {fileID: 8300000, guid: c3d46fb246a723c4c9c45f7b601987cd, type: 3}
   rightNote: {fileID: 516803340}
-  fillableBar: {fileID: 1331662715}
   pointText: {fileID: 2122294436}
   index: 0
 --- !u!4 &1653669668

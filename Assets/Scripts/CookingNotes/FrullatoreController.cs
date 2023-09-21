@@ -232,7 +232,7 @@ public class FrullatoreController : MonoBehaviour
             //Destroy(toPop, 2);
             StartCoroutine(ReturnNota(nota, 2));
         }
-        catch(Exception e)
+        catch(Exception)
         {
             this.BlenderMessage("Sono vuoto, non ho più nulla da togliere!", messageT);
         }
